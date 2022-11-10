@@ -38,11 +38,11 @@ def createCurso(request):
     user = request.user
     curso = Curso.objects.create(
         user=user,
-        title='',
+        title='Titulo',
         price=0,
-        category='',
-        description='',
-        wallet='',
+        category='df',
+        description='dfdf',
+        wallet='dfdf',
     )
     serializer = CursoSerializer(curso, many=False)
     return Response(serializer.data)
@@ -51,17 +51,15 @@ def createCurso(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def uploadImageCurso(request):
     data = request.data
     curso_id = data['curso_id']
     curso = Curso.objects.get(id=curso_id)
-    if curso.user == request.user:
-        curso.image = request.FILES.get('image')
-        curso.save()
-        return Response('Image was uploaded')
-    else:
-        return Response({'Error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    curso.image = request.FILES.get('image')
+    curso.save()
+
+    return Response('Image was uploaded')
     
 
 

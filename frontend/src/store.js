@@ -13,6 +13,12 @@ import { userLoginReducer,
 
 import { cursoListReducer,
         lastCursoReducer,
+        cursoDetailsReducer,
+        cursoDeleteReducer,
+        cursoCreateReducer,
+        cursoUpdateReducer,
+        createReviewReducer,
+
 
 } from './reducers/cursoReducers';
 
@@ -29,6 +35,11 @@ const reducer = combineReducers({
 
     cursoList: cursoListReducer,
     lastCurso: lastCursoReducer,
+    detailsCurso: cursoDetailsReducer,
+    cursoDelete: cursoDeleteReducer,
+    cursoCreate: cursoCreateReducer,
+    cursoUpdate: cursoUpdateReducer,
+    createReview: createReviewReducer,
 
 })
 

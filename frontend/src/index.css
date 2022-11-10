@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+footer {
+    background: magenta;
+    padding: 10px;
+    height: 50px;
+  }

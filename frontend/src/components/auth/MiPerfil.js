@@ -1,13 +1,8 @@
-import React, { useEffect, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { Button, Table } from 'react-bootstrap'
-
-import Loader from "../utils/Loader";
-import Message from "../utils/Message";
+import React from 'react';
+import {  useSelector } from 'react-redux'
 
 
-
-export default function MiPerfil({ history }) {
+export default function MiPerfil() {
 
 
   const userLogin = useSelector(state => state.userLogin)

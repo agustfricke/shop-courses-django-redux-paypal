@@ -7,7 +7,120 @@ import {
     CURSO_LAST_SUCCESS,
     CURSO_LAST_FAIL,
 
+    CURSO_DETAILS_REQUEST,
+    CURSO_DETAILS_SUCCESS,
+    CURSO_DETAILS_FAIL,
+
+    CURSO_DELETE_REQUEST,
+    CURSO_DELETE_SUCCESS,
+    CURSO_DELETE_FAIL,
+
+    CURSO_CREATE_REQUEST,
+    CURSO_CREATE_SUCCESS,
+    CURSO_CREATE_FAIL,
+    CURSO_CREATE_RESET,
+
+    CURSO_UPDATE_REQUEST,
+    CURSO_UPDATE_SUCCESS,
+    CURSO_UPDATE_FAIL,
+    CURSO_UPDATE_RESET,
+
+    CURSO_CREATE_REVIEW_REQUEST,
+    CURSO_CREATE_REVIEW_SUCCESS,
+    CURSO_CREATE_REVIEW_FAIL,
+    CURSO_CREATE_REVIEW_RESET,
+
+
 } from '../constants/cursoConstants';
+
+export const createReviewReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CURSO_CREATE_REVIEW_REQUEST:
+            return { loading: true }
+
+        case CURSO_CREATE_REVIEW_SUCCESS:
+            return { loading: false, success: true }
+
+        case CURSO_CREATE_REVIEW_FAIL:
+            return { loading: false, error: action.payload }
+
+        case CURSO_CREATE_REVIEW_RESET:
+            return { curso: {} }
+
+        default:
+            return state
+    }
+}
+
+export const cursoUpdateReducer = (state = { curso: {} }, action) => {
+    switch (action.type) {
+        case CURSO_UPDATE_REQUEST:
+            return { loading: true }
+
+        case CURSO_UPDATE_SUCCESS:
+            return { loading: false, success: true, curso: action.payload }
+
+        case CURSO_UPDATE_FAIL:
+            return { loading: false, error: action.payload }
+
+        case CURSO_UPDATE_RESET:
+            return { curso: {} }
+
+        default:
+            return state
+    }
+}
+
+export const cursoCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CURSO_CREATE_REQUEST:
+            return { loading: true }
+
+        case CURSO_CREATE_SUCCESS:
+            return { loading: false, success: true, curso: action.payload }
+
+        case CURSO_CREATE_FAIL:
+            return { loading: false, error: action.payload }
+
+        case CURSO_CREATE_RESET:
+            return {}
+
+        default:
+            return state
+    }
+}
+
+export const cursoDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CURSO_DELETE_REQUEST:
+            return { loading: true }
+
+        case CURSO_DELETE_SUCCESS:
+            return { loading: false, success: true }
+
+        case CURSO_DELETE_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const cursoDetailsReducer = (state = { curso: { reviews: [] } }, action) => {
+    switch (action.type) {
+        case CURSO_DETAILS_REQUEST:
+            return { loading: true, ...state }
+
+        case CURSO_DETAILS_SUCCESS:
+            return { loading: false, curso: action.payload }
+
+        case CURSO_DETAILS_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
 
 export const cursoListReducer = (state = { cursos: [] }, action) => {
     switch (action.type) {

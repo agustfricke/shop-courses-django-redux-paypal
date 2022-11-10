@@ -5,7 +5,7 @@ from users.models import User
 class Curso(models.Model):
     user            = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title           = models.CharField(max_length=250, null=True, blank=True)
-    image           = models.ImageField(null=True, blank=True, default='cursos/curso.jpg', upload_to ='cursos/')
+    image           = models.ImageField(null=True, blank=True, default='/curso.jpg', upload_to ='cursos/')
     MY_CHOICES = (
         ('a', 'Backend'),
         ('b', 'Frontend'),

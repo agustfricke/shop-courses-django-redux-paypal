@@ -12,7 +12,7 @@ import eth from '../../media/ethereum.png'
 
 
 const user = [
-  { name: 'HOME', href: '#', current: true },
+  { name: 'HOME', href: '#', current: false },
 ]
 
 const noUser = [
@@ -22,10 +22,10 @@ const noUser = [
 ]
 
 const admin = [
-  { name: 'PRODUCTS', href: '/#/admin/products', current: false },
-  { name: 'USERS', href: '/#/admin/users', current: false },
-  { name: 'ORDERS', href: '/#/admin/orders/', current: false },
-  { name: 'TRANSACTIONS', href: '/#/transactions', current: false },
+  { name: 'CURSOS', href: '/#/admin/cursos', current: false },
+  { name: 'USUARIOS', href: '/#/admin/users', current: false },
+  { name: 'ORDENES', href: '/#/admin/orders/', current: false },
+  { name: 'BLOCKCHAIN', href: '/#/transactions', current: false },
 
 ]
 
@@ -94,7 +94,7 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          item.current ? 'bg-gray-700 text-gray-300' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
