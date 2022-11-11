@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-footer {
-    background: magenta;
-    padding: 10px;
-    height: 50px;
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }

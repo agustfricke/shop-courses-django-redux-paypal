@@ -8,6 +8,7 @@ from .serializers import OrderSerializer
 
 from cursos.models import Curso
 from cursos.serializers import CursoSerializer
+from .models import Order, Orderitem
 
 
 @api_view(['POST'])
@@ -25,7 +26,6 @@ def addOrderItem(request):
         order = Order.objects.create(
             user=user,
             total_price=data['totalPrice'],
-            num_transaccion=data['num_transaccion']
         )
 
         for i in orderItems:
@@ -37,7 +37,6 @@ def addOrderItem(request):
                 order=order,
                 quantity=i['quantity'],
                 price=i['price'],
-                image=curso.image.url,
             )
 
             curso.save()

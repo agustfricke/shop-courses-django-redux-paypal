@@ -19,9 +19,9 @@ class EpisodioSerializer(serializers.ModelSerializer):
         model = Episodio
         fields = '__all__'
 
-    def get_commets(self, obj):
+    def get_comments(self, obj):
         comments = obj.comment_set.all()
-        serializer = CommentSerializer(comment_set, many=True)
+        serializer = CommentSerializer(comments, many=True)
         return serializer.data
 
 

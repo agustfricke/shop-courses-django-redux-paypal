@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa';
+import { BsSearch } from "react-icons/bs";
  // useHistory is going to allow us to do is have access to the history inside of our components.
 
 function Search() {
@@ -26,22 +27,23 @@ function Search() {
             onSubmit={submitHandler} className='d-flex'
         >
            
-                    <div>
+                    <div className=''>
                         <input
                         onChange={(e) => setKeysearch(e.target.value)}
                         name="q"
                         type="text"
-                        className="form-control mr-4  flex-auto   px-5 py-1  font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  
+                        className="w-full px-10 py-2 font-bold text-white bg-gray-800 rounded-full hover:bg-gray-900 focus:outline-none focus:shadow-outline"  
                         placeholder="Type here"
-                        />
+                
+                />
                         </div>
-                        <div>
-            <button
+                        <button
                 type='submit'
-                className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
-            >
-                SEARCH
+                className='text-white bg-gray-800 rounded-full hover:bg-gray-900 px-3 py-2  text-sm font-medium ml-2'
+            ><BsSearch size={20}/>
             </button>
+                        <div>
+           
             </div>
         </Form>
     )

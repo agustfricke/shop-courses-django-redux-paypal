@@ -10,10 +10,15 @@ urlpatterns = [
     path('update/<int:pk>/', views.updateCurso),
     path('delete/<int:pk>/', views.deleteCurso),
 
-    ## Episodios
+    # Episodios
     path('createEpisodio/<int:pk>/', views.createEpisodio),
-    path('uploadVideoEpisode/', views.uploadVideoEpisodio),
+    path('getEpisodio/<int:pk>/', views.getEpisodio),
     path('updateEpisodio/<int:pk>/', views.updateEpisodio),
+    path('deleteEpisodio/<int:pk>/', views.deleteEpisodio),
+    # Media Episodio
+    path('uploadVideoEpisode/', views.uploadVideoEpisodio),
+    path('uploadPicEpisodio/', views.uploadPicEpisodio),
+    path('uploadFileEpisodio/', views.uploadFileEpisodio),
 
     # Comments 
     path('comment/<int:pk>/', views.createComment),

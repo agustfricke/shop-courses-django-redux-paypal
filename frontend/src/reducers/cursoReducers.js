@@ -30,8 +30,75 @@ import {
     CURSO_CREATE_REVIEW_FAIL,
     CURSO_CREATE_REVIEW_RESET,
 
+    CURSO_CREATE_EPISODIO_REQUEST,
+    CURSO_CREATE_EPISODIO_SUCCCESS,
+    CURSO_CREATE_EPISODIO_FAIL,
+    CURSO_CREATE_EPISODIO_RESET,
+
+    EPISODIO_UPDATE_REQUEST,
+    EPISODIO_UPDATE_SUCCESS,
+    EPISODIO_UPDATE_FAIL,
+    EPISODIO_UPDATE_RESET,
+
+    EPISODIO_DETAILS_REQUEST,
+    EPISODIO_DETAILS_SUCCESS,
+    EPISODIO_DETAILS_FAIL,
 
 } from '../constants/cursoConstants';
+
+export const episodioDetailsReducer = (state = { episodio: { comments: [] } }, action) => {
+    switch (action.type) {
+        case EPISODIO_DETAILS_REQUEST:
+            return { loading: true, ...state }
+
+        case EPISODIO_DETAILS_SUCCESS:
+            return { loading: false, episodio: action.payload }
+
+        case EPISODIO_DETAILS_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const episodioUpdateReducer = (state = { episodio: {} }, action) => {
+    switch (action.type) {
+        case EPISODIO_UPDATE_REQUEST:
+            return { loading: true }
+
+        case EPISODIO_UPDATE_SUCCESS:
+            return { loading: false, success: true, episodio: action.payload }
+
+        case EPISODIO_UPDATE_FAIL:
+            return { loading: false, error: action.payload }
+
+        case EPISODIO_UPDATE_RESET:
+            return { episodio: {} }
+
+        default:
+            return state
+    }
+}
+
+export const createEpisodioReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CURSO_CREATE_EPISODIO_REQUEST:
+            return { loading: true }
+
+        case CURSO_CREATE_EPISODIO_SUCCCESS:
+            return { loading: false, success: true }
+
+        case CURSO_CREATE_EPISODIO_FAIL:
+            return { loading: false, error: action.payload }
+
+        case CURSO_CREATE_EPISODIO_RESET:
+            return { curso: {} }
+
+        default:
+            return state
+    }
+}
 
 export const createReviewReducer = (state = {}, action) => {
     switch (action.type) {

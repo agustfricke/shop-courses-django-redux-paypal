@@ -55,7 +55,7 @@ const SoloCurso = ({ match, history }) => {
 
     return (
         <div>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mb-10">
                 <div className="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">
                     <div className="flex flex-col justify-start items-start w-full space-y-9">
                         <div className="flex justify-start flex-col items-start space-y-2">
@@ -90,8 +90,6 @@ const SoloCurso = ({ match, history }) => {
                                 <p className="text-3xl tracking-tight text-gray-900">Only for {curso.price} ETH</p>
                                 <button
                                     onClick={addToCartHandler}
-                                    disabled={curso.count_in_stock === 0 || curso.count_in_stock < 0}
-
                                     type="submit"
                                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
@@ -211,9 +209,12 @@ const SoloCurso = ({ match, history }) => {
             </div>
 
                                                     <center>
-            <h4>Reviews</h4>
-                                    {curso.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
+                                    <div className="mb-10">
 
+                            <h4>Reviews</h4>
+                            <div className="mb-10 pb-9">
+                                    {curso.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
+                                    </div>
                                     <ListGroup variant='flush'>
                                         {curso.reviews.map((review) => (
                                             <ListGroup.Item key={review._id}>
@@ -224,6 +225,8 @@ const SoloCurso = ({ match, history }) => {
                                             </ListGroup.Item>
                                         ))}
                                         </ListGroup>
+                                    </div>
+
                                         </center>
 
 

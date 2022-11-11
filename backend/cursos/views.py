@@ -103,11 +103,12 @@ def createEpisodio(request, pk):
     data = request.data
     if curso.user == request.user:
 
-        episodio = Epidodio.objects.create(
+        episodio = Episodio.objects.create(
             user=user,
             curso=curso,
-            title='',
+            title=data['title'],
             description=data['description'],
+
         )
         episodios = curso.episodio_set.all()
         curso.save()
@@ -117,24 +118,38 @@ def createEpisodio(request, pk):
 
     
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def uploadVideoEpisodio(request):
     data = request.data
     episodio_id = data['episodio_id']
     episodio = Episodio.objects.get(id=episodio_id)
-    if episodio.user == request.user:
-        episodio.image = request.FILES.get('video')
-        episodio.save()
-        return Response('Video was uploaded')
-    else:
-        return Response({'Error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    episodio.video = request.FILES.get('video')
+    episodio.save()
+    return Response('Video was uploaded')
+
+@api_view(['POST'])
+def uploadPicEpisodio(request):
+    data = request.data
+    episodio_id = data['episodio_id']
+    episodio = Episodio.objects.get(id=episodio_id)
+    episodio.image = request.FILES.get('image')
+    episodio.save()
+    return Response('Image was uploaded')
+
+@api_view(['POST'])
+def uploadFileEpisodio(request):
+    data = request.data
+    episodio_id = data['episodio_id']
+    episodio = Episodio.objects.get(id=episodio_id)
+    episodio.file = request.FILES.get('file')
+    episodio.save()
+    return Response('File was uploaded')
 
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateEpisodio(request, pk):
     data = request.data
-    episodio = Epidodio.objects.get(id=pk)
+    episodio = Episodio.objects.get(id=pk)
     if episodio.user == request.user:
         episodio.title = data['title']
         episodio.description = data['description']
@@ -148,12 +163,18 @@ def updateEpisodio(request, pk):
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def deleteEpisodio(request, pk):
-    episodio = Epidodio.objects.get(id=pk)
+    episodio = Episodio.objects.get(id=pk)
     if episodio.user == request.user:
         episodio.delete()
         return Response('Episodio was deleted')
     else:
         return Response({'Error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['GET'])
+def getEpisodio(request, pk):
+    epi = Episodio.objects.get(id=pk)
+    serializer = EpisodioSerializer(epi, many=False)
+    return Response(serializer.data)
 
 
 # Comment

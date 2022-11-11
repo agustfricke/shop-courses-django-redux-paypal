@@ -8,6 +8,7 @@ import Message from '../utils/Message'
 import Loader from '../utils/Loader'
 import LastCursoCarousel from './LastCursoCarousel';
 import { listCursos } from "../../actions/cursoActions";
+import Footer from '../navigation/Footer';
 
   
 function Home(history) {
@@ -33,9 +34,9 @@ return (
         : error ? <Message>{error}</Message>
           :
       <div className="bg-white">
-        <h1 className=" font-bold tracking-tight text-center mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">Todos los </span>{' '}
-              <span className="block text-indigo-600 xl:inline">Cursos</span>
+        <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">CURSOS DE </span>{' '}
+              <span className="block text-indigo-600 xl:inline">BACKEND</span>
             </h1>
         <div className="mx-auto max-w-2xl py-10  sm:px-2 lg:max-w-7xl lg:px-4">
         
@@ -72,9 +73,66 @@ return (
               </div>
             ))}
           </div>
+
+          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">CURSOS DE  </span>{' '}
+              <span className="block text-indigo-600 xl:inline">FRONTEND</span>
+          </h1>
+                <div>
+                  <h1>mudsfusdbf</h1>
+                </div>
+        <div className='mb-10'>
+          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">CURSOS DE  </span>{' '}
+              <span className="block text-indigo-600 xl:inline">HACKING</span>
+          </h1>
+
+          <div>
+                  <h1>mudsfusdbf</h1>
+          </div>
+          </div>
+
+          <div className='mb-10'>
+          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">CURSOS DE  </span>{' '}
+              <span className="block text-indigo-600 xl:inline">MACHINE LEARNING</span>
+          </h1>
+
+          <div>
+                  <h1>mudsfusdbf</h1>
+          </div>
+          </div>
+
+          <div className='mb-10'>
+          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">CURSOS DE  </span>{' '}
+              <span className="block text-indigo-600 xl:inline">PROGRAMACION</span>{' '}
+          </h1>
+
+          <div>
+                  <h1>mudsfusdbf</h1>
+          </div>
+          </div>
+
+          <div className='mb-10'>
+          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
+              <span className="block xl:inline">PROYECTOS</span>{' '}
+              <span className="block text-indigo-600 xl:inline">COMPLETOS</span>{' '}
+          </h1>
+
+          <div>
+                  <h1>mudsfusdbf</h1>
+          </div>
+          </div>
+
+
+
         </div>
+
       </div>
+      
       }
+  
 
       </>
     )

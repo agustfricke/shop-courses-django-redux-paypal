@@ -5,7 +5,7 @@ from users.models import User
 class Curso(models.Model):
     user            = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title           = models.CharField(max_length=250, null=True, blank=True)
-    image           = models.ImageField(null=True, blank=True, default='/curso.jpg', upload_to ='cursos/')
+    image           = models.ImageField(null=True, blank=True, default='/curso.jpg')
     MY_CHOICES = (
         ('a', 'Backend'),
         ('b', 'Frontend'),
@@ -35,7 +35,10 @@ class Episodio(models.Model):
     user            = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title           = models.CharField(max_length=250, null=True, blank=True)
     description     = models.TextField(null=True, blank=True)
-    video           = models.FileField(upload_to ='videos/')
+    video           = models.FileField(default='placeholder.mp4')
+    image           = models.ImageField(null=True, blank=True, default='/curso.jpg')
+    file            = models.FileField(null=True, blank=True)
+
 
 
 class Comment(models.Model):

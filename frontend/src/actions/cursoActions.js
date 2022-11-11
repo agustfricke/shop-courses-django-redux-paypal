@@ -28,9 +28,122 @@ import {
     CURSO_CREATE_REVIEW_SUCCESS,
     CURSO_CREATE_REVIEW_FAIL,
 
+    CURSO_CREATE_EPISODIO_REQUEST,
+    CURSO_CREATE_EPISODIO_SUCCCESS,
+    CURSO_CREATE_EPISODIO_FAIL,
+
+    EPISODIO_UPDATE_REQUEST,
+    EPISODIO_UPDATE_SUCCESS,
+    EPISODIO_UPDATE_FAIL,
+
+    EPISODIO_DETAILS_REQUEST,
+    EPISODIO_DETAILS_SUCCESS,
+    EPISODIO_DETAILS_FAIL,
+
 } from '../constants/cursoConstants';
 
 const URL = 'http://127.0.0.1:8000/'
+
+export const listEpisodioDetails = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: EPISODIO_DETAILS_REQUEST })
+
+        const { data } = await axios.get(`${URL}cursos/getEpisodio/${id}`);
+
+        dispatch({
+            type: EPISODIO_DETAILS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EPISODIO_DETAILS_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+
+    }
+}
+
+export const updateEpisodio = (episodio) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: EPISODIO_UPDATE_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(
+            `${URL}cursos/updateEpisodio/${episodio.id}/`,
+            episodio,
+            config
+        )
+
+        dispatch({
+            type: EPISODIO_UPDATE_SUCCESS,
+            payload: data,
+        })
+
+        dispatch({
+            type: CURSO_DETAILS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EPISODIO_UPDATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const episodioCreate = (cursoId, review) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: CURSO_CREATE_EPISODIO_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(
+            `${URL}cursos/createEpisodio/${cursoId}/`,
+            review,
+            config
+        )
+
+        dispatch({
+            type: CURSO_CREATE_EPISODIO_SUCCCESS,
+            payload: data,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: CURSO_CREATE_EPISODIO_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
 
 
 export const createCursoReview = (cursoId, review) => async (dispatch, getState) => {

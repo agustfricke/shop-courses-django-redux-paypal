@@ -5,7 +5,8 @@ from users.serializers import UserSerializer
 
 
 class OrderitemSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField(read_only=True)
+    user = serializers.CharField(source='user.user_name', read_only=True)
+
     class Meta:
         model = Orderitem
         fields = '__all__'
@@ -13,7 +14,8 @@ class OrderitemSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = serializers.SerializerMethodField(read_only=True)
-    user = serializers.SerializerMethodField(read_only=True)
+    user = serializers.CharField(source='user.user_name', read_only=True)
+
 
     class Meta:
         model = Order

@@ -2,89 +2,148 @@ import React, { useState, useEffect } from "react";
 import Message from '../utils/Message';
 import Loader from '../utils/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { listCursoDetails } from '../../actions/cursoActions'
-import { Form, Button } from 'react-bootstrap'
+import { listCursoDetails, episodioCreate } from '../../actions/cursoActions'
+import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
+import { FaRegEdit, FaTrash, FaPlusSquare } from 'react-icons/fa';
+import { CURSO_CREATE_EPISODIO_RESET } from "../../constants/cursoConstants";
+
+
 
 
 
 
 export default function Episodios ({ match, history }) {
 
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+
     const dispatch = useDispatch()
 
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
 
+    const createEpisodio = useSelector(state => state.createEpisodio)
+    const { loading: loadingEpisodio, error: errorEpisodio, success: successEpisodio } = createEpisodio
+
     useEffect(() => {
+        if (successEpisodio) {
+            setTitle('')
+            setDescription('')
+            dispatch({ type: CURSO_CREATE_EPISODIO_RESET })
+        }
+
         dispatch(listCursoDetails(match.params.id))
-    }, [dispatch, match])
+
+    }, [dispatch, match, successEpisodio])
+
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        dispatch(episodioCreate(
+            match.params.id, {
+            title,
+            description
+        }
+        ))
+    }
 
 
     return (
         <div className="grid gap-4 grid-cols-2">
             <div>
-        <h1>AGREGA Y CONFIGURA LOS EPIOSDIOS DEL CURSO</h1>
+        <h3>
+        <span className="block xl:inline">EPISODIOS DE</span>{' '}
+             <span className="block text-indigo-600 xl:inline">{curso.title}</span>{' '}
+            
+            </h3>
         <br></br>
 
-        <h3>{curso.title}</h3>
+        <Table striped bordered hover responsive className='table-sm'>
+                            <thead>
+                                <tr>
+                                    <th>Pic</th>
+                                    <th>Titulo</th>
+                                </tr>
+                            </thead>
 
-        <li>Episodio 1</li>
-        <img
-                  className="img-fluid flex justify-center"
-                  style={{ maxHeight: "150px" }}
-                    src={`http://127.0.0.1:8000${curso.image}`}
-
-                  />
+                            <tbody>
+                                {curso.episodios && curso.episodios.map((epi) => (
 
 
-        <li>Episodio 2</li>
+                                    <tr key={epi.id}>
+                                        <td><img
+                                            style={{ maxHeight: "50px" }}
+                                            src={`http://127.0.0.1:8000${epi.image}`}
+                                            alt=""
+                                        /></td>
 
-                  <img
-                  className="img-fluid flex justify-center"
-                  style={{ maxHeight: "150px" }}
-                    src={`http://127.0.0.1:8000${curso.image}`}
+                                        <td>{epi.title}</td>
 
-                  />
+                                        
+                                        <td className='text-center'>
+                                        <a href={`/#/episodio/${epi.id}/form`}>
 
-                <li>Episodio 2</li>
+                                            <button
+                                            className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
 
-                <img
-                className="img-fluid flex justify-center"
-                style={{ maxHeight: "150px" }}
-                src={`http://127.0.0.1:8000${curso.image}`}
+                                            >
+                                                <FaRegEdit size={20}/>
 
-                />
+                                            </button>
+                                            </a>
 
-                <li>Episodio 2</li>
+                                            <a href={`/#/soloEpisodio/${epi.id}`}>
 
-                <img
-                className="img-fluid flex justify-center"
-                style={{ maxHeight: "150px" }}
-                src={`http://127.0.0.1:8000${curso.image}`}
+                                            <button
+                                            className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
 
-                />
+                                            >
+                                                Ver
 
-                <li>Episodio 2</li>
+                                            </button>
+                                            </a>
 
-                <img
-                className="img-fluid flex justify-center"
-                style={{ maxHeight: "150px" }}
-                src={`http://127.0.0.1:8000${curso.image}`}
 
-                />
+                                            <button
+                                            className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
+                                           >
+                                            <FaTrash size={20}/>
+                                            </button>
+
+                                           
+
+                                            
+                                        </td>
+                                    </tr>
+                                ))}
+
+
+                            </tbody>
+
+                        </Table>
+
+
                   </div>
 
-                  <div>
-
-                  <h1>AGREGA CAPITULOS A TU CURSO!</h1>
+                  <div className="ml-8">
+        <center>
+                  <h3>
+        <span className="block xl:inline">CREAR </span>{' '}
+             <span className="block text-indigo-600 xl:inline">EPISODIO</span>{' '}
+            
+            </h3>
+            </center>
+        <br></br>
                     
-                  <Form >
+                  <Form onSubmit={submitHandler}>
 
                     <Form.Group controlId='name'>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Titulo</Form.Label>
                         <Form.Control
                             type='name'
                             placeholder='Enter name'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                         >
                         </Form.Control>
                     </Form.Group>
@@ -92,62 +151,13 @@ export default function Episodios ({ match, history }) {
                     <Form.Group controlId='description' className='py-2'>
                         <Form.Label>Description</Form.Label>
                         <Form.Control
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                             type='description'
                             placeholder='Enter Description'
                         >
                         </Form.Control>
-                    </Form.Group>
-
-                   
-
-                    <Form.Group controlId='image' className='py-2'>
-                        <Form.Label>Image Placeholder</Form.Label>
-                        <Form.Control
-                            type='text'
-                            placeholder='Image PNG JPG'
-                        >
-                        </Form.Control>
-                        <Form.Control
-                            label='Choose file'
-                            type='file'
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-                    <Form.Group controlId='image' className='py-2'>
-                        <Form.Label>Video</Form.Label>
-                        <Form.Control
-                            type='text'
-                            placeholder='Video MP4'
-                        >
-                        </Form.Control>
-                        <Form.Control
-                            label='Choose file'
-                            type='file'
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-                    <Form.Group controlId='image' className='py-2'>
-                        <Form.Label>Recursos .zip</Form.Label>
-                        <Form.Control
-                            type='text'
-                            placeholder='File ZIP'
-                        >
-                        </Form.Control>
-                        <Form.Control
-                            label='Choose file'
-                            type='file'
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-
-
-                    
-
-
-                    
+                    </Form.Group>  
 
 
                     <div className='text-center py-2'>
@@ -157,16 +167,7 @@ export default function Episodios ({ match, history }) {
                     </div>
 
                     </Form>
-
-
-
-
                   </div>
-
-
-
-
-
         </div>
 
     )

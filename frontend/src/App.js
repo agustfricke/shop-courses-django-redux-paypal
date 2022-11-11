@@ -15,6 +15,12 @@ import SoloCurso from "./components/cursos/SoloCurso";
 import CursoListScreen from "./components/admin/CursoListScreen";
 import CursoForm from "./components/admin/CursoForm";
 import Episodios from "./components/admin/Episodios";
+import EditEpisodio from "./components/admin/EditEpisodio";
+import SoloEpisodio from "./components/admin/SoloEpisodio";
+import Cart from "./components/shopping/Cart";
+import OrderScreen from "./components/shopping/OrderScreen";
+import PaymentScreen from "./components/shopping/PaymentScreen";
+import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
 
 function App() {
   return (
@@ -23,7 +29,7 @@ function App() {
     <Header/>
       <Switch>
         <Container>
-          <div className='mt-10 '>  
+          <div className='mt-10 mb-10 my-10'>  
             <Route path="/" component={Home} exact/>
 
             <Route path="/login" component={Login}/>
@@ -36,12 +42,16 @@ function App() {
             <Route path='/admin/cursos' component={CursoListScreen} />
             <Route path='/cursos/:id/form' component={CursoForm} />
             <Route path='/epi/:id' component={Episodios} />
+            <Route path='/episodio/:id/form' component={EditEpisodio} />
+            <Route path='/soloEpisodio/:id' component={SoloEpisodio} />
+            <Route path='/cart/:id?' component={Cart} />
+            <Route path='/order/:id' component={OrderScreen} />
+            <Route path='/payment' component={PaymentScreen} />
+            <Route path='/placeorder' component={PlaceOrderScreen} />
           </div>
       </Container>
       </Switch>
-      <div>
-    <Footer/>
-    </div>
+      
 
 
     </Router>
