@@ -40,9 +40,80 @@ import {
     EPISODIO_DETAILS_SUCCESS,
     EPISODIO_DETAILS_FAIL,
 
+    EPISODIO_CREATE_COMMENT_REQUEST,
+    EPISODIO_CREATE_COMMENT_SUCCESS,
+    EPISODIO_CREATE_COMMENT_FAIL,
+
+    EPISODIO_ALL_REQUEST,
+    EPISODIO_ALL_SUCCESS,
+    EPISODIO_ALL_FAIL,
+
 } from '../constants/cursoConstants';
 
 const URL = 'http://127.0.0.1:8000/'
+
+
+export const listEpisodios = () => async (dispatch) => {
+    try {
+        dispatch({ type: EPISODIO_ALL_REQUEST })
+
+        const { data } = await axios.get(`${URL}cursos/get/all/`);
+
+        dispatch({
+            type: EPISODIO_ALL_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EPISODIO_ALL_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+
+    }
+}
+
+
+
+
+export const createCommentEpisodio = (episodioId, comment) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: EPISODIO_CREATE_COMMENT_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(
+            `${URL}cursos/comment/${episodioId}/`,
+            comment,
+            config
+        )
+
+        dispatch({
+            type: EPISODIO_CREATE_COMMENT_SUCCESS,
+            payload: data,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EPISODIO_CREATE_COMMENT_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
 
 export const listEpisodioDetails = (id) => async (dispatch) => {
     try {

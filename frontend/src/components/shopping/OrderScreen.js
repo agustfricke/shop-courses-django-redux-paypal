@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../utils/Message'
 import Loader from '../utils/Loader'
-import { getOrderDetails, payOrder, deliverOrder } from '../../actions/orderActions'
-import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../../constants/orderConstants'
+import { getOrderDetails } from '../../actions/orderActions'
 
 
-function OrderScreen({ match, history }) { //history for make sure that if a user is not logged in, he can't see deliver page
+function OrderScreen({ match, history }) { 
+    
     const orderId = match.params.id
     const dispatch = useDispatch()
 
@@ -33,7 +33,7 @@ function OrderScreen({ match, history }) { //history for make sure that if a use
 
         if (!order || order.id !== Number(orderId) ) {
             dispatch(getOrderDetails(orderId))
-        } else if (!order.is_paid) { // Check the state here of our order pay
+        } else if (!order.is_paid) { 
         }
     }, [dispatch, order, orderId])
 
@@ -79,14 +79,14 @@ function OrderScreen({ match, history }) { //history for make sure that if a use
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 <Col md={1}>
-                                                    <Link to={`/product/${item.product}`}>
-                                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                                    <Link to='{`/product/${item.product}`}'>
+                                                        <Image src={`http://127.0.0.1:8000${item.image}`} alt={item.name} fluid rounded />
                                                     </Link>
                                                 </Col>
 
                                                 <Col md={6}>
-                                                    <Link to={`/product/${item.product}`} className='text-link'>
-                                                        {item.name}
+                                                    <Link to='{`/product/${item.product}`} 'className='text-link'>
+                                                        {item.title}
                                                     </Link>
                                                 </Col>
 

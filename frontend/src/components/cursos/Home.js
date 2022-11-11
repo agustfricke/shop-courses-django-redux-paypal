@@ -42,6 +42,8 @@ return (
         
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {cursos.map((curso) => (
+              <>
+    
               <div key={curso.id} className="group relative">
                  <Link to={`/curso/${curso.id}`}>
                  <h3 className="text-sm text-gray-700">
@@ -71,6 +73,7 @@ return (
                      
                 </div>
               </div>
+              </>
             ))}
           </div>
 

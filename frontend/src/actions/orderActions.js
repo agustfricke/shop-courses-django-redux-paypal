@@ -13,11 +13,11 @@ import {
     ORDER_LIST_MY_FAIL,
 
 } from '../constants/orderConstants'
+import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
+
 
 const URL = 'http://127.0.0.1:8000/'
 
-
-import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
 
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
@@ -67,7 +67,6 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
             type: ORDER_DETAILS_REQUEST
         })
 
-        // Need our user to send in our token or we need to be logged in to actually place an order.
         const {
             userLogin: { userInfo },
         } = getState()

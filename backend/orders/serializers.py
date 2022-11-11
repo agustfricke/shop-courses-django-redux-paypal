@@ -6,6 +6,8 @@ from users.serializers import UserSerializer
 
 class OrderitemSerializer(serializers.ModelSerializer):
     user = serializers.CharField(source='user.user_name', read_only=True)
+    curso = serializers.CharField(source='curso.title', read_only=True)
+
 
     class Meta:
         model = Orderitem
@@ -22,6 +24,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_order_items(self, obj):
-        items = obj.orderitem_set.all()
-        serializer = OrderitemSerializer(items, many=True)
+        order_items = obj.orderitem_set.all()
+        serializer = OrderitemSerializer(order_items, many=True)
         return serializer.data

@@ -25,21 +25,20 @@ def addOrderItem(request):
     else:
         order = Order.objects.create(
             user=user,
-            total_price=data['totalPrice'],
+            total_price=data['totalPrice']
         )
+
+        
 
         for i in orderItems:
             curso = Curso.objects.get(id=i['curso'])
 
             item = Orderitem.objects.create(
-                user=user,
                 curso=curso,
                 order=order,
                 quantity=i['quantity'],
                 price=i['price'],
             )
-
-            curso.save()
 
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)

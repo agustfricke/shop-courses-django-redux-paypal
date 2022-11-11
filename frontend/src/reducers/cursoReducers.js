@@ -44,7 +44,51 @@ import {
     EPISODIO_DETAILS_SUCCESS,
     EPISODIO_DETAILS_FAIL,
 
+    EPISODIO_CREATE_COMMENT_REQUEST,
+    EPISODIO_CREATE_COMMENT_SUCCESS,
+    EPISODIO_CREATE_COMMENT_FAIL,
+    EPISODIO_CREATE_COMMENT_RESET,
+
+    EPISODIO_ALL_REQUEST,
+    EPISODIO_ALL_SUCCESS,
+    EPISODIO_ALL_FAIL,
+
 } from '../constants/cursoConstants';
+
+export const episodioAllReducer = (state = { episodios: [] }, action) => {
+    switch (action.type) {
+        case EPISODIO_ALL_REQUEST:
+            return { loading: true, episodios: [] }
+
+        case EPISODIO_ALL_SUCCESS:
+            return { loading: false, episodios: action.payload }
+
+        case EPISODIO_ALL_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const createCommentReducer = (state = {}, action) => {
+    switch (action.type) {
+        case EPISODIO_CREATE_COMMENT_REQUEST:
+            return { loading: true }
+
+        case EPISODIO_CREATE_COMMENT_SUCCESS:
+            return { loading: false, success: true }
+
+        case EPISODIO_CREATE_COMMENT_FAIL:
+            return { loading: false, error: action.payload }
+
+        case EPISODIO_CREATE_COMMENT_RESET:
+            return { episodio: {} }
+
+        default:
+            return state
+    }
+}
 
 export const episodioDetailsReducer = (state = { episodio: { comments: [] } }, action) => {
     switch (action.type) {

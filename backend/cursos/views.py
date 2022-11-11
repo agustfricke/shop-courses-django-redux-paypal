@@ -116,6 +116,13 @@ def createEpisodio(request, pk):
     else:
         return Response({'Error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
+@api_view(['GET'])
+def getEpisodios(request):
+    episodio = Episodio.objects.all()
+    serializer = EpisodioSerializer(episodio, many=True)
+    return Response(serializer.data)
+
     
 @api_view(['POST'])
 def uploadVideoEpisodio(request):
@@ -181,7 +188,7 @@ def getEpisodio(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createComment(request, pk):
-    episodio = Epidodio.objects.get(id=pk)
+    episodio = Episodio.objects.get(id=pk)
     user = request.user
     data = request.data
     comment = Comment.objects.create(

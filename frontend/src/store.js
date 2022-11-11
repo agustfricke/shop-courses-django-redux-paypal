@@ -20,7 +20,9 @@ import { cursoListReducer,
         createReviewReducer,
         createEpisodioReducer,
         episodioUpdateReducer,
-        episodioDetailsReducer
+        episodioDetailsReducer,
+        createCommentReducer,
+        episodioAllReducer
 
 
 } from './reducers/cursoReducers';
@@ -42,7 +44,7 @@ const reducer = combineReducers({
     // Order
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
-    orderList: orderListMyReducer,
+    orderListMy: orderListMyReducer,
 
     // User
     userLogin: userLoginReducer,
@@ -64,6 +66,8 @@ const reducer = combineReducers({
     createEpisodio: createEpisodioReducer,
     episodioUpdate: episodioUpdateReducer,
     episodioDetails: episodioDetailsReducer,
+    createComment: createCommentReducer,
+    episodioAll: episodioAllReducer,
 
 })
 

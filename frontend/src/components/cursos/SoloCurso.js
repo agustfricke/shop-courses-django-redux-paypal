@@ -208,7 +208,7 @@ const SoloCurso = ({ match, history }) => {
 
             </div>
 
-                                                    <center>
+                            <center>
                                     <div className="mb-10">
 
                             <h4>Reviews</h4>

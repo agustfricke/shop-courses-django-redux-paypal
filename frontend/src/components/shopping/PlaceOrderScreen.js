@@ -17,8 +17,7 @@ function PlaceOrderScreen({ history }) {
     const cart = useSelector(state => state.cart)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)
-    cart.shippingPrice = Number((0.01) * cart.itemsPrice).toFixed(0)
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice)).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice))
 
 
 
@@ -58,14 +57,14 @@ function PlaceOrderScreen({ history }) {
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 <Col md={1}>
-                                                    <Link to={`/product/${item.product}`}>
-                                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                                    <Link to='{`/product/${item.curso}`}'>
+                                                        <Image src={`http://127.0.0.1:8000${item.image}`} alt={item.name} fluid rounded />
                                                     </Link>
                                                 </Col>
 
                                                 <Col md={6}>
-                                                    <Link to={`/product/${item.product}`} className='text-link'>
-                                                        {item.name}
+                                                    <Link to='{`/product/${item.product}`}' className='text-link'>
+                                                        {item.title}
                                                     </Link>
                                                 </Col>
 
@@ -97,12 +96,7 @@ function PlaceOrderScreen({ history }) {
                                 </Row>
                             </ListGroup.Item>
 
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col md={8}>Shipping:</Col>
-                                    <Col>${cart.shippingPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
+                        
 
                             <ListGroup.Item>
                                 <Row>
