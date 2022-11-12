@@ -29,7 +29,6 @@ function Home(history) {
 
 return (
   <>
-  {!keysearch && <LastCursoCarousel />}
     {loading ? <Loader />
         : error ? <Message>{error}</Message>
           :

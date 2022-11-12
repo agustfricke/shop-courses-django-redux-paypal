@@ -31,7 +31,71 @@ import {
     USER_UPDATE_FAIL,
     USER_UPDATE_SUCCESS,
     USER_UPDATE_RESET,
+
+    PASSWORD_RESET_REQUEST,
+    PASSWORD_RESET_FAIL,
+    PASSWORD_RESET_SUCCESS,
+
+    PASSWORD_RESET_CONFIRM_REQUEST,
+    PASSWORD_RESET_CONFIRM_SUCCESS,
+    PASSWORD_RESET_CONFIRM_FAIL,
+
+    ACTIVATION_REQUEST,
+    ACTIVATION_SUCCESS,
+    ACTIVATION_FAIL
+
+
 } from '../constants/userConstants'
+
+
+export const userActivationReducer = (state = {}, action) => {
+    switch (action.type) {
+        case ACTIVATION_REQUEST:
+            return { loading: true }
+
+        case ACTIVATION_SUCCESS:
+            return { loading: false, success: true }
+
+        case ACTIVATION_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const passwordConfirmReducer = (state = {}, action) => {
+    switch (action.type) {
+        case PASSWORD_RESET_CONFIRM_REQUEST:
+            return { loading: true }
+
+        case PASSWORD_RESET_CONFIRM_SUCCESS:
+            return { loading: false, userInfo: action.payload }
+
+        case PASSWORD_RESET_CONFIRM_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+
+export const passwordRestReducer = (state = {}, action) => {
+    switch (action.type) {
+        case PASSWORD_RESET_REQUEST:
+            return { loading: true }
+
+        case PASSWORD_RESET_SUCCESS:
+            return { loading: false, userInfo: action.payload }
+
+        case PASSWORD_RESET_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
 
 
 export const userLoginReducer = (state = {}, action) => {
@@ -59,7 +123,7 @@ export const userRegisterReducer = (state = {}, action) => {
             return { loading: true }
 
         case USER_REGISTER_SUCCESS:
-            return { loading: false, userInfo: action.payload }
+            return { loading: false, success: true }
 
         case USER_REGISTER_FAIL:
             return { loading: false, error: action.payload }

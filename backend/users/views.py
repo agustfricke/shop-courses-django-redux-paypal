@@ -28,20 +28,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@api_view(['POST'])
-def register(request):
-    data = request.data
-    try:
-        user = User.objects.create(
-            user_name=data['user_name'],
-            email=data['email'],
-            password=make_password(data['password'])
-        )
-        serializer = UserSerializerWithToken(user, many=False)
-        return Response(serializer.data)
-    except:
-        message = {'detail': 'Somthing went wrong'}
-        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])

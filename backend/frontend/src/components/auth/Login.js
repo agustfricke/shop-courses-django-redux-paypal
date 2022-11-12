@@ -99,8 +99,16 @@ export default function Login({ location, history }) {
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm">
-                      <a href="/#/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                      <a href="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
                         Dont have an account? Click here!
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="text-sm">
+                      <a href="/reset-password" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Forgot your password? Click here!
                       </a>
                     </div>
                   </div>

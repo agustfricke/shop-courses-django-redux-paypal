@@ -1,11 +1,10 @@
-import { HashRouter as Router,Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 // Components
 import Header from './components/navigation/Header';
 import Footer from "./components/navigation/Footer";
 import PrivateRoute from './components/auth/PrivateRoute';
-import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import MiPerfil from "./components/auth/MiPerfil";
 import EditProfile from "./components/auth/EditProfile";
@@ -24,6 +23,11 @@ import PaymentScreen from "./components/shopping/PaymentScreen";
 import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
 import SoloCursoPagado from "./components/auth/SoloCursoPagado";
 import SoloEpisodioPagado from "./components/auth/SoloEpisodioPagado";
+// New
+import ResetPasswordConfirm from './components/auth/ResetPasswordConfirm';
+import ResetPassword from './components/auth/ResetPassword';
+import Activation from "./components/auth/Activation";
+import Register from "./components/auth/Register";
 
 function App() {
   return (
@@ -34,9 +38,16 @@ function App() {
         <Container>
           <div className='mt-10 mb-10 my-10'>  
             <Route path="/" component={Home} exact/>
-            <Route path='/epi/:id' component={Episodios} />
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
+            <Route path='/activate/:uid/:token' component={Activation} />
+
+
+
+            <Route path='/reset-password' component={ResetPassword} />
+            <Route path='/password/reset/confirm/:uid/:token/' component={ResetPasswordConfirm} />
+
+
             <Route path='/curso/:id' component={SoloCurso} />
 
             <PrivateRoute path="/profile" component={MiPerfil}/>
@@ -47,6 +58,7 @@ function App() {
             <PrivateRoute path='/cursos/:id/form' component={CursoForm} />
             <PrivateRoute path='/episodio/:id/form' component={EditEpisodio} />
             <PrivateRoute path='/soloEpisodio/:id' component={SoloEpisodio} />
+            <PrivateRoute path='/epi/:id' component={Episodios} />
             <PrivateRoute path='/cart/:id?' component={Cart} />
             <PrivateRoute path='/order/:id' component={OrderScreen} />
             <PrivateRoute path='/payment' component={PaymentScreen} />

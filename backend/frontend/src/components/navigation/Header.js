@@ -12,13 +12,13 @@ import eth from '../../media/ethereum.png'
 
 
 const user = [
-  { name: 'HOME', href: '#', current: false },
+  { name: 'HOME', href: '/', current: false },
 ]
 
 const noUser = [
-  { name: 'HOME', href: '#', current: false },
-  { name: 'LOGIN', href: '/#/login', current: false },
-  { name: 'REGISTER', href: '/#/register', current: false },
+  { name: 'HOME', href: '/', current: false },
+  { name: 'LOGIN', href: '/login', current: false },
+  { name: 'REGISTER', href: '/register', current: false },
 ]
 
 const admin = [

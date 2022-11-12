@@ -5,8 +5,6 @@ urlpatterns = [
     
     # Auth
     path('login/', views.MyTokenObtainPairView.as_view()), 
-    path('register/', views.register),
-
     # Features User
     path('put/', views.putUser),
     path('image/', views.uploadImage),

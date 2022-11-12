@@ -8,7 +8,10 @@ import { userLoginReducer,
         userUpdateProfileReducer,
         userListReducer, 
         userDeleteReducer, 
-        userUpdateReducer 
+        userUpdateReducer,
+        passwordRestReducer,
+        passwordConfirmReducer,
+        userActivationReducer,
 } from './reducers/userReducers'
 
 import { cursoListReducer,
@@ -54,6 +57,9 @@ const reducer = combineReducers({
     userList: userListReducer,
     deleteUser: userDeleteReducer,
     userUpdate: userUpdateReducer,
+    passwordRest:passwordRestReducer,
+    passwordConfirm:passwordConfirmReducer,
+    userActivation:userActivationReducer,
 
     // Curso 
     cursoList: cursoListReducer,

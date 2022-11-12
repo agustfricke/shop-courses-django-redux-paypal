@@ -10,36 +10,36 @@ import eth from '../../media/ethereum.png'
 
 export default function Register({ location, history }) {
 
-  const [user_name, setUserName] = useState('')
+  const [first_name, setFirstName] = useState('')
   const [email, setEmail] = useState('')
+  const [user_name, setUserName] = useState('');
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [re_password, setRePassword] = useState('')
   const [message, setMessage] = useState('')
 
   const dispatch = useDispatch()
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
-
   const userRegister = useSelector(state => state.userRegister)
-  const { error, loading, userInfo } = userRegister
+  const { error, loading, success } = userRegister
 
 
   useEffect(() => {
-    if(userInfo){
+    if(success){
         history.push(redirect)
     }
-}, [history, userInfo, redirect])
+}, [history, success, redirect])
 
 
 
   const submitHandler = (e) => {
     e.preventDefault()
 
-    if (password !== confirmPassword) {
+    if (password !== re_password) {
       setMessage('Passwords must match ')
     } else {
-      dispatch(register(user_name, email, password))
+      dispatch(register(first_name, email, user_name, password, re_password))
     }
   }
 
@@ -101,6 +101,20 @@ export default function Register({ location, history }) {
                   placeholder="Username"
                 />
               </div>
+
+              <div>
+                <label htmlFor="user_name" className="sr-only">
+                  Username
+                </label>
+                <input
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  type="text"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Firstname"
+                />
+              </div>
               <br></br>
               <div>
                 <label htmlFor="password" className="sr-only">
@@ -124,8 +138,8 @@ export default function Register({ location, history }) {
                   Repate Password
                 </label>
                 <input
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={re_password}
+                  onChange={(e) => setRePassword(e.target.value)}
                   id="confirmPassword"
                   name="password"
                   type="password"

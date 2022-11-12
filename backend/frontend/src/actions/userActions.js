@@ -30,12 +30,125 @@ import {
     USER_UPDATE_REQUEST,
     USER_UPDATE_FAIL,
     USER_UPDATE_SUCCESS,
+
+    PASSWORD_RESET_REQUEST,
+    PASSWORD_RESET_SUCCESS,
+    PASSWORD_RESET_FAIL,
+
+    PASSWORD_RESET_CONFIRM_REQUEST,
+    PASSWORD_RESET_CONFIRM_SUCCESS,
+    PASSWORD_RESET_CONFIRM_FAIL,
+
+    ACTIVATION_REQUEST,
+    ACTIVATION_SUCCESS,
+    ACTIVATION_FAIL
+
 } from '../constants/userConstants'
 
 
-// import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
+import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
 const URL = 'http://127.0.0.1:8000/'
+
+
+export const activation = (uid, token) => async (dispatch) => {
+    try {
+        dispatch({ type: ACTIVATION_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(
+            `${URL}auth/users/activation/`,
+            { 'uid': uid, 'token': token }, config
+        )
+
+        dispatch({
+            type: ACTIVATION_SUCCESS,
+            payload: data
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
+
+    } catch (error) {
+        dispatch({
+            type: ACTIVATION_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+
+export const Confirm = (uid, token, new_password, re_new_password) => async (dispatch) => {
+    try {
+        dispatch({ type: PASSWORD_RESET_CONFIRM_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(
+            `${URL}auth/users/reset_password_confirm/`,
+            { 'uid': uid, 'token':token, 'new_password':new_password, 're_new_password':re_new_password }, config
+        )
+
+        dispatch({
+            type: PASSWORD_RESET_CONFIRM_SUCCESS,
+            payload: data
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
+
+    } catch (error) {
+        dispatch({
+            type: PASSWORD_RESET_CONFIRM_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const Reset = (email) => async (dispatch) => {
+    try {
+        dispatch({ type: PASSWORD_RESET_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(
+            `${URL}auth/users/reset_password/`,
+            { 'email': email }, config
+        )
+
+        dispatch({
+            type: PASSWORD_RESET_SUCCESS,
+            payload: data
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
+
+    } catch (error) {
+        dispatch({
+            type: PASSWORD_RESET_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -43,6 +156,7 @@ export const login = (email, password) => async (dispatch) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json'
             }
         }
 
@@ -73,12 +187,12 @@ export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
     dispatch({ type: USER_LOGOUT })
     dispatch({ type: USER_DETAILS_RESET })
-    // dispatch({ type: ORDER_LIST_MY_RESET })
+    dispatch({ type: ORDER_LIST_MY_RESET })
     dispatch({ type: USER_LIST_RESET })
 }
 
 
-export const register = (user_name, email, password) => async (dispatch) => {
+export const register = (first_name, email, user_name,  password, re_password) => async (dispatch) => {
     try {
         dispatch({ type: USER_REGISTER_REQUEST })
 
@@ -88,21 +202,14 @@ export const register = (user_name, email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            `${URL}users/register/`,
-            { 'user_name': user_name, 'email': email, 'password': password }, config
+            `${URL}auth/users/`,
+            { 'first_name': first_name, 'email': email, 'user_name':user_name, 'password': password , 're_password':re_password}, config
         )
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: data
         })
-
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data
-        })
-
-        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
