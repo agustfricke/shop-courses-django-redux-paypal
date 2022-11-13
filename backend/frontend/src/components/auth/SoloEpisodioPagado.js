@@ -88,7 +88,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
                     <tr key={epi.id}>
 
-                    <a href={`/#/solo/epi/p/${epi.id}/${epi.curso}`}> {epi.id} {episodio.id}
+                    <a href={`/solo/epi/p/${epi.id}/${epi.curso}`}> {epi.id} {episodio.id}
 
                 {epi.id === episodio.id ? (
 

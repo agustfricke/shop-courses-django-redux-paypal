@@ -22,10 +22,10 @@ const noUser = [
 ]
 
 const admin = [
-  { name: 'CURSOS', href: '/#/admin/cursos', current: false },
-  { name: 'USUARIOS', href: '/#/admin/users', current: false },
-  { name: 'ORDENES', href: '/#/admin/orders/', current: false },
-  { name: 'BLOCKCHAIN', href: '/#/transactions', current: false },
+  { name: 'CURSOS', href: '/admin/cursos', current: false },
+  { name: 'USUARIOS', href: '/admin/users', current: false },
+  { name: 'ORDENES', href: '/admin/orders/', current: false },
+  { name: 'BLOCKCHAIN', href: '/transactions', current: false },
 
 ]
 
@@ -74,16 +74,7 @@ export default function Header() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src={eth}
-                    alt="Your Company"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={eth}
-                    alt="Your Company"
-                  />
+                  
                 </div>
                 {userInfo ? (
                   <>
@@ -162,7 +153,7 @@ export default function Header() {
             {userInfo  && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <a
-                  href='/#/cart'
+                  href='/cart'
                   type="button"
                   className="rounded-full mr-3  p-1 text-gray-400 hover:text-white focus:outline-none"
                   style={{textDecoration: 'none'}}
@@ -198,7 +189,7 @@ export default function Header() {
                         {({ active }) => (
                           <a
                           style={{textDecoration: 'none'}}
-                            href="/#/profile"
+                            href="/profile"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile

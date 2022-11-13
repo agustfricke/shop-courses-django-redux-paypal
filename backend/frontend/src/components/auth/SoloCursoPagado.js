@@ -90,7 +90,7 @@ const SoloCursoPagado = ({ match, history }) => {
 
                                            
 
-                                            <a href={`/#/solo/epi/p/${epi.id}/${curso.id}`}>
+                                            <a href={`/solo/epi/p/${epi.id}/${curso.id}`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'

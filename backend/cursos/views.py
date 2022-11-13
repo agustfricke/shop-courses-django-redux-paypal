@@ -20,7 +20,7 @@ def searchCursos(request):
 
 @api_view(['GET'])
 def getLastCursos(request):
-    cursos = Curso.objects.filter().order_by('-created')
+    cursos = Curso.objects.filter().order_by('-created')[:3]
     serializer = CursoSerializer(cursos, many=True)
     return Response(serializer.data)
 

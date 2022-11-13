@@ -80,7 +80,7 @@ function UserListScreen({ history }) {
                                             <GrCheckbox />
                                         )}</td>
                                         <td className='text-center'>
-                                        <a href={`/#/admin/user/${user.id}/edit`}>
+                                        <a href={`/admin/user/${user.id}/edit`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'

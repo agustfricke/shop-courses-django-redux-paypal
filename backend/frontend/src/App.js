@@ -29,18 +29,18 @@ import ResetPassword from './components/auth/ResetPassword';
 import Activation from "./components/auth/Activation";
 import Register from "./components/auth/Register";
 
+
 function App() {
   return (
     <Router>
 
     <Header/>
       <Switch>
-        <Container>
-          <div className='mt-10 mb-10 my-10'>  
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path='/activate/:uid/:token' component={Activation} />
+
 
 
 
@@ -67,8 +67,6 @@ function App() {
             <PrivateRoute path='/solo/epi/p/:id/:id' component={SoloEpisodioPagado} />
 
 
-          </div>
-      </Container>
       </Switch>
       
 

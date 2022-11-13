@@ -81,7 +81,7 @@ export default function Episodios ({ match, history }) {
 
                                         
                                         <td className='text-center'>
-                                        <a href={`/#/episodio/${epi.id}/form`}>
+                                        <a href={`/episodio/${epi.id}/form`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
@@ -92,7 +92,7 @@ export default function Episodios ({ match, history }) {
                                             </button>
                                             </a>
 
-                                            <a href={`/#/soloEpisodio/${epi.id}`}>
+                                            <a href={`/soloEpisodio/${epi.id}`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'

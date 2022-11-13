@@ -29,6 +29,7 @@ function Home(history) {
 
 return (
   <>
+    {!keysearch && <LastCursoCarousel />}
     {loading ? <Loader />
         : error ? <Message>{error}</Message>
           :
@@ -37,6 +38,18 @@ return (
               <span className="block xl:inline">CURSOS DE </span>{' '}
               <span className="block text-indigo-600 xl:inline">BACKEND</span>
             </h1>
+
+            <linearGradient
+              id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533"
+              x1="1155.49"
+              x2="-78.208"
+              y1=".177"
+              y2="474.645"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#9089FC" />
+              <stop offset={1} stopColor="#FF80B5" />
+            </linearGradient>
         <div className="mx-auto max-w-2xl py-10  sm:px-2 lg:max-w-7xl lg:px-4">
         
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

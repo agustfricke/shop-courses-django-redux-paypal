@@ -152,7 +152,7 @@ export default function Register({ location, history }) {
             </div>
 
             <div className="text-sm">
-              <a href="/#/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Have an account? Click here!
               </a>
             </div>

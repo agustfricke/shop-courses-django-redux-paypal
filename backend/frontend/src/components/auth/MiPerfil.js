@@ -45,7 +45,7 @@ export default function MiPerfil() {
                   <h3 className="text-lg font-medium leading-6 text-gray-900">{userInfo.user_name} &nbsp;&nbsp;&nbsp;&nbsp;
                     <a
                       style={{ textDecoration: 'none' }}
-                      href={"/#/editprofile"}
+                      href={"/editprofile"}
                       className=" bg-indigo-600 py-1 px-5 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       EDIT
@@ -111,7 +111,7 @@ export default function MiPerfil() {
 
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
-                <a href={`/#/solo/curso/${curso.id}`}>
+                <a href={`/solo/curso/${curso.id}`}>
                 {curso.title}
 
                 </a>

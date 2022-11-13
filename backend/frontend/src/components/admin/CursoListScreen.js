@@ -112,7 +112,7 @@ function CursoListScreen({ history }) {
                                         <td>{curso.price}</td>
                                         
                                         <td className='text-center'>
-                                        <a href={`/#/cursos/${curso.id}/form`}>
+                                        <a href={`/cursos/${curso.id}/form`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
@@ -131,7 +131,7 @@ function CursoListScreen({ history }) {
                                             <FaTrash size={20}/>
                                             </button>
 
-                                            <a href={`/#/epi/${curso.id}`}>
+                                            <a href={`/epi/${curso.id}`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
