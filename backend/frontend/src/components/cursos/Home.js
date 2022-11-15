@@ -33,118 +33,164 @@ return (
     {loading ? <Loader />
         : error ? <Message>{error}</Message>
           :
-      <div className="bg-white">
-        <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">CURSOS DE </span>{' '}
-              <span className="block text-indigo-600 xl:inline">BACKEND</span>
+
+          <>
+    
+
+          <div className="">
+          <div className="mx-auto max-w-7xl  sm:px-6 ">
+            <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-none lg:py-32">
+            <h1 className="">
+
+            <span className="block xl:inline text-gray-800">LOS MEJORES CURSOS DE </span>{' '}
+
+
+          <span className="block xl:inline text-indigo-800">HACKING</span>{' '}
             </h1>
 
-            <linearGradient
-              id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533"
-              x1="1155.49"
-              x2="-78.208"
-              y1=".177"
-              y2="474.645"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#9089FC" />
-              <stop offset={1} stopColor="#FF80B5" />
-            </linearGradient>
-        <div className="mx-auto max-w-2xl py-10  sm:px-2 lg:max-w-7xl lg:px-4">
-        
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {cursos.map((curso) => (
-              <>
     
-              <div key={curso.id} className="group relative">
-                 <Link to={`/curso/${curso.id}`}>
-                 <h3 className="text-sm text-gray-700">
-                      <a href={curso.id}>
-                        <span aria-hidden="true" className="absolute inset-0" 
-                        style={{textDecoration: 'none'}}/>
-                        {curso.title}
+              <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                {cursos.map((c) => (
+                  <div key={c.name} className="group relative">
+                    <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                      <img
+                        src={`http://127.0.0.1:8000${c.image}`}
+                        alt={c.imageAlt}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </div>
+                    <h3 className="mt-6 text-sm text-gray-500">
+                      <a href={`/curso/${c.id}`}>
+                        <span className="absolute inset-0" />
+                        {c.title}
                       </a>
-                      
                     </h3>
-                <div className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none ">
-                  <img
-                    src={`http://127.0.0.1:8000${curso.image}`}
+                    <p className="text-base font-semibold text-gray-900">{c.description}</p>
 
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                </div>
-                </Link>
 
-                <div className="mt-4 flex justify-between">
+                    <div className="mt-4 flex justify-between">
                   <div>
                     
-                    <p className="mt-1 text-sm text-gray-500"> <Rating value={curso.rating} color={'#ffa900'} />
-                        <p>{`${curso.num_reviews} reviews`}</p></p>
+                    <p className="mt-1 text-sm text-gray-500"> <Rating value={c.rating} color={'#ffa900'} />
+                        <p>{`${c.num_reviews} reviews`}</p></p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">{curso.price} ETH</p>   
+                  <p className="text-sm font-medium text-gray-900">{c.price} ETH</p>   
                      
                 </div>
+                  </div>
+                ))}
               </div>
-              </>
-            ))}
+            </div>
           </div>
-
-          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">CURSOS DE  </span>{' '}
-              <span className="block text-indigo-600 xl:inline">FRONTEND</span>
-          </h1>
-                <div>
-                  <h1>mudsfusdbf</h1>
-                </div>
-        <div className='mb-10'>
-          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">CURSOS DE  </span>{' '}
-              <span className="block text-indigo-600 xl:inline">HACKING</span>
-          </h1>
-
-          <div>
-                  <h1>mudsfusdbf</h1>
-          </div>
-          </div>
-
-          <div className='mb-10'>
-          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">CURSOS DE  </span>{' '}
-              <span className="block text-indigo-600 xl:inline">MACHINE LEARNING</span>
-          </h1>
-
-          <div>
-                  <h1>mudsfusdbf</h1>
-          </div>
-          </div>
-
-          <div className='mb-10'>
-          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">CURSOS DE  </span>{' '}
-              <span className="block text-indigo-600 xl:inline">PROGRAMACION</span>{' '}
-          </h1>
-
-          <div>
-                  <h1>mudsfusdbf</h1>
-          </div>
-          </div>
-
-          <div className='mb-10'>
-          <h1 className=" font-bold tracking-tight  mt-9 text-gray-900 sm:text-3xl ">
-              <span className="block xl:inline">PROYECTOS</span>{' '}
-              <span className="block text-indigo-600 xl:inline">COMPLETOS</span>{' '}
-          </h1>
-
-          <div>
-                  <h1>mudsfusdbf</h1>
-          </div>
-          </div>
-
-
-
         </div>
 
-      </div>
+
+
+
+
+
+        <div className="bg-gray-100">
+          <div className="mx-auto max-w-7xl  sm:px-6 ">
+            <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-none lg:py-32">
+            <h1 className="">
+
+            <span className="block xl:inline text-gray-800">LOS MEJORES CURSOS DE </span>{' '}
+
+
+            <span className="block xl:inline text-indigo-800">FRONTEND</span>{' '}
+            </h1>
+
+    
+              <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                {cursos.map((c) => (
+                  <div key={c.name} className="group relative">
+                    <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                      <img
+                        src={`http://127.0.0.1:8000${c.image}`}
+                        alt={c.imageAlt}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </div>
+                    <h3 className="mt-6 text-sm text-gray-500">
+                      <a href={c.href}>
+                        <span className="absolute inset-0" />
+                        {c.title}
+                      </a>
+                    </h3>
+                    <p className="text-base font-semibold text-gray-900">{c.description}</p>
+
+
+                    <div className="mt-4 flex justify-between">
+                  <div>
+                    
+                    <p className="mt-1 text-sm text-gray-500"> <Rating value={c.rating} color={'#ffa900'} />
+                        <p>{`${c.num_reviews} reviews`}</p></p>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">{c.price} ETH</p>   
+                     
+                </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <div className="bg-gray-100">
+          <div className="mx-auto max-w-7xl  sm:px-6 ">
+            <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+            <h1 className="">
+
+<span className="block xl:inline text-gray-800">LOS MEJORES CURSOS DE </span>{' '}
+
+
+<span className="block xl:inline text-indigo-800">FRONTEND</span>{' '}
+</h1>
+
+    
+              <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                {cursos.map((c) => (
+                  <div key={c.name} className="group relative">
+                    <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                      <img
+                        src={`http://127.0.0.1:8000${c.image}`}
+                        alt={c.imageAlt}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </div>
+                    <h3 className="mt-6 text-sm text-gray-500">
+                      <a href={c.href}>
+                        <span className="absolute inset-0" />
+                        {c.title}
+                      </a>
+                    </h3>
+                    <p className="text-base font-semibold text-gray-900">{c.description}</p>
+
+
+                    <div className="mt-4 flex justify-between">
+                  <div>
+                    
+                    <p className="mt-1 text-sm text-gray-500"> <Rating value={c.rating} color={'#ffa900'} />
+                        <p>{`${c.num_reviews} reviews`}</p></p>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">{c.price} ETH</p>   
+                     
+                </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        </>
       
       }
   

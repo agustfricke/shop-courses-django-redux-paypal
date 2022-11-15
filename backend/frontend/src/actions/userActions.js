@@ -198,6 +198,7 @@ export const register = (first_name, email, user_name,  password, re_password) =
 
         const config = {
             headers: {
+                'Content-Type': 'application/json'
             }
         }
 
@@ -232,6 +233,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
@@ -268,6 +270,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
@@ -310,6 +313,7 @@ export const listUsers = () => async (dispatch, getState) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
@@ -346,6 +350,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
@@ -380,6 +385,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
 
         const config = {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
