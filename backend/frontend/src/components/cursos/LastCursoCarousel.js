@@ -20,21 +20,20 @@ function LastCursoCarousel() {
 
 
 return (
-
-    <div className='py-10 '>
-      <div className="relative ">
+  
+    <div className='h-[450px] bg-gray-900/90 mb-10'>
         <div className="mx-auto max-w-3xl pt-10 pb-10">
           <div>
 
             <div>
               <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
-                <span className="block xl:inline text-gray-800"> formación </span>{' '}
+                <span className="block xl:inline text-gray-200"> formación </span>{' '}
 
 
-                <span className="block xl:inline text-indigo-800">online</span>{' '}
+                <span className="block xl:inline text-indigo-300">online</span>{' '}
 
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-700 sm:text-center">
+              <p className="mt-6 text-lg leading-8 text-gray-200 sm:text-center">
                 Especialízate en las áreas con mayor demanda laboral y aprende lo que necesitas para desarrollar tu perfil profesional
               </p>
 
@@ -42,7 +41,6 @@ return (
 
           </div>
         </div>
-      </div>
 
 
       <div className='flex justify-center'>
@@ -53,7 +51,7 @@ return (
           <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
             <Tilt>
               <center>
-                <h1 className="block text-indigo-800 xl:inline">HACKING</h1>
+                <h1 className="block text-indigo-300 xl:inline">HACKING</h1>
                 <img
                   style={{ maxHeight: "340px" }}
                   className='px-8'
@@ -67,7 +65,7 @@ return (
           <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
             <Tilt>
               <center>
-                <h1 className="block text-indigo-800 xl:inline">BACKEND</h1>
+                <h1 className="block text-indigo-300 xl:inline">BACKEND</h1>
                 <img
                   style={{ maxHeight: "345px" }}
                   className='px-8'
@@ -82,7 +80,7 @@ return (
           <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
             <Tilt>
               <center>
-                <h1 className="block text-indigo-800 xl:inline">FRONTEND</h1>
+                <h1 className="block text-indigo-300 xl:inline">FRONTEND</h1>
                 <img
                   style={{ maxHeight: "340px" }}
                   className='px-8'
@@ -91,8 +89,6 @@ return (
               </center>
             </Tilt>
           </Link>
-
-
         </div>
       </div>
     </div>
