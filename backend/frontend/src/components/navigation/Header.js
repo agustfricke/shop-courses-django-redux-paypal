@@ -8,7 +8,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 import { logout } from '../../actions/userActions'
 import Search from './Search';
-import eth from '../../media/ethereum.png'
+import eth from '../../media/placeholder.jpg'
 
 
 const user = [
@@ -170,7 +170,7 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={`http://127.0.0.1:8000${userInfo.image}`}
+                        src={eth}
                         alt=""
                       />
                     </Menu.Button>
