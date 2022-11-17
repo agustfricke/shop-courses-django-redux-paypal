@@ -30,8 +30,8 @@ export default function MiPerfil() {
   return (
     <>
 
-      <div>
-        <div>
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 pt-6'>
+        <div className='px-4 py-5 sm:px-6'>
           <div className="overflow-hidden bg-white shadow sm:rounded-lg">
             <div className="mt-6">
               <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">

@@ -12,7 +12,7 @@ import Accordion from 'react-bootstrap/Accordion';
 
 
 
-const SoloCurso = ({ match, history }) => {
+const MiSoloCurso = ({ match, history }) => {
 
     const [quantity, setQuantity] = useState(1)
     const [rating, setRating] = useState(0)
@@ -130,36 +130,63 @@ const SoloCurso = ({ match, history }) => {
                         <div className='bg-white shadow-2xl'>
 
 
-                            <div className='p-1'>
-                                <img
-                                    style={{ maxHeight: "440px" }}
-                                    src={`http://127.0.0.1:8000${curso.image}`}
-                                />
+                             
 
 
-                                <div className='p-2'>
-
-                                    <h3 className='font-bold text-2xl my-2'>$USD {curso.price}</h3>
-                                    <button
-                                        onClick={addToCartHandler}
-                                        type="submit"
-                                        className="mt-2 flex w-full items-center justify-center  border border-transparent bg-indigo-700 py-3 px-8 text-base font-medium text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                        Comprar
-                                    </button>
-
-                                    <button
-                                        onClick={addToCartHandler}
-                                        type="submit"
-                                        className="mt-2 flex w-full items-center justify-center  border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                        Ver Trailer
-                                    </button>
-
-
+                        <div className='p-3 mt-6'>
+                        <h2 className='font-bold text-2xl my-6 text-gray-800 text-center'>Deja una Review </h2>
+                        <form onSubmit={submitHandler}
+                        >
+                            <div className="shadow sm:overflow-hidden sm:rounded-md">
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-3 sm:col-span-2">
+                                    </div>
                                 </div>
 
+                                <div>
+
+                                    <div className="mt-1">
+                                        <textarea
+                                        value={comment}
+                                        onChange={(e) => setComment(e.target.value)}
+                                            type="text"
+                                            id="body"
+                                            rows={3}
+                                            className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            placeholder="Type Here!"
+                                        />
+                                    </div>
+                                    <Form.Control
+                                        as='select'
+                                        value={rating}
+                                        onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <option value=''>Select number of stars ...</option>
+                                        <option value='1'>1 - Poor</option>
+                                        <option value='2'>2 - Fair</option>
+                                        <option value='3'>3 - Nice</option>
+                                        <option value='4'>4 - Good</option>
+                                        <option value='5'>5 - Excellent</option>
+                                    </Form.Control>
+                                </div>
                             </div>
+
+                            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                                <button
+                                    disabled={loadingcursoReview}
+                                    type='submit'
+                                    className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                >
+                                    POST
+                                </button>
+                            </div>
+
+                        </form>
+                        </div>
+
+
+
+
 
 
 
@@ -190,13 +217,32 @@ const SoloCurso = ({ match, history }) => {
                                             <Accordion.Header>{epi.title}</Accordion.Header>
                                             <Accordion.Body>
 
+                                                <div className="grid grid-cols-3 gap-4">
+                                                
+                                                <div className="col-span-2 ">
+
                                                 {epi.description}
 
-                                                <img
-                                                    style={{ maxHeight: "50px" }}
-                                                    src={`http://127.0.0.1:8000${epi.image}`}
-                                                    alt=""
-                                                />
+                                                </div>
+
+                                                <div>
+
+
+                                                <a href={`/solo/epi/p/${epi.id}/${curso.id}`}>
+
+                                                <button
+                                                className='bg-gray-900 text-white px-5 py-2 rounded-md text-sm font-medium ml-2'
+
+                                                >
+                                                    Ver Episodio
+
+                                                </button>
+                                                </a>
+                                                </div>
+
+
+
+                                                </div>
 
 
 
@@ -227,4 +273,4 @@ const SoloCurso = ({ match, history }) => {
     );
 };
 
-export default SoloCurso;
+export default MiSoloCurso;

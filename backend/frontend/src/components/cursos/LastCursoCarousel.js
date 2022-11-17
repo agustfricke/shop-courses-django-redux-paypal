@@ -21,19 +21,19 @@ function LastCursoCarousel() {
 
 return (
   
-    <div className='h-[450px] bg-gray-900/90 mb-10'>
+    <div className='h-[500px] bg-gray-900/90 mb-10'>
         <div className="mx-auto max-w-3xl pt-10 pb-10">
           <div>
-
+<br></br> <br></br>
             <div>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
+              <h3 className="text-4xl font-bold tracking-tight sm:text-center sm:text-5xl">
                 <span className="block xl:inline text-gray-200"> formación </span>{' '}
 
 
                 <span className="block xl:inline text-indigo-300">online</span>{' '}
 
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-200 sm:text-center">
+              </h3>
+              <p className="mt-6 text-lg leading-10 text-gray-200 sm:text-center">
                 Especialízate en las áreas con mayor demanda laboral y aprende lo que necesitas para desarrollar tu perfil profesional
               </p>
 

@@ -6,7 +6,7 @@ import Header from './components/navigation/Header';
 import Footer from "./components/navigation/Footer";
 import PrivateRoute from './components/auth/PrivateRoute';
 import Login from "./components/auth/Login";
-import MiPerfil from "./components/auth/MiPerfil";
+import MiPerfil from "./components/user/MiPerfil";
 import EditProfile from "./components/auth/EditProfile";
 import Home from "./components/cursos/Home";
 import UserListScreen from "./components/admin/UserListScreen";
@@ -22,12 +22,13 @@ import OrderScreen from "./components/shopping/OrderScreen";
 import PaymentScreen from "./components/shopping/PaymentScreen";
 import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
 import SoloCursoPagado from "./components/auth/SoloCursoPagado";
-import SoloEpisodioPagado from "./components/auth/SoloEpisodioPagado";
-// New
+import SoloEpisodioPagado from "./components/user/SoloEpisodioPagado";
+import MisCursos from "./components/user/MisCursos";
 import ResetPasswordConfirm from './components/auth/ResetPasswordConfirm';
 import ResetPassword from './components/auth/ResetPassword';
 import Activation from "./components/auth/Activation";
 import Register from "./components/auth/Register";
+import MiSoloCurso from "./components/user/MiSoloCurso";
 
 
 function App() {
@@ -40,17 +41,15 @@ function App() {
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path='/activate/:uid/:token' component={Activation} />
-
-
-
-
             <Route path='/reset-password' component={ResetPassword} />
             <Route path='/password/reset/confirm/:uid/:token/' component={ResetPasswordConfirm} />
-
-
             <Route path='/curso/:id' component={SoloCurso} />
 
             <PrivateRoute path="/profile" component={MiPerfil}/>
+            <PrivateRoute path="/mis/cursos" component={MisCursos}/>
+            <PrivateRoute path="/mi/solo/curso/:id" component={MiSoloCurso}/>
+
+
             <PrivateRoute path="/editprofile" component={EditProfile}/>
             <PrivateRoute path="/admin/users" component={UserListScreen}/>
             <PrivateRoute path='/admin/user/:id/edit' component={UserEditScreen} />

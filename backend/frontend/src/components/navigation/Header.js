@@ -145,11 +145,11 @@ export default function Header() {
                     ))}
                   </div>
                 </div>
-                )}
-               
-
-
+                )}          
               </div>
+
+
+
             {userInfo  && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <a
@@ -192,7 +192,31 @@ export default function Header() {
                             href="/profile"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Tu Perfil
+                          </a>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                          style={{textDecoration: 'none'}}
+                            href="/mis/cursos"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Tus Cursos
+                          </a>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                          style={{textDecoration: 'none'}}
+                            href="/profile"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Tus Ordenes
                           </a>
                         )}
                       </Menu.Item>
@@ -205,7 +229,7 @@ export default function Header() {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            Cerrar Session
                           </a>
                         )}
                       </Menu.Item>
