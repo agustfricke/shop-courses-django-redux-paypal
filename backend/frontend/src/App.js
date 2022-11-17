@@ -21,7 +21,6 @@ import Cart from "./components/shopping/Cart";
 import OrderScreen from "./components/shopping/OrderScreen";
 import PaymentScreen from "./components/shopping/PaymentScreen";
 import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
-import SoloCursoPagado from "./components/auth/SoloCursoPagado";
 import SoloEpisodioPagado from "./components/user/SoloEpisodioPagado";
 import MisCursos from "./components/user/MisCursos";
 import ResetPasswordConfirm from './components/auth/ResetPasswordConfirm';
@@ -62,8 +61,7 @@ function App() {
             <PrivateRoute path='/order/:id' component={OrderScreen} />
             <PrivateRoute path='/payment' component={PaymentScreen} />
             <PrivateRoute path='/placeorder' component={PlaceOrderScreen} />
-            <PrivateRoute path='/solo/curso/:id' component={SoloCursoPagado} />
-            <PrivateRoute path='/solo/epi/p/:id/:id' component={SoloEpisodioPagado} />
+            <PrivateRoute path='/solo/epi/:epi/:curso' component={SoloEpisodioPagado} />
 
 
       </Switch>

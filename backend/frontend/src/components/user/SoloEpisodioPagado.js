@@ -3,10 +3,9 @@ import Message from '../utils/Message';
 import Loader from '../utils/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../utils/Rating'
-import { listEpisodioDetails, createCommentEpisodio, listEpisodios } from '../../actions/cursoActions'
+import { listEpisodioDetails, createCommentEpisodio, listEpisodios, listCursoDetails } from '../../actions/cursoActions'
 import { EPISODIO_CREATE_COMMENT_RESET } from '../../constants/cursoConstants'
 import ReactPlayer from 'react-player'
-import SoloCursoPagado from "../auth/SoloCursoPagado";
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 
@@ -29,8 +28,10 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const episodioAll = useSelector(state => state.episodioAll)
     const { episodios } = episodioAll
 
+    const detailsCurso = useSelector(state => state.detailsCurso)
+    const { curso } = detailsCurso
 
-
+    
 
     useEffect(() => {
         if (successEpisodioComment) {
@@ -38,8 +39,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
             dispatch({ type: EPISODIO_CREATE_COMMENT_RESET })
         }
 
-        dispatch(listEpisodioDetails(match.params.id))
-        dispatch(listEpisodios(match.params.id))
+        dispatch(listEpisodioDetails(match.params.epi))
+        dispatch(listCursoDetails(match.params.curso))
 
 
     }, [dispatch, match, successEpisodioComment])
@@ -145,10 +146,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
                 <h1>Todos los episodios</h1>
 
 
-                {episodios.map((epi) => (
+                {curso.episodios && curso.episodios.map((epi) => (
                     <>
-
-                        {epi.curso === episodio.curso ? (
 
 
 
@@ -161,14 +160,14 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
                                             <div className="col-span-2 ">
 
-                                                {epi.description}
+                                                {epi.description} {curso.id} {epi.curso}
 
                                             </div>
 
                                             <div>
 
 
-                                                <a href='{`/solo/epi/p/${epi.id}/${curso.id}`}'>
+                                                <a href={`/solo/epi/${epi.id}/${curso.id}`}>
 
                                                     <button
                                                         className='bg-gray-900 text-white px-4 py-3 rounded-md text-sm font-medium ml-2'
@@ -193,14 +192,14 @@ const SoloEpisodioPagado = ({ match, history }) => {
                             </Accordion>
 
 
-                        ) : (
+
+
 
                             <>
 
 
                             </>
 
-                        )}
                     </>
 
                 ))}
