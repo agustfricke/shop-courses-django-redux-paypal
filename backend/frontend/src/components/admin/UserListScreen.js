@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 
@@ -42,8 +42,9 @@ function UserListScreen({ history }) {
     }
 
     return (
-        <div>
-            <h1>Users</h1>
+        <Container>
+        <div className='mt-10'>
+            <h1 className='text-center mb-4'>Users</h1>
             {loading
                 ? (<Loader />)
                 : error
@@ -67,7 +68,7 @@ function UserListScreen({ history }) {
                                         <td>{user.id}</td>
                                         <td>
                                         <img
-                                            className="h-8 w-8 rounded-full"
+                                            className="h-10 w-18 rounded-full"
                                             src={`http://127.0.0.1:8000${userInfo.image}`}
                                             alt=""
                                         />
@@ -104,6 +105,7 @@ function UserListScreen({ history }) {
                         </Table>
                     )}
         </div>
+        </Container>
     )
 }
 

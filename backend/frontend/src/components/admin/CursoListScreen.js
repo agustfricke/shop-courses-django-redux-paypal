@@ -57,6 +57,7 @@ function CursoListScreen({ history }) {
 
     return (
         <Container>
+            <div className='mt-10'>
             <Row>
                 <Col sm={10}>
                     <h1>Cursos</h1>
@@ -65,7 +66,7 @@ function CursoListScreen({ history }) {
                     <button
                     onClick={createCursoHandler}
                     size='sm' 
-                    className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2' 
+                    className='bg-gray-900 text-white px-4 py-3 rounded-md text-sm font-medium ml-2' 
                     >
                         CREAR CURSO
                     </button>
@@ -92,6 +93,7 @@ function CursoListScreen({ history }) {
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price $ USD</th>
+                                    <th>Episodios</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -107,9 +109,22 @@ function CursoListScreen({ history }) {
                                             alt=""
                                         /></td>
 
-                                        <td>{curso.titile}</td>
+                                        <td>{curso.title}</td>
                                         <td>{curso.category}</td>
                                         <td>{curso.price}</td>
+                                        <td>
+                                        <a href={`/epi/${curso.id}`}>
+
+                                    <button
+                                    className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
+
+                                    >
+                                        <FaPlusSquare size={20}/>
+
+                                    </button>
+                                    </a>
+                                        </td>
+
                                         
                                         <td className='text-center'>
                                         <a href={`/cursos/${curso.id}/form`}>
@@ -131,16 +146,7 @@ function CursoListScreen({ history }) {
                                             <FaTrash size={20}/>
                                             </button>
 
-                                            <a href={`/epi/${curso.id}`}>
-
-                                            <button
-                                            className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
-
-                                            >
-                                                <FaPlusSquare size={20}/>
-
-                                            </button>
-                                            </a>
+                                            
 
                                             
                                         </td>
@@ -151,6 +157,7 @@ function CursoListScreen({ history }) {
 
                         </Table>
                     )}
+                    </div>
 
         </Container>
     )

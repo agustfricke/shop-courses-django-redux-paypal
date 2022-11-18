@@ -12,10 +12,59 @@ from .models import Order, VimeoURL
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getURL(request):
     url = VimeoURL.objects.all()
     serializer = VimeoURLSerializer(url, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def getURLSolo(request, pk):
+    url = VimeoURL.objects.get(id=pk)
+    serializer = VimeoURLSerializer(url, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getOrders(request):
+    orders = Order.objects.all()
+    serializer = OrderSerializer(orders, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def createURL(request):
+    user = request.user
+    data = request.data
+    vimeo = VimeoURL.objects.create(
+            user=user,
+            title=data['title'],
+            url=data['url'],
+
+        )
+    serializer = VimeoURLSerializer(vimeo, many=False)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateURL(request, pk):
+    data = request.data
+    vimeo = VimeoURL.objects.get(id=pk)
+    vimeo.title = data['title']
+    vimeo.url = data['url']
+    vimeo.save()
+    serializer = VimeoURLSerializer(vimeo, many=False)
+    return Response(serializer.data)  
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteURL(request, pk):
+    vimeo = VimeoURL.objects.get(id=pk)
+    vimeo.delete()
+    return Response('URL was deleted')
+
 
 
 
@@ -35,7 +84,7 @@ def createOrder(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def getSoloOrder(request, pk):
     user = request.user
     try:

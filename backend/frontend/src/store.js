@@ -25,7 +25,8 @@ import { cursoListReducer,
         episodioUpdateReducer,
         episodioDetailsReducer,
         createCommentReducer,
-        episodioAllReducer
+        episodioAllReducer,
+        episodioDeleteReducer,
 
 
 } from './reducers/cursoReducers';
@@ -34,6 +35,13 @@ import { cursoListReducer,
 import { orderCreateReducer, 
         orderDetailsReducer,
         orderListMyReducer,
+        orderListReducer,
+        urlListReducer,
+        urlDeleteReducer,
+        urlCreateReducer,
+        urlUpdateReducer,
+        urlDetailsReducer,
+
 } from './reducers/orderReducers'
 
 
@@ -45,6 +53,13 @@ const reducer = combineReducers({
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderListMy: orderListMyReducer,
+    orderList: orderListReducer,
+    urlList :urlListReducer,
+    urlDelete:urlDeleteReducer,
+    urlCreate:urlCreateReducer,
+    urlUpdate:urlUpdateReducer,
+    urlDetails:urlDetailsReducer,
+
 
     // User
     userLogin: userLoginReducer,
@@ -71,6 +86,7 @@ const reducer = combineReducers({
     episodioDetails: episodioDetailsReducer,
     createComment: createCommentReducer,
     episodioAll: episodioAllReducer,
+    episodioDelete:episodioDeleteReducer,
 
 })
 

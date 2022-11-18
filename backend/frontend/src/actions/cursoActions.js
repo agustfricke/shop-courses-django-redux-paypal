@@ -48,9 +48,49 @@ import {
     EPISODIO_ALL_SUCCESS,
     EPISODIO_ALL_FAIL,
 
+    EPISODIO_DELETE_REQUEST,
+    EPISODIO_DELETE_SUCCESS,
+    EPISODIO_DELETE_FAIL,
+
 } from '../constants/cursoConstants';
 
 const URL = 'http://127.0.0.1:8000/'
+
+
+export const deleteEpisodio = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: EPISODIO_DELETE_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.delete(
+            `${URL}cursos/deleteEpisodio/${id}/`,
+            config
+        )
+
+        dispatch({
+            type: EPISODIO_DELETE_SUCCESS
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EPISODIO_DELETE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
 
 
 export const listEpisodios = () => async (dispatch) => {
@@ -74,9 +114,6 @@ export const listEpisodios = () => async (dispatch) => {
 
     }
 }
-
-
-
 
 export const createCommentEpisodio = (episodioId, comment) => async (dispatch, getState) => {
     try {
@@ -375,7 +412,7 @@ export const listCursoDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: CURSO_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`${URL}cursos/curso/${id}`);
+        const { data } = await axios.get(`${URL}cursos/curso/${id}/`);
 
         dispatch({
             type: CURSO_DETAILS_SUCCESS,

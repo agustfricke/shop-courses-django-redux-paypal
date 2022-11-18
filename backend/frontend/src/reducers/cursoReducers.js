@@ -53,7 +53,28 @@ import {
     EPISODIO_ALL_SUCCESS,
     EPISODIO_ALL_FAIL,
 
+    EPISODIO_DELETE_REQUEST,
+    EPISODIO_DELETE_SUCCESS,
+    EPISODIO_DELETE_FAIL,
+
 } from '../constants/cursoConstants';
+
+
+export const episodioDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case EPISODIO_DELETE_REQUEST:
+            return { loading: true }
+
+        case EPISODIO_DELETE_SUCCESS:
+            return { loading: false, success: true }
+
+        case EPISODIO_DELETE_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
 
 export const episodioAllReducer = (state = { episodios: [] }, action) => {
     switch (action.type) {

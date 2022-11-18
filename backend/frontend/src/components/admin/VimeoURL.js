@@ -2,59 +2,56 @@ import React, { useState, useEffect } from "react";
 import Message from '../utils/Message';
 import Loader from '../utils/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { listCursoDetails, episodioCreate, deleteEpisodio } from '../../actions/cursoActions'
+import { listURL, deleteURL, createURL } from '../../actions/orderActions'
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import { FaRegEdit, FaTrash, FaPlusSquare } from 'react-icons/fa';
-import { CURSO_CREATE_EPISODIO_RESET } from "../../constants/cursoConstants";
+import {URL_CREATE_RESET} from '../../constants/orderConstants'
 
 
 
 
 
 
-export default function Episodios ({ match, history }) {
+export default function Vimeo ({ match, history }) {
 
     const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+    const [url, setURL] = useState('')
+
 
     const dispatch = useDispatch()
 
-    const detailsCurso = useSelector(state => state.detailsCurso)
-    const { loading, error, curso } = detailsCurso
+    const urlList = useSelector(state => state.urlList)
+    const { loading, error, urls } = urlList
 
-    const createEpisodio = useSelector(state => state.createEpisodio)
-    const { loading: loadingEpisodio, error: errorEpisodio, success: successEpisodio } = createEpisodio
+    const urlCreate = useSelector(state => state.urlCreate)
+    const { loading: loadingURL, error: errorURL, success: successURL } = urlCreate
 
-    const episodioDelete = useSelector(state => state.episodioDelete)
-    const { loading: loadingDelete, error: errorDelete, success: successDelete } = episodioDelete
+    const urlDelete = useSelector(state => state.urlDelete)
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = urlDelete
+
 
     useEffect(() => {
-        if (successEpisodio) {
+        if (successURL) {
             setTitle('')
-            setDescription('')
-            dispatch({ type: CURSO_CREATE_EPISODIO_RESET })
+            setURL('')
+            dispatch({ type: URL_CREATE_RESET })
         }
-
-        dispatch(listCursoDetails(match.params.id))
-
-    }, [dispatch, match, successEpisodio, successDelete])
-
-    const deleteHandler = (id) => {
-        if (window.confirm('Are you shure you want to delete this Curso?')) {
-            dispatch(deleteEpisodio(id))
-        }
-    }
-
+        dispatch(listURL())
+    }, [dispatch, match, successDelete, successURL])
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(episodioCreate(
-            match.params.id, {
-            title,
-            description
-        }
-        ))
+        dispatch(createURL(title, url))
     }
+
+    const deleteHandler = (id) => {
+        if (window.confirm('Are you shure you want to delete this Curso?')) {
+            dispatch(deleteURL(id))
+        }
+    }
+
+
+
 
 
     return (
@@ -77,8 +74,7 @@ export default function Episodios ({ match, history }) {
         <div className="grid gap-4 grid-cols-2">
             <div >
         <h3>
-        <span className="block xl:inline">EPISODIOS DE</span>{' '}
-             <span className="block text-indigo-600 xl:inline">{curso.title}</span>{' '}
+        <span className="block xl:inline">URL OCULTAS</span>{' '}
             
             </h3>
         <br></br>
@@ -86,6 +82,7 @@ export default function Episodios ({ match, history }) {
         <Table striped bordered hover responsive className='table-sm'>
                             <thead>
                                 <tr>
+                                    <th>URL</th>
                                     <th>Titulo</th>
                                     <th>Acciones</th>
 
@@ -93,17 +90,19 @@ export default function Episodios ({ match, history }) {
                             </thead>
 
                             <tbody>
-                                {curso.episodios && curso.episodios.map((epi) => (
+                                {urls && urls.map((url) => (
 
 
-                                    <tr key={epi.id}>
-                                        <td>{epi.title}</td>
+                                    <tr key={url.id}>
+                                        <td>{url.url}</td>
+                                        <td>{url.title}</td>
+
 
 
 
                                         
                                         <td className=''>
-                                        <a href={`/episodio/${epi.id}/form`}>
+                                        <a href={`/URL/${url.id}/form`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
@@ -118,7 +117,7 @@ export default function Episodios ({ match, history }) {
 
 
                                             <button
-                                            onClick={() => deleteHandler(epi.id)}
+                                            onClick={() => deleteHandler(url.id)}
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'
                                            >
                                             <FaTrash size={20}/>
@@ -143,7 +142,7 @@ export default function Episodios ({ match, history }) {
         <center>
                   <h3>
         <span className="block xl:inline">CREAR </span>{' '}
-             <span className="block text-indigo-600 xl:inline">EPISODIO</span>{' '}
+             <span className="block text-indigo-600 xl:inline">URL OCULTA</span>{' '}
             
             </h3>
             </center>
@@ -154,10 +153,10 @@ export default function Episodios ({ match, history }) {
                     <Form.Group controlId='name'>
                         <Form.Label>Titulo</Form.Label>
                         <Form.Control
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                             type='name'
                             placeholder='Enter name'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
                         >
                         </Form.Control>
                     </Form.Group>
@@ -165,10 +164,10 @@ export default function Episodios ({ match, history }) {
                     <Form.Group controlId='description' className='py-2'>
                         <Form.Label>Description</Form.Label>
                         <Form.Control
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        value={url}
+                        onChange={(e) => setURL(e.target.value)}
                             type='description'
-                            placeholder='Enter Description'
+                            placeholder='Enter URL'
                         >
                         </Form.Control>
                     </Form.Group>  
