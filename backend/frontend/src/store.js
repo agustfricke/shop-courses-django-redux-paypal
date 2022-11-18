@@ -30,7 +30,6 @@ import { cursoListReducer,
 
 } from './reducers/cursoReducers';
 
-import { cartReducer } from './reducers/cartReducers'
 
 import { orderCreateReducer, 
         orderDetailsReducer,
@@ -41,8 +40,6 @@ import { orderCreateReducer,
 
 const reducer = combineReducers({
 
-    // Cart
-    cart: cartReducer,
 
     // Order
     orderCreate: orderCreateReducer,

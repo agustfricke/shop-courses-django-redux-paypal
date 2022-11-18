@@ -29,13 +29,15 @@ export default function MisCursos() {
 
 
     return (
+        <div className='w-full h-[350px] bg-gray-900/90 absolute'>
 
         <div className="mt-10">
+
             <div className="mx-auto max-w-7xl  sm:px-6">
             <h1 className="m-8 text-center">
 
-                <span className="block xl:inline text-gray-800">TUS </span>{' '}
-                <span className="block xl:inline text-indigo-800">CURSOS</span>{' '}
+                <span className="block xl:inline text-gray-200">TUS </span>{' '}
+                <span className="block xl:inline text-indigo-400">CURSOS</span>{' '}
 
             </h1>
                 <div className="mx-auto max-w-2xl  sm:py-2 lg:max-w-none overflow-hidden bg-white shadow sm:rounded-lg">
@@ -102,6 +104,8 @@ export default function MisCursos() {
                     ))}
                 </div>
             </div>
+            </div>
+
         </div>
 
     )

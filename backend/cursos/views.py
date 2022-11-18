@@ -224,7 +224,7 @@ def createCursoReview(request, pk):
             user=user,
             curso=curso,
             rating=data['rating'],
-            description=data['description']
+            comment=data['comment']
         )
 
         reviews = curso.review_set.all()

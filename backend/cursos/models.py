@@ -25,7 +25,7 @@ class Review(models.Model):
     curso           = models.ForeignKey(Curso, on_delete=models.SET_NULL, null=True)
     user            = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     rating          = models.IntegerField(null=True, blank=True, default=0)
-    description     = models.TextField(null=True, blank=True)
+    comment         = models.TextField(null=True, blank=True)
     created         = models.DateTimeField(auto_now_add=True)
 
 

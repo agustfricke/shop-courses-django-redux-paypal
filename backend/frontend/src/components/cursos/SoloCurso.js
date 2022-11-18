@@ -42,7 +42,7 @@ const SoloCurso = ({ match, history }) => {
     }, [dispatch, match, successcursoReview])
 
     const addToCartHandler = () => {
-        history.push(`/cart/${match.params.id}?quantity=${quantity}`)
+        history.push('/payment')
 
     }
 
@@ -95,8 +95,14 @@ const SoloCurso = ({ match, history }) => {
                                 <div className=" grid-cols-3 gap-2 flex justify-start">
 
 
-                                    <p className="mt-1 text-sm text-gray-300"> <Rating value={curso.rating} color={'#ffa900'} />
-                                        {`${curso.num_reviews} reviews`}</p>
+                                    <a
+                                    
+                                    
+                                    href={`/review/${curso.id}`} className="mt-1 text-sm text-gray-300 hover:text-gray-100 "> <Rating value={curso.rating} color={'#ffa900'} />
+                                    {`${curso.num_reviews} reviews`} 
+                                    
+                                        
+                                        </a> 
 
                                     <p className="mt-1 text-sm text-gray-300 pl-4">
                                         <TbWorld />

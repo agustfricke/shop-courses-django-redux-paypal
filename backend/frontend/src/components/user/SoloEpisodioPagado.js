@@ -48,7 +48,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(createCommentEpisodio(
-            match.params.id, {
+            match.params.epi, {
             description
         }
         ))
@@ -57,23 +57,25 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
     return (
+        <div className='w-full h-[450px] bg-gray-900/90 absolute'>
 
         <div className="grid grid-cols-3  m-8">
 
             <div className="col-span-2">
 
 
-                <h1>{episodio.title}</h1>
+                <h1 className="text-center  font-bold text-2xl  text-white">{episodio.title}</h1>
 
 
-                <ReactPlayer url={`http://127.0.0.1:8000${episodio.video}`} controls fallback fluid={false}
+                <ReactPlayer url='https://vimeo.com/772171855?ts=0'  fallback fluid={false}
                     width={1120}
-                    height={674} />
+                    height={674} 
+                    />
 
 
                 <p className="text-base mt-6 text-gray-900">{episodio.description}</p>
                 <a href={`http://127.0.0.1:8000${episodio.file}`}>
-                    Ver y Descargar resumen en PDF <br></br>
+                    Ver Recurso<br></br>
                 </a>
 
 
@@ -141,9 +143,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
 
-
             <div className='mr-10 mt-6'>
-                <h1>Todos los episodios</h1>
+                <h1 className="font-bold text-2xl my-6 text-white">Todos los episodios</h1>
 
 
                 {curso.episodios && curso.episodios.map((epi) => (
@@ -208,6 +209,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
             </div>
         </div>
+        </div>
+
 
 
 

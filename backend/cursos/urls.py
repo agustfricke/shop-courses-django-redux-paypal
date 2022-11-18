@@ -25,6 +25,6 @@ urlpatterns = [
     path('comment/<int:pk>/', views.createComment),
 
     # Reviews
-    path('review/<int:pk>/', views.createCursoReview),
+    path('<int:pk>/reviews/', views.createCursoReview),
 
 ]

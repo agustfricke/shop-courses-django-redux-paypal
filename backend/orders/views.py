@@ -4,44 +4,34 @@ from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime
 
-from .serializers import OrderSerializer
+from .serializers import OrderSerializer, VimeoURLSerializer
 
 from cursos.models import Curso
 from cursos.serializers import CursoSerializer
-from .models import Order, Orderitem
+from .models import Order, VimeoURL
+
+
+@api_view(['GET'])
+def getURL(request):
+    url = VimeoURL.objects.all()
+    serializer = VimeoURLSerializer(url, many=True)
+    return Response(serializer.data)
+
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def addOrderItem(request):
+def createOrder(request):
     user = request.user
     data = request.data
 
-    orderItems = data['orderItems']
-
-    if orderItems and len(orderItems) == 0:
-        message = {'No order items'}
-        return Response(message, status=status.HTTP_400_BAD_REQUEST)
-    else:
-        order = Order.objects.create(
+    order = Order.objects.create(
             user=user,
-            total_price=data['totalPrice']
+            price='78'
         )
 
-        
-
-        for i in orderItems:
-            curso = Curso.objects.get(id=i['curso'])
-
-            item = Orderitem.objects.create(
-                curso=curso,
-                order=order,
-                quantity=i['quantity'],
-                price=i['price'],
-            )
-
-        serializer = OrderSerializer(order, many=False)
-        return Response(serializer.data)
+    serializer = OrderSerializer(order, many=False)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
