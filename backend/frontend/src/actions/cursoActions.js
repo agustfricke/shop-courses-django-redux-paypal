@@ -156,7 +156,7 @@ export const listEpisodioDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: EPISODIO_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`${URL}cursos/getEpisodio/${id}`);
+        const { data } = await axios.get(`${URL}cursos/getEpisodio/${id}/`);
 
         dispatch({
             type: EPISODIO_DETAILS_SUCCESS,

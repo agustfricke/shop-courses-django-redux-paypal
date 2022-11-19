@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Message from '../utils/Message';
 import Loader from '../utils/Loader'
 import { useDispatch, useSelector } from 'react-redux'
+import {Route, Redirect} from 'react-router-dom';
+
 import Rating from '../utils/Rating'
 import { listEpisodioDetails, createCommentEpisodio, listEpisodios, listCursoDetails } from '../../actions/cursoActions'
 import { EPISODIO_CREATE_COMMENT_RESET } from '../../constants/cursoConstants'
@@ -9,7 +11,7 @@ import ReactPlayer from 'react-player'
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { listMyOrders } from "../../actions/orderActions";
+import { listOrders } from "../../actions/orderActions";
 import { listURL } from '../../actions/orderActions'
 
 
@@ -36,11 +38,14 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { curso } = detailsCurso
 
-    const orderListMy = useSelector(state => state.orderListMy)
-    const { orders } = orderListMy
+    const orderList = useSelector(state => state.orderList)
+    const { orders } = orderList
 
     const urlList = useSelector(state => state.urlList)
     const { urls } = urlList
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
 
 
@@ -53,7 +58,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
         dispatch(listEpisodioDetails(match.params.epi))
         dispatch(listCursoDetails(match.params.curso))
-        dispatch(listMyOrders())
+        dispatch(listOrders())
         dispatch(listURL())
 
 
@@ -71,39 +76,41 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
     return (
+
         <>
-        {orders && orders.map(o => (
 
-                <>
-                {o.user ? (
+{orders && orders.map(o => (
 
-                    <>
+    <>
+
+{o.user === userInfo.user_name ? (
 
 
 
-        
         <div className='w-full h-[350px] bg-gray-900/90 absolute'>
             <div className="grid grid-cols-3  m-8">
                 <div className="col-span-2">
-                    <h1 className="text-center  font-bold text-2xl  text-white">{episodio.title}</h1>
+                    <h1>{episodio.title} </h1>
                     {urls && urls.map((url) => (
                         <>
                         {url.title == episodio.title ? (
 
                             <>
+
+
+<div className="player-wrapper">
+    <ReactPlayer url={url.url}
+        width="100%"
+        height="100%"
+        className="react-player"
+    />
+</div>
                            
                             </>
 
                         ) : (
                             <>
-
-                    <div className="player-wrapper">
-                        <ReactPlayer url={url.url}
-                            width="100%"
-                            height="100%"
-                            className="react-player"
-                        />
-                    </div>
+                   
 
                     </>
                     )}
@@ -179,20 +186,25 @@ const SoloEpisodioPagado = ({ match, history }) => {
         </div>
 
 
-        </>
 
-) : (
+)   :    (
 
     <>
+    
+    <Redirect to='/'/>
+    
+    
     </>
-)}
+
+
+
+
+                        )
+                    }
 </>
 ))}
 
-
-
-        </>
-
+</>
     );
 };
 

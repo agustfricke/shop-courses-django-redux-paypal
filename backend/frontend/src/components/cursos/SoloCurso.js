@@ -8,7 +8,7 @@ import { CURSO_CREATE_REVIEW_RESET } from '../../constants/cursoConstants'
 import { TbWorld } from "react-icons/tb";
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
-import { listMyOrders } from "../../actions/orderActions";
+import { listOrders } from "../../actions/orderActions";
 
 
 
@@ -25,8 +25,8 @@ const SoloCurso = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
 
-    const orderListMy = useSelector(state => state.orderListMy)
-    const { orders } = orderListMy
+    const orderList = useSelector(state => state.orderList)
+    const { orders } = orderList
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -42,7 +42,7 @@ const SoloCurso = ({ match, history }) => {
         }
 
         dispatch(listCursoDetails(match.params.id))
-        dispatch(listMyOrders())
+        dispatch(listOrders())
 
     }, [dispatch, match, successcursoReview])
 
@@ -123,7 +123,7 @@ const SoloCurso = ({ match, history }) => {
                                 <div className='p-4'>
                                     {orders && orders.map(o => (
                                         <>
-                                            {o.user ? (
+                                            {o.user === userInfo.user_name ? (
 
                                                 <>
 
@@ -179,7 +179,7 @@ const SoloCurso = ({ match, history }) => {
                                                         {orders && orders.map(o => (
                                                             <>
 
-                                                                {o.user ? (
+                                                                {o.user === userInfo.user_name ? (
 
                                                                     <a href={`/solo/epi/${epi.id}/${curso.id}`}>
                                                                         <button
