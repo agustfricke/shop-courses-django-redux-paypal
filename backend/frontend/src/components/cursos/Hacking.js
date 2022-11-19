@@ -1,60 +1,76 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Carousel, Image } from 'react-bootstrap'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import Tilt from "react-parallax-tilt";
 
-
-import Rating from '../utils/Rating'
-import Message from '../utils/Message'
 import Loader from '../utils/Loader'
-import LastCursoCarousel from './LastCursoCarousel';
+import Message from '../utils/Message'
+import { listLastCursos } from "../../actions/cursoActions";
+import hacking from '../../media/hacker.png'
+import backend from '../../media/data-server.png'
+import frontend from '../../media/ux-interface.png'
+import block from '../../media/blockchain.png'
+import Rating from '../utils/Rating'
 import { listCursos } from "../../actions/cursoActions";
-import Footer from '../navigation/Footer';
 
-  
-function Home(history) {
+import { listOrders } from "../../actions/orderActions";
 
-  const dispatch = useDispatch();
+
+
+
+function Hacking(history) {
 
   const cursoList = useSelector((state) => state.cursoList);
   const { error, loading, cursos } = cursoList;
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
+  const dispatch = useDispatch()
 
-  let keysearch = history.location.search
-  console.log(keysearch)
   useEffect(() => {
-    dispatch(listCursos(keysearch));
-  }, [dispatch, keysearch]);
+    dispatch(listCursos());
+  }, [dispatch]);
+
+
 
 
 return (
-  <>
-    {!keysearch && <LastCursoCarousel />}
-    {loading ? <Loader />
-        : error ? <Message>{error}</Message>
-          :
+  
+    <div className='h-[500px] bg-gray-900/90 mb-1'>
+          <div>
 
-          <>
-    
-<br></br> <br></br>
-<br></br> <br></br>
+
 <br></br> <br></br>
 <br></br> <br></br>
 
 
-          <div className=" mt-10">
-          <div className="mx-auto max-w-7xl  sm:px-6 ">
-            <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-none ">
-            <h3 className="text-4xl font-bold tracking-tight sm:text-center sm:text-5xl mb-8">
-                <span className="block xl:inline text-gray-800"> Nuestros </span>{' '}
-                <span className="block xl:inline text-indigo-800">cursos</span>{' '}
+<div>
+              <h3 className="text-4xl font-bold tracking-tight sm:text-center sm:text-5xl">
+                <span className="block xl:inline text-gray-200"> CURSOS </span>{' '}
+                <span className="block xl:inline text-indigo-300">BACKEND</span>{' '}
               </h3>
-              <br></br>
+              
+            </div>            
 
+            <div className=" mt-10">
+          <div className="mx-auto max-w-7xl  sm:px-6 ">
+            <div className="mx-auto max-w-2xl  sm:py-2 lg:max-w-none ">
+            
+            
               <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
 
                 {cursos.map((c) => (
-                <div className='bg-gray-900 shadow-2xl'>
+                  <>
+                  {c.category === 'Hacking' ? (
+
+
+                    <>
+                    
+                    <div className='bg-gray-900 shadow-2xl'>
                   <div className='m-8'>
 
                   
@@ -87,7 +103,23 @@ return (
                   </div>
                   </div>
             </div>
+                    
+                    
+                    
+                    
+                    </>
 
+                  ) : (
+
+                    <>
+
+
+
+                  
+            
+            </>
+)}
+</>
                 ))}
               </div>
             </div>
@@ -97,19 +129,26 @@ return (
 
 
 
+          </div>
+        </div>
+
+
+
+     
+
+
+
+     
+
+
+
 
 
 
 
       
 
-        </>
-      
-      }
-  
+  )
+}
 
-      </>
-    )
-  }
-
-export default Home;
+export default Hacking

@@ -114,7 +114,7 @@ const SoloCurso = ({ match, history }) => {
                         </div>
 
 
-                        <div className='bg-white shadow-2xl'>
+                        <div className='bg-gray-900 shadow-2xl'>
                             <div className='p-1'>
                                 <img
                                     style={{ maxHeight: "440px" }}

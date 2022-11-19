@@ -1,29 +1,9 @@
-import { BulletList } from 'react-content-loader'
-
 const Loader = () => (
 
-<div className='flex justify-center'>
-          <BulletList 
-          
-          height={240}
-          speed={1}
-          backgroundColor={'#a6a0e9'}
-          className='mx-8'
-          
-          />
 
-          <BulletList 
-          
-          height={240}
-          speed={1}
-          backgroundColor={'#a6a0e9'}
-          
-          />
+  <div className="flex justify-center items-center py-3">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900" />
+  </div>
+);
 
-
-</div>
-
-
-  );
-  
-  export default Loader;
+export default Loader;

@@ -29,10 +29,11 @@ export default function MiPerfil() {
 
   return (
     <>
+            <div className='w-full h-[600px] bg-gray-900/90 absolute'>
 
       <div className='mx-auto max-w-7xl px-4 sm:px-6 pt-6'>
         <div className='px-4 py-5 sm:px-6'>
-          <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+          <div className="overflow-hidden bg-gray-200 shadow sm:rounded-lg">
             <div className="mt-6">
               <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
                 tu cuenta personal
@@ -55,18 +56,18 @@ export default function MiPerfil() {
               </div>
             </div>
 
-            <div className="border-t border-gray-200">
-              <dl>
-                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-medium text-gray-500">Username</dt>
+            <div className="border-t border-gray-200 ">
+              <dl className='bg-gray-200'>
+                <div className="bg-gray-200 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-800">Username</dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{userInfo.user_name}</dd>
                 </div>
-                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-medium text-gray-500">Email address</dt>
+                <div className="bg-gray-200 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-800">Email address</dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{userInfo.email}</dd>
                 </div>
-                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-medium text-gray-500">About</dt>
+                <div className="bg-gray-200 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-800">About</dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                     {userInfo.bio}
                   </dd>
@@ -76,6 +77,8 @@ export default function MiPerfil() {
           </div>
         </div>
       </div>
+      </div>
+
 
     </>
   )

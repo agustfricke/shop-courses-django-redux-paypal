@@ -31,7 +31,10 @@ import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
 import OrderListScreen from "./components/admin/OrderListScreen";
 import Vimeo from "./components/admin/VimeoURL";
 import VimeoForm from "./components/admin/VimeoForm";
-
+import Backend from "./components/cursos/Backend";
+import Frontend from "./components/cursos/Frontend";
+import Blockchain from "./components/cursos/Blockchain";
+import Hacking from "./components/cursos/Hacking";
 
 
 function App() {
@@ -43,6 +46,15 @@ function App() {
             <Route path='/curso/:id' component={SoloCurso} />
             <Route path='/review/:id' component={Reviews} />
             <PrivateRoute path='/solo/epi/:epi/:curso' component={SoloEpisodioPagado} />
+
+            <Route path='/backend' component={Backend} />
+            <Route path='/frontend' component={Frontend} />
+            <Route path='/blockchain' component={Blockchain} />
+            <Route path='/hacking' component={Hacking} />
+
+
+
+
 
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
@@ -66,7 +78,6 @@ function App() {
             <PrivateRoute path='/order/:id' component={OrderScreen} />
             <PrivateRoute path='/payment' component={PaymentScreen} />
             <PrivateRoute path='/placeorder' component={PlaceOrderScreen} />
-
       </Switch>
     </Router>
   );

@@ -13,7 +13,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { listOrders } from "../../actions/orderActions";
 import { listURL } from '../../actions/orderActions'
-
+import { BsSearch } from "react-icons/bs";
+import { FaLocationArrow } from "react-icons/fa";
 
 
 
@@ -87,10 +88,10 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
 
-        <div className='w-full h-[350px] bg-gray-900/90 absolute'>
+        <div className='w-full  bg-gray-900 absolute'>
             <div className="grid grid-cols-3  m-8">
                 <div className="col-span-2">
-                    <h1>{episodio.title} </h1>
+                    <h1 className="text-gray-200 text-center mb-3">{episodio.title} </h1>
                     {urls && urls.map((url) => (
                         <>
                         {url.title == episodio.title ? (
@@ -117,33 +118,37 @@ const SoloEpisodioPagado = ({ match, history }) => {
 </>
                     ))}
 
-                    <p className="text-base mt-6 text-gray-900">{episodio.description}</p>
-                    <a href={`http://127.0.0.1:8000${episodio.file}`}>
-                        Ver Recurso<br></br>
+                    <p className="text-base mt-6 text-gray-200 ">{episodio.description}</p>
+                    <a href={`http://127.0.0.1:8000${episodio.file}`} className='text-gray-200 my-5'>
+                        Ver Recurso
                     </a>
 
+                    <br></br>
+                    <br></br>
 
-                    <form onSubmit={submitHandler}>
-                        <div className="shadow sm:overflow-hidden sm:rounded-md m-6 text-right mr-6">
-                            <div className="mt-1">
-                                <textarea
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    type="text"
-                                    id="body"
-                                    rows={3}
-                                    className="relative block w-full    border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-700 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                    placeholder="Anade un comentario!"
-                                />
-                            </div>
-                            <button
-                                type='submit'
-                                className="bg-gray-900 m-6 text-white px-4 py-3 rounded-md text-sm font-medium ml-2"
-                            >
-                                Commentar
-                            </button>
-                        </div>
-                    </form>
+<form className="w-full" onSubmit={submitHandler}>
+    <label htmlFor="search" className="sr-only">
+      Search
+    </label>
+    <div className="relative">
+      
+      <input
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+        required
+        className="block w-full font-gilroy-light bg-gray-200 dark:bg-dark-bg border dark:border-dark-bg border-gray-300 rounded-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+        placeholder="Anade un comentario"
+      />
+      <button
+      type="submit"
+      className=" absolute inset-y-0 right-0 pl-3 flex items-center">
+        <FaLocationArrow className="h-5 w-5 text-gray-800 mr-5" aria-hidden="true" />
+      </button>
+    </div>
+  </form>
+
+
+                    
 
 
                     {episodio.comments && episodio.comments.map((comment) => (
@@ -157,8 +162,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
                                             alt="Person"
                                         />
                                         <div className="flex flex-col justify-center">
-                                            <p className="text-lg font-bold">{comment.user}</p>
-                                            <p className="text-sm text-gray-800">{comment.description}</p>
+                                            <p className="text-lg font-bold text-gray-100">{comment.user}</p>
+                                            <p className="text-sm text-gray-200">{comment.description}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +181,15 @@ const SoloEpisodioPagado = ({ match, history }) => {
                         <>
                             <ListGroup key={epi.id}>
                                 <ListGroup.Item action href={`/solo/epi/${epi.id}/${curso.id}`}>
-                                    {epi.title}
+                                    <div className="relative">
+                                    <button
+                                        type="submit"
+                                        className=" absolute inset-y-0 right-0 pl-3 flex items-center">
+                                            <FaLocationArrow className="h-5 w-5 text-gray-800 mr-5" aria-hidden="true" />
+                                        </button>
+                                    {epi.title} 
+           
+                                    </div>
                                 </ListGroup.Item>
                             </ListGroup>
                         </>

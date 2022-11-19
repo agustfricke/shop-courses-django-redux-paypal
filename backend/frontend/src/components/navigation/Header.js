@@ -123,7 +123,7 @@ export default function Header() {
                           {({ active }) => (
                             <a
                               style={{ textDecoration: 'none' }}
-                              href="/profile"
+                              href="/hacking"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               HACKING
@@ -135,8 +135,7 @@ export default function Header() {
                           {({ active }) => (
                             <a
                               style={{ textDecoration: 'none' }}
-                              onClick={logoutHandler}
-                              href="#"
+                              href="/backend"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               BACKEND
@@ -150,8 +149,7 @@ export default function Header() {
                           {({ active }) => (
                             <a
                               style={{ textDecoration: 'none' }}
-                              onClick={logoutHandler}
-                              href="#"
+                              href="/frontend"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               FRONTEND
@@ -163,8 +161,7 @@ export default function Header() {
                           {({ active }) => (
                             <a
                               style={{ textDecoration: 'none' }}
-                              onClick={logoutHandler}
-                              href="#"
+                              href="/blockchain"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               BLOCKCHAIN
