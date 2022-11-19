@@ -39,10 +39,9 @@ def createCurso(request):
     curso = Curso.objects.create(
         user=user,
         title='Titulo',
-        price=0,
-        category='df',
-        description='dfdf',
-        wallet='dfdf',
+        category='Categoria',
+        description='Descripcion',
+        trailer='Trailer URL',
     )
     serializer = CursoSerializer(curso, many=False)
     return Response(serializer.data)
@@ -72,8 +71,7 @@ def updateCurso(request, pk):
         curso.title = data['title']
         curso.category = data['category']
         curso.description = data['description']
-        curso.price = data['price']
-        curso.wallet = data['wallet']
+        curso.trailer = data['trailer']
         curso.save()
         serializer = CursoSerializer(curso, many=False)
         return Response(serializer.data)  
@@ -123,24 +121,6 @@ def getEpisodios(request):
     serializer = EpisodioSerializer(episodio, many=True)
     return Response(serializer.data)
 
-    
-@api_view(['POST'])
-def uploadVideoEpisodio(request):
-    data = request.data
-    episodio_id = data['episodio_id']
-    episodio = Episodio.objects.get(id=episodio_id)
-    episodio.video = request.FILES.get('video')
-    episodio.save()
-    return Response('Video was uploaded')
-
-@api_view(['POST'])
-def uploadPicEpisodio(request):
-    data = request.data
-    episodio_id = data['episodio_id']
-    episodio = Episodio.objects.get(id=episodio_id)
-    episodio.image = request.FILES.get('image')
-    episodio.save()
-    return Response('Image was uploaded')
 
 @api_view(['POST'])
 def uploadFileEpisodio(request):

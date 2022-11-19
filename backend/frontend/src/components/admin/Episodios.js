@@ -17,6 +17,7 @@ export default function Episodios ({ match, history }) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
+
     const dispatch = useDispatch()
 
     const detailsCurso = useSelector(state => state.detailsCurso)
@@ -51,7 +52,7 @@ export default function Episodios ({ match, history }) {
         dispatch(episodioCreate(
             match.params.id, {
             title,
-            description
+            description,
         }
         ))
     }
@@ -99,9 +100,6 @@ export default function Episodios ({ match, history }) {
                                     <tr key={epi.id}>
                                         <td>{epi.title}</td>
 
-
-
-                                        
                                         <td className=''>
                                         <a href={`/episodio/${epi.id}/form`}>
 
@@ -173,7 +171,7 @@ export default function Episodios ({ match, history }) {
                         </Form.Control>
                     </Form.Group>  
 
-
+                    
                     <div className='text-center py-2'>
                         <button type='submit' 
                         className='bg-gray-900 text-white px-5 py-3 rounded-md text-sm font-medium ml-2'

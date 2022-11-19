@@ -127,6 +127,8 @@ const SoloCurso = ({ match, history }) => {
 
                                                 <>
 
+
+
                                                 </>
 
                                             ) : (
@@ -192,6 +194,7 @@ const SoloCurso = ({ match, history }) => {
                                                                 ) : (
 
                                                                     <>
+
 
                                                                     </>
 

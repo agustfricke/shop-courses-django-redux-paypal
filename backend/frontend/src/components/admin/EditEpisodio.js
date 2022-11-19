@@ -18,12 +18,6 @@ function EditEpisodio({ match, history }) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
-    const [image, setImage] = useState('')
-    const [uploading, setUploading] = useState(false)
-
-    const [video, setVideo] = useState('')
-    const [uploadingVideo, setUploadingVideo] = useState(false)
-
     const [file, setFile] = useState('')
     const [uploadingFile, setUploadingFile] = useState(false)
 
@@ -47,8 +41,6 @@ function EditEpisodio({ match, history }) {
             } else {
                 setTitle(episodio.title)
                 setDescription(episodio.description)
-                setImage(episodio.image)
-                setVideo(episodio.video)
                 setFile(episodio.file)
             }
         }
@@ -60,64 +52,11 @@ function EditEpisodio({ match, history }) {
             id: episodioId,
             title,
             description,
-            image,
-            video,
             file,
         }))
     }
 
-    const uploadImageHandler = async (e) => {
-        const file = e.target.files[0]
-        const formData = new FormData()
-
-        formData.append('image', file)
-        formData.append('episodio_id', episodioId) 
-
-        setUploading(true)
-
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data' 
-                }
-            }
-
-            const { data } = await axios.post('http://127.0.0.1:8000/cursos/uploadPicEpisodio/', formData, config)
-            
-            setImage(data)
-            setUploading(false)
-
-        } catch (error) {
-            setUploading(false)
-        }
-    }
-
-    const uploadVideoHandler = async (e) => {
-        const file = e.target.files[0]
-        const formData = new FormData()
-
-        formData.append('video', file)
-        formData.append('episodio_id', episodioId) 
-
-        setUploadingVideo(true)
-
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data' 
-                }
-            }
-
-            const { data } = await axios.post('http://127.0.0.1:8000/cursos/uploadVideoEpisode/', formData, config)
-            
-            setVideo(data)
-            setUploadingVideo(false)
-
-        } catch (error) {
-            setUploadingVideo(false)
-        }
-    }
-
+   
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
@@ -190,39 +129,7 @@ function EditEpisodio({ match, history }) {
         </Form.Group>
 
 
-        <Form.Group controlId='image' className='py-2'>
-            <Form.Label>Image</Form.Label>
-            <Form.Control
-                type='text'
-                placeholder='Image'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-            >
-            </Form.Control>
-            <Form.Control
-                label='Choose file'
-                type='file'
-                onChange={uploadImageHandler}
-            >
-            </Form.Control>
-        </Form.Group>
-
-        <Form.Group controlId='image' className='py-2'>
-            <Form.Label>Video</Form.Label>
-            <Form.Control
-                type='text'
-                placeholder='Image'
-                value={video}
-                onChange={(e) => setVideo(e.target.value)}
-            >
-            </Form.Control>
-            <Form.Control
-                label='Choose file'
-                type='file'
-                onChange={uploadVideoHandler}
-            >
-            </Form.Control>
-        </Form.Group>
+        
 
         <Form.Group controlId='image' className='py-2'>
             <Form.Label>Recurso</Form.Label>

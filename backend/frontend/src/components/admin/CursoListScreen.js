@@ -92,7 +92,6 @@ function CursoListScreen({ history }) {
                                     <th>Pic</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Price $ USD</th>
                                     <th>Episodios</th>
                                     <th></th>
                                 </tr>
@@ -111,7 +110,6 @@ function CursoListScreen({ history }) {
 
                                         <td>{curso.title}</td>
                                         <td>{curso.category}</td>
-                                        <td>{curso.price}</td>
                                         <td>
                                         <a href={`/epi/${curso.id}`}>
 

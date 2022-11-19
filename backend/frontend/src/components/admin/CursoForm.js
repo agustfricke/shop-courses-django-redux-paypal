@@ -15,11 +15,10 @@ function CursoForm({ match, history }) {
     const cursoId = match.params.id
 
     const [title, setTitle] = useState('')
-    const [wallet, setWallet] = useState('')
+    const [trailer, setTrailer] = useState('')
+    const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
-    const [category, setCategory] = useState('')
-    const [price, setPrice] = useState('0')
     const [uploading, setUploading] = useState(false)
 
 
@@ -41,11 +40,10 @@ function CursoForm({ match, history }) {
                 dispatch(listCursoDetails(cursoId))
             } else {
                 setTitle(curso.title)
+                setTrailer(curso.trailer)
                 setDescription(curso.description)
                 setImage(curso.image)
                 setCategory(curso.category)
-                setPrice(curso.price)
-                setWallet(curso.wallet)
             }
         }
     }, [dispatch, curso, cursoId, history, successUpdate])
@@ -56,10 +54,9 @@ function CursoForm({ match, history }) {
             id: cursoId,
             title,
             description,
+            trailer,
             image,
             category,
-            price,
-            wallet,
         }))
     }
 
@@ -136,15 +133,16 @@ function CursoForm({ match, history }) {
                             </Form.Group>
 
                             <Form.Group controlId='description' className='py-2'>
-                                <Form.Label>Wallet ETH</Form.Label>
+                                <Form.Label>Trailer URL</Form.Label>
                                 <Form.Control
                                     type='description'
-                                    placeholder='Enter Wallet'
-                                    value={wallet}
-                                    onChange={(e) => setWallet(e.target.value)}
+                                    placeholder='Trailer URL'
+                                    value={trailer}
+                                    onChange={(e) => setTrailer(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>
+
 
                             <Form.Group controlId='image' className='py-2'>
                                 <Form.Label>Image</Form.Label>
@@ -171,18 +169,6 @@ function CursoForm({ match, history }) {
                                     placeholder='Enter Category'
                                     value={category}
                                     onChange={(e) => setCategory(e.target.value)}
-                                >
-                                </Form.Control>
-                            </Form.Group>
-
-
-                            <Form.Group controlId='price' className='py-2'>
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control
-                                    type='price'
-                                    placeholder='Enter Price'
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>

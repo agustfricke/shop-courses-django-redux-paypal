@@ -9,6 +9,10 @@ import ReactPlayer from 'react-player'
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { listMyOrders } from "../../actions/orderActions";
+import { listURL } from '../../actions/orderActions'
+
+
 
 
 
@@ -32,9 +36,16 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { curso } = detailsCurso
 
+    const orderListMy = useSelector(state => state.orderListMy)
+    const { orders } = orderListMy
+
+    const urlList = useSelector(state => state.urlList)
+    const { urls } = urlList
+
 
 
     useEffect(() => {
+        
         if (successEpisodioComment) {
             setDescription('')
             dispatch({ type: EPISODIO_CREATE_COMMENT_RESET })
@@ -42,6 +53,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
         dispatch(listEpisodioDetails(match.params.epi))
         dispatch(listCursoDetails(match.params.curso))
+        dispatch(listMyOrders())
+        dispatch(listURL())
 
 
     }, [dispatch, match, successEpisodioComment])
@@ -58,17 +71,45 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
     return (
+        <>
+        {orders && orders.map(o => (
+
+                <>
+                {o.user ? (
+
+                    <>
+
+
+
+        
         <div className='w-full h-[350px] bg-gray-900/90 absolute'>
             <div className="grid grid-cols-3  m-8">
                 <div className="col-span-2">
                     <h1 className="text-center  font-bold text-2xl  text-white">{episodio.title}</h1>
+                    {urls && urls.map((url) => (
+                        <>
+                        {url.title == episodio.title ? (
+
+                            <>
+                           
+                            </>
+
+                        ) : (
+                            <>
+
                     <div className="player-wrapper">
-                        <ReactPlayer url='https://vimeo.com/772171855?ts=0' fallback fluid={false}
+                        <ReactPlayer url={url.url}
                             width="100%"
                             height="100%"
                             className="react-player"
                         />
                     </div>
+
+                    </>
+                    )}
+</>
+                    ))}
+
                     <p className="text-base mt-6 text-gray-900">{episodio.description}</p>
                     <a href={`http://127.0.0.1:8000${episodio.file}`}>
                         Ver Recurso<br></br>
@@ -100,7 +141,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
                     {episodio.comments && episodio.comments.map((comment) => (
                         <>
-                            <div className="px-4 py-4  md:max-w-full   ">
+                            <div key={comment.id} className="px-4 py-4  md:max-w-full   ">
                                 <div className="grid gap-10 mx-auto sm:row-gap-10 ">
                                     <div className="flex">
                                         <img
@@ -126,7 +167,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
                     <h1 className="font-bold text-2xl my-6 text-center text-white">Todos los episodios</h1>
                     {curso.episodios && curso.episodios.map((epi) => (
                         <>
-                            <ListGroup >
+                            <ListGroup key={epi.id}>
                                 <ListGroup.Item action href={`/solo/epi/${epi.id}/${curso.id}`}>
                                     {epi.title}
                                 </ListGroup.Item>
@@ -136,6 +177,22 @@ const SoloEpisodioPagado = ({ match, history }) => {
                 </div>
             </div>
         </div>
+
+
+        </>
+
+) : (
+
+    <>
+    </>
+)}
+</>
+))}
+
+
+
+        </>
+
     );
 };
 

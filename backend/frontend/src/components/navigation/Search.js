@@ -23,21 +23,29 @@ function Search() {
 
     return (
 
-        <Form
-            onSubmit={submitHandler} className='d-flex'
-        >
-           
-                        <input
-                        onChange={(e) => setKeysearch(e.target.value)}
-                        name="q"
-                        type="text"
-                        className="w-full px-10 py-2 font-bold text-white bg-gray-800 rounded-full hover:bg-gray-900 focus:outline-none focus:shadow-outline"  
-                        placeholder="Busca aqui"
-                
-                        />
-                       
-           
-        </Form>
+
+
+
+  <form className="w-full" onSubmit={submitHandler}>
+    <label htmlFor="search" className="sr-only">
+      Search
+    </label>
+    <div className="relative">
+      <button
+      type="submit"
+      className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+        <BsSearch className="h-5 w-5 text-gray-400" aria-hidden="true" />
+      </button>
+      <input
+      onChange={(e) => setKeysearch(e.target.value)}
+        id="search"
+        name="search"
+        className="block w-full font-gilroy-light bg-white dark:bg-dark-bg border dark:border-dark-bg border-gray-300 rounded-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+        placeholder="Search"
+        type="search"
+      />
+    </div>
+  </form>
     )
 }
 

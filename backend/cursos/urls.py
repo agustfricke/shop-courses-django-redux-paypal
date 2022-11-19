@@ -17,8 +17,6 @@ urlpatterns = [
     path('deleteEpisodio/<int:pk>/', views.deleteEpisodio),
     path('get/all/', views.getEpisodios),
     # Media Episodio
-    path('uploadVideoEpisode/', views.uploadVideoEpisodio),
-    path('uploadPicEpisodio/', views.uploadPicEpisodio),
     path('uploadFileEpisodio/', views.uploadFileEpisodio),
 
     # Comments 

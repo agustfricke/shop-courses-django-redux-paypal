@@ -21,7 +21,7 @@ function LastCursoCarousel() {
 
 return (
   
-    <div className='h-[500px] bg-gray-900/90 mb-10'>
+    <div className='h-[440px] bg-gray-900/90 mb-10'>
         <div className="mx-auto max-w-3xl pt-10 pb-10">
           <div>
 <br></br> <br></br>
@@ -33,9 +33,11 @@ return (
                 <span className="block xl:inline text-indigo-300">online</span>{' '}
 
               </h3>
-              <p className="mt-6 text-lg leading-10 text-gray-200 sm:text-center">
-                Especialízate en las áreas con mayor demanda laboral y aprende lo que necesitas para desarrollar tu perfil profesional
-              </p>
+              <h5 className="mt-6 text-lg leading-10 text-gray-200 sm:text-center">
+                Especialízate en las áreas con mayor demanda laboral y 
+                aprende lo que necesitas para desarrollar tu perfil profesional.
+
+              </h5>
 
             </div>
 
@@ -45,50 +47,37 @@ return (
 
       <div className='flex justify-center'>
 
-        <div className="grid grid-cols-3">
+        <div className="">
 
 
-          <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
-            <Tilt>
-              <center>
-                <h1 className="block text-indigo-300 xl:inline">HACKING</h1>
-                <img
-                  style={{ maxHeight: "340px" }}
-                  className='px-8'
-                  src={hacking}
-                />
-              </center>
-
-            </Tilt>
-          </Link>
+          
 
           <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
-            <Tilt>
+          <div className='bg-white shadow-2xl'>
+          <div className='p-7'>
+
+
               <center>
-                <h1 className="block text-indigo-300 xl:inline">BACKEND</h1>
-                <img
-                  style={{ maxHeight: "345px" }}
-                  className='px-8'
-                  src={backend}
-                />
+                <h2 className="block text-indigo-900 xl:inline">TODOS LOS CURSOS POR $65</h2>
+                <br></br>
+                <br></br>
+                <button 
+                className="mt-2 px-10  items-center justify-center  border border-transparent bg-gray-700 py-3  text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+
+                >COMPRAR</button>
+
+                
+                
               </center>
-            </Tilt>
+          </div>
+          </div>
+
+
           </Link>
 
 
 
-          <Link to='{`/curso/${curso.id}`}' style={{ textDecoration: 'none' }}>
-            <Tilt>
-              <center>
-                <h1 className="block text-indigo-300 xl:inline">FRONTEND</h1>
-                <img
-                  style={{ maxHeight: "340px" }}
-                  className='px-8'
-                  src={frontend}
-                />
-              </center>
-            </Tilt>
-          </Link>
+          
         </div>
       </div>
     </div>
