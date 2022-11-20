@@ -42,10 +42,35 @@ import {
 
     ACTIVATION_REQUEST,
     ACTIVATION_SUCCESS,
-    ACTIVATION_FAIL
+    ACTIVATION_FAIL,
+
+    USER_PREMIUM_REQUEST,
+    USER_PREMIUM_SUCCESS,
+    USER_PREMIUM_FAIL,
+    USER_PREMIUM_RESET,
 
 
 } from '../constants/userConstants'
+
+
+export const userPremumReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_PREMIUM_REQUEST:
+            return { loading: true }
+
+        case USER_PREMIUM_SUCCESS:
+            return { loading: false, success: true, userInfo: action.payload }
+
+        case USER_PREMIUM_FAIL:
+            return { loading: false, error: action.payload }
+
+        case USER_PREMIUM_RESET:
+            return {}
+
+        default:
+            return state
+    }
+}
 
 
 export const userActivationReducer = (state = {}, action) => {

@@ -14,6 +14,8 @@ urlpatterns = [
 
     # Admin
     path('update/<int:pk>/', views.updateUser),
-    path('delete/<int:pk>/', views.deleteUser)
+    path('delete/<int:pk>/', views.deleteUser),
+
+    path('premium/', views.premium),
 ]
 

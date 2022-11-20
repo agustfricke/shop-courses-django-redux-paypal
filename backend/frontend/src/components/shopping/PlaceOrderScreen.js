@@ -4,28 +4,24 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../utils/Message'
 import CheckoutSteps from './CheckoutSteps'
-import { createOrder } from '../../actions/orderActions'
-import { ORDER_CREATE_RESET } from '../../constants/orderConstants'
+import { premiumUser } from '../../actions/userActions'
 
 function PlaceOrderScreen({ history }) {
 
-    const orderCreate = useSelector(state => state.orderCreate)
-    const { order, error, success } = orderCreate
+    const userPremum = useSelector(state => state.userPremum)
+    const { order, error, success } = userPremum
 
     const dispatch = useDispatch()
 
-
-
     useEffect(() => {
-        if (success) {
-            history.push(`/order/${order.id}`)
-            dispatch({ type: ORDER_CREATE_RESET })
-        }
-    }, [success, history])
+          }, [dispatch, history, success])
+    
+      const submitHandler = (e) => {
+        e.preventDefault()
+        history.push('/')
+          dispatch(premiumUser(success))
+      }
 
-    const placeOrder = () => {
-        dispatch(createOrder())
-    }
 
     return (
         <div>
@@ -43,7 +39,7 @@ function PlaceOrderScreen({ history }) {
                                     <Button
                                         type='button'
                                         className='btn-block'
-                                        onClick={placeOrder}
+                                        onClick={submitHandler}
                                     >
                                         Place Order
                                     </Button>

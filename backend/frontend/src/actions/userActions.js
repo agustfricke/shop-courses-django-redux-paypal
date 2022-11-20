@@ -41,7 +41,11 @@ import {
 
     ACTIVATION_REQUEST,
     ACTIVATION_SUCCESS,
-    ACTIVATION_FAIL
+    ACTIVATION_FAIL,
+
+    USER_PREMIUM_REQUEST,
+    USER_PREMIUM_SUCCESS,
+    USER_PREMIUM_FAIL,
 
 } from '../constants/userConstants'
 
@@ -49,6 +53,52 @@ import {
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
 const URL = 'http://127.0.0.1:8000/'
+
+
+
+export const premiumUser = (user) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: USER_PREMIUM_REQUEST })
+        dispatch({ type: USER_DETAILS_RESET })
+
+        const {
+            userLogin: { userInfo }
+        } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(
+            `${URL}users/premium/`,
+            user,
+            config
+        )
+
+        dispatch({
+            type: USER_PREMIUM_SUCCESS,
+            payload: data
+        })
+
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload: data
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
+
+    } catch (error) {
+        dispatch({
+            type: USER_PREMIUM_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
 
 
 export const activation = (uid, token) => async (dispatch) => {

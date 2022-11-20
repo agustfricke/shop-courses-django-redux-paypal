@@ -121,9 +121,8 @@ const SoloCurso = ({ match, history }) => {
                                     src={`http://127.0.0.1:8000${curso.image}`}
                                 />
                                 <div className='p-4'>
-                                    {orders && orders.map(o => (
                                         <>
-                                            {o.user === userInfo.user_name ? (
+                                            {userInfo.premium ? (
 
                                                 <>
 
@@ -145,7 +144,6 @@ const SoloCurso = ({ match, history }) => {
                                                 </>
                                             )}
                                         </>
-                                    ))}
 
 
                                     <button
@@ -176,10 +174,9 @@ const SoloCurso = ({ match, history }) => {
                                                         {epi.description}
                                                     </div>
                                                     <div>
-                                                        {orders && orders.map(o => (
                                                             <>
 
-                                                                {o.user === userInfo.user_name ? (
+                                                                {userInfo.premium ? (
 
                                                                     <a href={`/solo/epi/${epi.id}/${curso.id}`}>
                                                                         <button
@@ -200,7 +197,6 @@ const SoloCurso = ({ match, history }) => {
 
                                                                 )}
                                                             </>
-                                                        ))}
                                                     </div>
                                                 </div>
                                             </Accordion.Body>

@@ -65,22 +65,19 @@ return (
         </div>
 
 
-        {userInfo ? (
 
 
-            <>
 
 
-{orders && orders.map(o => (
                                         <>
-                                            {o.user === userInfo.user_name ? (
+                                            {userInfo.premium ? (
 
                                                 <>
 
 
 <div class="flex justify-center mx-10">
   <Tilt>
-  <Link to={'/hacking'}>
+  <Link to={'/'}>
 
           <div className='mx-10'>
             <div class="p-8 bg-gray-900 rounded">
@@ -107,7 +104,7 @@ return (
           </Tilt>
 
           <Tilt>
-          <Link to={'/backend'}>
+          <Link to={'/'}>
 
           <div className='mx-10'>
             <div class="p-8 bg-gray-900 rounded">
@@ -139,7 +136,7 @@ return (
           </Tilt>
 
           <Tilt>
-          <Link to={'/frontend'}>
+          <Link to={'/'}>
 
           <div className='mx-10'>
             <div class="p-8 bg-gray-900 rounded">
@@ -172,7 +169,7 @@ return (
 
 
           <Tilt>
-<Link to={'/blockchain'}>
+<Link to={'/'}>
           <div className='mx-10'>
             <div class="p-8 bg-gray-900 rounded">
                 
@@ -212,8 +209,6 @@ return (
                                             ) : (
 
                                                 <>
-
-
 
 
 
@@ -453,20 +448,10 @@ return (
          
           </div>
 
-
-
-
-
-
-
-
-
-
                                                     
                                                 </>
                                             )}
                                         </>
-                                    ))}
 
 
 
@@ -474,274 +459,26 @@ return (
 
 
 
-            </>
 
 
 
 
 
-        ) : (
 
 
 
-          <>
           
           
 
 
 
-          <div class=" flex-initial w-85   max-w-screen-md gap-10 sm:mx-auto">
-          <div>
-            <div class="p-8 bg-gray-900 rounded">
-              <div class="mb-4 text-center">
-                <p class="text-xl font-medium tracking-wide text-gray-200">
-                  SUBSCRIPCION
-                </p>
-                <div class="flex items-center justify-center">
-                  <p class="mr-2 text-5xl font-semibold text-gray-200 lg:text-6xl">
-                    $59,99
-                  </p>
-                </div>
-              </div>
-              <div className='flex justify-center mr-9'>
-                
-              <div>
-              <ul class="mb-8 space-y-2">
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">700 horas de contentido</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Desarrollo Frontend</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Desarrollo Backend</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Proyectos Full Stack</p>
-                </li>
-              </ul>
-              </div>
-
-              <div>
-              <ul class="mb-8 space-y-2">
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Desarrollo Blockchain</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Hacking Etico</p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Soporte </p>
-                </li>
-                <li class="flex items-center">
-                  <div class="mr-3">
-                    <svg
-                      class="w-4 h-4 text-teal-accent-400"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="6,12 10,16 18,8"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        fill="none"
-                        r="11"
-                        stroke="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-medium text-gray-300">Nuevos cursos todos los meses</p>
-                </li>
-              </ul>
-              </div>
-
-
-
-              </div>
-              <center>
-              <button
-                                        type="submit"
-                                        className="mt-2 mx-4  items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                        COMPRAR
-                                    </button>
-
-                                    <button
-                                        type="submit"
-                                        className="mt-2 mx-4 items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                        REGISTRAR
-                                    </button>
-                                    </center>
-            </div>
-            <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />
-            <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
-            <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
-          </div>
-         
-          </div>
-
-
-
-          </>
 
 
 
 
 
-        )}
+
+
 
 
 

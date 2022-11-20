@@ -78,13 +78,11 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
     return (
 
-        <>
 
-{orders && orders.map(o => (
 
     <>
 
-{o.user === userInfo.user_name ? (
+{userInfo.premium ? (
 
 
 
@@ -215,9 +213,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
                         )
                     }
 </>
-))}
 
-</>
     );
 };
 

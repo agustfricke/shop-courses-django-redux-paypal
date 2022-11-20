@@ -33,6 +33,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_name = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255, null=True, blank=True)
+    premium = models.CharField(max_length=255, null=True, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     bio = models.TextField(_('bio'), max_length=500, blank=True)
     image = models.ImageField(null=True, blank=True, default='/placeholder.jpg', upload_to ='users')

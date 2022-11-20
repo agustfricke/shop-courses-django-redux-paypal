@@ -12,6 +12,7 @@ import { userLoginReducer,
         passwordRestReducer,
         passwordConfirmReducer,
         userActivationReducer,
+        userPremumReducer,
 } from './reducers/userReducers'
 
 import { cursoListReducer,
@@ -72,6 +73,7 @@ const reducer = combineReducers({
     passwordRest:passwordRestReducer,
     passwordConfirm:passwordConfirmReducer,
     userActivation:userActivationReducer,
+    userPremum: userPremumReducer,
 
     // Curso 
     cursoList: cursoListReducer,

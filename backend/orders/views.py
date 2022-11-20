@@ -84,7 +84,7 @@ def createOrder(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def getSoloOrder(request, pk):
     user = request.user
     try:
