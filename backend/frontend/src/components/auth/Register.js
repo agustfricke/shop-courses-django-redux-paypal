@@ -4,9 +4,15 @@ import { register } from '../../actions/userActions';
 import Loader from '../utils/Loader';
 import eth from '../../media/placeholder.jpg';
 import Error from '../utils/Error';
+import Success from "../utils/Success";
+
 
 
 export default function Register({ location, history }) {
+
+  useEffect(() => {
+    document.title = 'Tech con Agust | Registro'
+  }, []);
 
   const [first_name, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +20,8 @@ export default function Register({ location, history }) {
   const [password, setPassword] = useState('');
   const [re_password, setRePassword] = useState('');
   const [message, setMessage] = useState('');
+  const [exito, setExito] = useState('');
+
 
   const dispatch = useDispatch()
 
@@ -23,11 +31,7 @@ export default function Register({ location, history }) {
   const { error, loading, success } = userRegister;
 
 
-  useEffect(() => {
-    if (success) {
-      history.push(redirect);
-    }
-  }, [history, success, redirect]);
+
 
 
 
@@ -38,19 +42,53 @@ export default function Register({ location, history }) {
       setMessage('Passwords must match ');
     } else {
       dispatch(register(first_name, email, user_name, password, re_password));
+      setExito(`Verifica tu Correo en ${email}`)
     }
   }
+
+  useEffect(() => {
+    if (success) {
+      setExito(`Verifica tu Correo en ${email}`)
+    }
+  }, [history, success]);
 
 
 
   return (
     <>
       {message && <Error>{message}</Error>}
+      {exito && <Success>{exito}</Success>}
       {error && <Error>{error}</Error>}
       {loading ?
         <Loader />
         : (
-          <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<>
+          {success ? (
+
+          <>
+
+<div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className=' shadow-2xl'>
+              <div className=' m-5 p-10'>
+                <div className="w-full max-w-md space-y-8">
+                  <div >
+                   
+                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                      VERIFICA TU CORREO ELECTRINCO
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </>
+
+          ) : (
+
+            <>
+
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className=' shadow-2xl'>
               <div className=' m-5 p-10'>
                 <div className="w-full max-w-md space-y-8">
@@ -168,6 +206,12 @@ export default function Register({ location, history }) {
               </div>
             </div>
           </div>
+
+            </>
+
+        )}
+        </>
+         
         )}
     </>
   )

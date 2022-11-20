@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Components
 import Header from './components/navigation/Header';
+import Footer from './components/navigation/Footer';
 
 import Home from "./components/cursos/Home";
 import SoloCurso from "./components/cursos/SoloCurso";
@@ -34,6 +35,7 @@ import Backend from "./components/cursos/Backend";
 import Frontend from "./components/cursos/Frontend";
 import Blockchain from "./components/cursos/Blockchain";
 import Hacking from "./components/cursos/Hacking";
+import Terms from "./components/navigation/Terminos";
 
 
 function App() {
@@ -67,7 +69,9 @@ function App() {
         <PrivateRoute path='/URL/:id/form' component={VimeoForm} />
         <PrivateRoute path='/order/:id' component={OrderScreen} />
         <PrivateRoute path='/payment' component={PaymentScreen} />
+        <Route path='/terminos' component={Terms} />
       </Switch>
+      <Footer/>
     </Router>
   );
 }

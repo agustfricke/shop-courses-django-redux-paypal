@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Error from '../utils/Error';
 import Loader from '../utils/Loader'
@@ -6,6 +7,10 @@ import { getOrderDetails } from '../../actions/orderActions'
 
 
 function OrderScreen({ match, history }) {
+
+    useEffect(() => {
+        document.title = `Tech con Agust | Felicitaciones`
+      }, []);
 
     const orderId = match.params.id
     const dispatch = useDispatch()

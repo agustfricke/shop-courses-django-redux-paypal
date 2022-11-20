@@ -5,8 +5,8 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function Error ({ children }) {
 
     toast.error(children, {
+      duration: 15000,
         style: {
-          border: '2px solid #000000',
           padding: '20px',
           color: '#000000',
         },

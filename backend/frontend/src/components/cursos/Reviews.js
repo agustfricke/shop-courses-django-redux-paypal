@@ -15,6 +15,11 @@ import { listMyOrders } from "../../actions/orderActions";
 
 export default function Reviews({ match }) {
 
+
+    useEffect(() => {
+        document.title = 'Tech con Agust | Reviews'
+      }, []);
+
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
 

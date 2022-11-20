@@ -50,6 +50,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
 
+
+
     useEffect(() => {
         
         if (successEpisodioComment) {
@@ -74,7 +76,9 @@ const SoloEpisodioPagado = ({ match, history }) => {
         ))
     }
 
-
+    useEffect(() => {
+        document.title = `Tech con Agust | ${episodio.title}`
+      }, []);
 
     return (
 

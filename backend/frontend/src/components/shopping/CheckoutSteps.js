@@ -1,8 +1,12 @@
-import React from 'react';
+
+import React, { useState, useEffect } from "react";
 import { Nav } from 'react-bootstrap'
 
 
 function CheckoutSteps({ step1, step2 }) {
+
+
+
 
 
     return (

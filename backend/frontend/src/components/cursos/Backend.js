@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../utils/Loader';
 import Rating from '../utils/Rating';
@@ -8,6 +8,10 @@ import { listCursos } from "../../actions/cursoActions";
 
 
 function Backend() {
+
+  useEffect(() => {
+    document.title = 'Tech con Agust | Backend'
+  }, []);
 
   const cursoList = useSelector((state) => state.cursoList);
   const { error, loading, cursos } = cursoList;

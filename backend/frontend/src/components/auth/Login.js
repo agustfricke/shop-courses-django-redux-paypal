@@ -9,6 +9,10 @@ import eth from '../../media/placeholder.jpg';
 
 export default function Login({ location, history }) {
 
+  useEffect(() => {
+    document.title = 'Tech con Agust | Login'
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -118,6 +122,8 @@ export default function Login({ location, history }) {
               </div>
             </div>
           </div>
+
+          
         )}
     </>
   )

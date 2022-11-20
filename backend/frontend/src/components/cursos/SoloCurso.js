@@ -17,6 +17,8 @@ import { FaLocationArrow } from "react-icons/fa";
 
 const SoloCurso = ({ match, history }) => {
 
+
+
     const [quantity, setQuantity] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
@@ -26,6 +28,10 @@ const SoloCurso = ({ match, history }) => {
 
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
+
+    useEffect(() => {
+        document.title = `Tech con Agust | ${curso.title}`
+      }, []);
 
 
     const userLogin = useSelector(state => state.userLogin)

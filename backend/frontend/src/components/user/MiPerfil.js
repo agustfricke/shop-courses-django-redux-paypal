@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import Loader from '../utils/Loader';
 import Error from '../utils/Error';
@@ -6,8 +6,16 @@ import Error from '../utils/Error';
 
 export default function MiPerfil() {
 
+  useEffect(() => {
+    document.title = `Tech con Agust | Mi Perfil`
+  }, []);
+
   const userLogin = useSelector(state => state.userLogin)
   const { error, loading, userInfo } = userLogin
+
+  useEffect(() => {
+    document.title = `Tech con Agust | ${userInfo.user_name}`
+  }, []);
 
   return (
     <>

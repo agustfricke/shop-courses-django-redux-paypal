@@ -83,7 +83,7 @@ export default function Header(history) {
                             href={item.href}
                             className={classNames(
                               item.current ? 'bg-gray-700 text-gray-300' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                              'px-3 py-2 rounded-md text-sm font-medium'
+                              'px-3 mx-8 py-2 rounded-md text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
                             style={{ textDecoration: 'none' }}
@@ -98,8 +98,8 @@ export default function Header(history) {
 
                     <Menu as="div" className="relative ml-3 mt-1.5">
                     <div>
-                      <Menu.Button className="bg-gray-700 text-gray-300">
-                        <a>CATEGORIAS</a>
+                      <Menu.Button className="bg-gray-700 mx-8 text-gray-300">
+                        <a >CATEGORIAS</a>
                       </Menu.Button>
                     </div>
                     <Transition

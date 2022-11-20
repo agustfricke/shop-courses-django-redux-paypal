@@ -13,6 +13,10 @@ import Message from "../utils/Message";
 
 export default function EditProfile({ history }) {
 
+  useEffect(() => {
+    document.title = 'Tech con Agust | Edit Profile'
+  }, []);
+
   const [user_name, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [bio, setBio] = useState('')

@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.be46f889.css",
-    "main.js": "/static/js/main.32cbbf73.js",
-    "static/media/ethereum.png": "/static/media/ethereum.0cecd9a5b39db5c5cc47.png",
-    "static/media/hacker.png": "/static/media/hacker.45fdd2fce34c13dc029a.png",
-    "static/media/server.png": "/static/media/server.9b049d4d6f1bc711e53f.png",
-    "static/media/backend.png": "/static/media/backend.3bff8ac34a034b105ff7.png",
+    "main.css": "/static/css/main.4d7d82b1.css",
+    "main.js": "/static/js/main.b161f95e.js",
+    "static/media/data-server.png": "/static/media/data-server.5ac16688c69d5cdcee98.png",
+    "static/media/blockchain.png": "/static/media/blockchain.33d0a0b787862b9be232.png",
+    "static/media/hacker.png": "/static/media/hacker.c6b51a7a0c1fcc3c9058.png",
+    "static/media/ux-interface.png": "/static/media/ux-interface.8959ff3cc3dbe02c6aa1.png",
+    "static/media/placeholder.jpg": "/static/media/placeholder.971bf78e6d69945b7e6a.jpg",
     "index.html": "/index.html",
-    "main.be46f889.css.map": "/static/css/main.be46f889.css.map",
-    "main.32cbbf73.js.map": "/static/js/main.32cbbf73.js.map"
+    "main.4d7d82b1.css.map": "/static/css/main.4d7d82b1.css.map",
+    "main.b161f95e.js.map": "/static/js/main.b161f95e.js.map"
   },
   "entrypoints": [
-    "static/css/main.be46f889.css",
-    "static/js/main.32cbbf73.js"
+    "static/css/main.4d7d82b1.css",
+    "static/js/main.b161f95e.js"
   ]
 }

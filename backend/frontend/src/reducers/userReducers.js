@@ -95,7 +95,7 @@ export const passwordConfirmReducer = (state = {}, action) => {
             return { loading: true }
 
         case PASSWORD_RESET_CONFIRM_SUCCESS:
-            return { loading: false, userInfo: action.payload }
+            return { loading: false, success: action.payload }
 
         case PASSWORD_RESET_CONFIRM_FAIL:
             return { loading: false, error: action.payload }
@@ -112,7 +112,7 @@ export const passwordRestReducer = (state = {}, action) => {
             return { loading: true }
 
         case PASSWORD_RESET_SUCCESS:
-            return { loading: false, userInfo: action.payload }
+            return { loading: false, success: action.payload }
 
         case PASSWORD_RESET_FAIL:
             return { loading: false, error: action.payload }

@@ -40,7 +40,7 @@ function Search() {
       onChange={(e) => setKeysearch(e.target.value)}
         id="search"
         name="search"
-        className="block w-full font-gilroy-light bg-white dark:bg-dark-bg border dark:border-dark-bg border-gray-300 rounded-full py-2 pl-12 pr-12 text-sm placeholder-gray-700 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-500 focus:border-gray-500 "
+        className="block w-full font-gilroy-light bg-white dark:bg-dark-bg border dark:border-dark-bg border-gray-300 rounded-full py-2 pl-14 pr-14 text-sm placeholder-gray-700 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-500 focus:border-gray-500 "
         placeholder="Buscar"
       />
     </div>

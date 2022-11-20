@@ -88,7 +88,6 @@ export const premiumUser = (user) => async (dispatch, getState) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
@@ -121,7 +120,6 @@ export const activation = (uid, token) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
@@ -154,7 +152,6 @@ export const Confirm = (uid, token, new_password, re_new_password) => async (dis
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
@@ -186,7 +183,6 @@ export const Reset = (email) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({

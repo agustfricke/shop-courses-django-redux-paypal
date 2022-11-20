@@ -12,6 +12,10 @@ import { premiumUser } from '../../actions/userActions'
 
 function PaymentScreen({history}) {
 
+  useEffect(() => {
+    document.title = `Tech con Agust | Pago`
+  }, []);
+
   const userPremum = useSelector(state => state.userPremum)
   const { order, error, success } = userPremum
 
