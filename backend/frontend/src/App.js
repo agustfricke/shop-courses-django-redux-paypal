@@ -1,4 +1,4 @@
-import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Components
 import Header from './components/navigation/Header';
@@ -27,7 +27,6 @@ import EditEpisodio from "./components/admin/EditEpisodio";
 
 import OrderScreen from "./components/shopping/OrderScreen";
 import PaymentScreen from "./components/shopping/PaymentScreen";
-import PlaceOrderScreen from "./components/shopping/PlaceOrderScreen";
 import OrderListScreen from "./components/admin/OrderListScreen";
 import Vimeo from "./components/admin/VimeoURL";
 import VimeoForm from "./components/admin/VimeoForm";
@@ -40,44 +39,34 @@ import Hacking from "./components/cursos/Hacking";
 function App() {
   return (
     <Router>
-    <Header/>
+      <Header />
       <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path='/curso/:id' component={SoloCurso} />
-            <Route path='/review/:id' component={Reviews} />
-            <PrivateRoute path='/solo/epi/:epi/:curso' component={SoloEpisodioPagado} />
-
-            <Route path='/backend' component={Backend} />
-            <Route path='/frontend' component={Frontend} />
-            <Route path='/blockchain' component={Blockchain} />
-            <Route path='/hacking' component={Hacking} />
-
-
-
-
-
-            <Route path="/login" component={Login}/>
-            <Route path="/register" component={Register}/>
-            <Route path='/activate/:uid/:token' component={Activation} />
-            <Route path='/reset-password' component={ResetPassword} />
-            <Route path='/password/reset/confirm/:uid/:token/' component={ResetPasswordConfirm} />
-
-            <PrivateRoute path="/profile" component={MiPerfil}/>
-            <PrivateRoute path="/editprofile" component={EditProfile}/>
-
-            <PrivateRoute path="/admin/users" component={UserListScreen}/>
-            <PrivateRoute path='/admin/user/:id/edit' component={UserEditScreen} />
-            <PrivateRoute path='/admin/cursos' component={CursoListScreen} />
-            <PrivateRoute path='/cursos/:id/form' component={CursoForm} />
-            <PrivateRoute path='/episodio/:id/form' component={EditEpisodio} />
-            <PrivateRoute path='/epi/:id' component={Episodios} />
-            <PrivateRoute path='/admin/orders/' component={OrderListScreen} />
-            <PrivateRoute path='/admin/vimeo/' component={Vimeo} />
-            <PrivateRoute path='/URL/:id/form' component={VimeoForm} />
-
-            <PrivateRoute path='/order/:id' component={OrderScreen} />
-            <PrivateRoute path='/payment' component={PaymentScreen} />
-            <PrivateRoute path='/placeorder' component={PlaceOrderScreen} />
+        <Route path="/" component={Home} exact />
+        <Route path='/curso/:id' component={SoloCurso} />
+        <Route path='/review/:id' component={Reviews} />
+        <PrivateRoute path='/solo/epi/:epi/:curso' component={SoloEpisodioPagado} />
+        <Route path='/backend' component={Backend} />
+        <Route path='/frontend' component={Frontend} />
+        <Route path='/blockchain' component={Blockchain} />
+        <Route path='/hacking' component={Hacking} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path='/activate/:uid/:token' component={Activation} />
+        <Route path='/reset-password' component={ResetPassword} />
+        <Route path='/password/reset/confirm/:uid/:token/' component={ResetPasswordConfirm} />
+        <PrivateRoute path="/profile" component={MiPerfil} />
+        <PrivateRoute path="/editprofile" component={EditProfile} />
+        <PrivateRoute path="/admin/users" component={UserListScreen} />
+        <PrivateRoute path='/admin/user/:id/edit' component={UserEditScreen} />
+        <PrivateRoute path='/admin/cursos' component={CursoListScreen} />
+        <PrivateRoute path='/cursos/:id/form' component={CursoForm} />
+        <PrivateRoute path='/episodio/:id/form' component={EditEpisodio} />
+        <PrivateRoute path='/epi/:id' component={Episodios} />
+        <PrivateRoute path='/admin/orders/' component={OrderListScreen} />
+        <PrivateRoute path='/admin/vimeo/' component={Vimeo} />
+        <PrivateRoute path='/URL/:id/form' component={VimeoForm} />
+        <PrivateRoute path='/order/:id' component={OrderScreen} />
+        <PrivateRoute path='/payment' component={PaymentScreen} />
       </Switch>
     </Router>
   );

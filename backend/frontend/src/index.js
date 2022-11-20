@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux'
 import store from './store';
 import './bootstrap.min.css'
-
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

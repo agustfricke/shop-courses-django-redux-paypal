@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import CheckoutSteps from './CheckoutSteps'
@@ -7,17 +7,24 @@ import {
     PayPalButtons,
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
+import { premiumUser } from '../../actions/userActions'
+
 
 function PaymentScreen({history}) {
 
-    const cart = useSelector(state => state.cart) 
+  const userPremum = useSelector(state => state.userPremum)
+  const { order, error, success } = userPremum
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-
-    const checkoutHandler = () => {
-        history.push('/placeorder')
-      }
+  useEffect(() => {
+        }, [dispatch, history, success])
+  
+    const submitHandler = (e) => {
+      e.preventDefault()
+      history.push('/')
+        dispatch(premiumUser(success))
+    }
 
     return (
         <>
@@ -270,16 +277,11 @@ function PaymentScreen({history}) {
             const details = await actions.order.capture();
             const name = details.payer.name.given_name;
             alert("Transaction completed by " + name);
-            checkoutHandler();
+            submitHandler();
           }}
         />
 			</PayPalScriptProvider>
-              <button onClick={checkoutHandler} 
-                                        type="submit"
-                                        className="mt-2 items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                        PAGAR
-                                    </button>
+              
                                     </center>
             </div>
             <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />

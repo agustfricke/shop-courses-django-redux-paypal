@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Message from '../utils/Message';
-import Loader from '../utils/Loader'
+import Loader from '../utils/Loader';
+import Error from "../utils/Error";
 import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../utils/Rating'
 import { listCursoDetails, createCursoReview } from '../../actions/cursoActions'
 import { CURSO_CREATE_REVIEW_RESET } from '../../constants/cursoConstants'
 import { TbWorld } from "react-icons/tb";
-import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
-import Accordion from 'react-bootstrap/Accordion';
+import { Form } from 'react-bootstrap'
 import { listMyOrders } from "../../actions/orderActions";
 
 
 
 
-export default function Reviews({ match, history }) {
+export default function Reviews({ match }) {
 
-    const [quantity, setQuantity] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
 
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
 
-    const orderListMy = useSelector(state => state.orderListMy)
-    const { orders } = orderListMy
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
     const createReview = useSelector(state => state.createReview)
     const { loading: loadingcursoReview, error: errorcursoReview, success: successcursoReview } = createReview
@@ -43,10 +42,6 @@ export default function Reviews({ match, history }) {
 
     }, [dispatch, match, successcursoReview])
 
-    const addToCartHandler = () => {
-        history.push('/payment')
-
-    }
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -61,6 +56,11 @@ export default function Reviews({ match, history }) {
 
 
     return (
+        <>
+        {error && <Error>{error}</Error>}
+        {loading ?
+          <Loader />
+          : (
 
         <div name='support' className='w-full'>
             <div className='w-full h-[350px] bg-gray-900/90 absolute'>
@@ -112,8 +112,7 @@ export default function Reviews({ match, history }) {
                             </div>
                         </div>
 
-
-                        {orders && orders.map(o => (
+                       {userInfo && userInfo.premium ? (
                             <div className='bg-white shadow-2xl'>
                                 <div className='p-3 mt-6'>
                                     <h2 className='font-bold text-2xl my-6 text-gray-800 text-center'>Deja una Review </h2>
@@ -163,13 +162,20 @@ export default function Reviews({ match, history }) {
                                         </div>
                                     </form>
                                 </div>
+
                             </div>
-                        ))}
+                       ) : (
+
+                        <>
+                        </>
+
+                       )}
                     </div>
 
 
+
                     <div className="pt-8">
-                        {curso.reviews.length && curso.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
+                        {curso.reviews.length && curso.reviews.length === 0 && <Message>No Reviews</Message>}
                         {curso.reviews.map((review) => (
                             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                                 <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -198,6 +204,8 @@ export default function Reviews({ match, history }) {
                 </div>
             </div>
         </div>
+            )}
+            </>
     )
 
 }

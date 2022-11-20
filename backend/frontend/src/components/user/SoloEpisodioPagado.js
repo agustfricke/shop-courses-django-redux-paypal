@@ -82,7 +82,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
     <>
 
-{userInfo.premium ? (
+{userInfo && userInfo.premium ? (
 
 
 

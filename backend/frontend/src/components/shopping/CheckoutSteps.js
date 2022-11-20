@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav } from 'react-bootstrap'
 
 
-function CheckoutSteps({ step1, step2, step3 }) {
+function CheckoutSteps({ step1, step2 }) {
 
 
     return (
@@ -28,15 +28,6 @@ function CheckoutSteps({ step1, step2, step3 }) {
                 )}
             </Nav.Item>
 
-            <Nav.Item>
-                {step3 ? (
-                    <a to='/placeorder'>
-                        <Nav.Link>Place Order</Nav.Link>
-                    </a>
-                ): (
-                    <Nav.Link disabled>Place Order</Nav.Link>
-                )}
-            </Nav.Item>
         </Nav>
     )
 }

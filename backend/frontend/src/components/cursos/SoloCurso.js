@@ -9,6 +9,8 @@ import { TbWorld } from "react-icons/tb";
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import { listOrders } from "../../actions/orderActions";
+import { FaLocationArrow } from "react-icons/fa";
+
 
 
 
@@ -25,8 +27,6 @@ const SoloCurso = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
 
-    const orderList = useSelector(state => state.orderList)
-    const { orders } = orderList
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -42,7 +42,6 @@ const SoloCurso = ({ match, history }) => {
         }
 
         dispatch(listCursoDetails(match.params.id))
-        dispatch(listOrders())
 
     }, [dispatch, match, successcursoReview])
 
@@ -122,7 +121,7 @@ const SoloCurso = ({ match, history }) => {
                                 />
                                 <div className='p-4'>
                                         <>
-                                            {userInfo.premium ? (
+                                            {userInfo && userInfo.premium ? (
 
                                                 <>
 
@@ -137,7 +136,7 @@ const SoloCurso = ({ match, history }) => {
                                                     <button
                                                         onClick={addToCartHandler}
                                                         type="submit"
-                                                        className="mt-2 flex w-full items-center justify-center  border border-transparent bg-indigo-700 py-3 px-8 text-base font-medium text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                                        className="mt-2 flex w-full items-center justify-center   bg-indigo-700 py-3 px-8 text-base font-medium text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                                     >
                                                         Comprar
                                                     </button>
@@ -148,7 +147,7 @@ const SoloCurso = ({ match, history }) => {
 
                                     <button
                                         type="submit"
-                                        className="mt-2 flex w-full items-center justify-center  border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                        className="mt-2 flex w-full items-center justify-center  bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
                                         Ver Trailer
                                     </button>
@@ -160,7 +159,6 @@ const SoloCurso = ({ match, history }) => {
 
 
 
-                    <Table striped bordered hover responsive className='table-sm'>
                         <div className="grid grid-cols-3 gap-4">
                             <div className='col-span-2'>
                                 {curso.episodios && curso.episodios.map((epi) => (
@@ -171,21 +169,26 @@ const SoloCurso = ({ match, history }) => {
                                                 <div className="grid grid-cols-3 gap-4">
                                                     <div className="col-span-2 ">
 
-                                                        {epi.description}
+                                                    <p className="text-gray-800">{epi.description}</p>    
                                                     </div>
                                                     <div>
                                                             <>
 
-                                                                {userInfo.premium ? (
+                                                                {userInfo && userInfo.premium ? (
 
-                                                                    <a href={`/solo/epi/${epi.id}/${curso.id}`}>
-                                                                        <button
-                                                                            className='bg-gray-900 text-white px-5 py-2 rounded-md text-sm font-medium ml-2'
+                                                                    <a href={`/solo/epi/${epi.id}/${curso.id}`} style={{ textDecoration: 'none' }}>
+                                                <div className="relative">
+      
+      <p
+        className="block w-full font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg   py-2 pl-10 pr-3 text-sm  focus:outline-none hover:bg-gray-800 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+      > VER EPISODIO</p>
+      <button
+      type="submit"
+      className=" absolute inset-y-0 right-0 pl-3 flex items-center">
+        <FaLocationArrow className="h-5 w-5 text-gray-200 mr-5" aria-hidden="true" />
+      </button>
+    </div>
 
-                                                                        >
-                                                                            Ver Episodio
-
-                                                                        </button>
                                                                     </a>
 
                                                                 ) : (
@@ -205,7 +208,6 @@ const SoloCurso = ({ match, history }) => {
                                 ))}
                             </div>
                         </div>
-                    </Table>
                 </div>
             </div>
         </div>

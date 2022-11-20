@@ -1,12 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaShoppingCart } from "react-icons/fa";
-import { IconName } from "react-icons/bs";
-
 import { logout } from '../../actions/userActions'
 import Search from './Search';
 import eth from '../../media/placeholder.jpg'
@@ -41,20 +36,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header() {
+export default function Header(history) {
 
   const dispatch = useDispatch()
-
-  // const cart = useSelector(state => state.cart)
-  // const { cartItems } = cart
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
 
-  const logoutHandler = () => (
+  const logoutHandler = (e) => {
     dispatch(logout())
-  )
+}
+
 
 
 
@@ -270,7 +263,7 @@ export default function Header() {
                             <a
                               style={{ textDecoration: 'none' }}
                               onClick={logoutHandler}
-                              href="#"
+                              href="/"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               Cerrar Session
