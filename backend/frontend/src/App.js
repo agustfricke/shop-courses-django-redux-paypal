@@ -28,9 +28,6 @@ import EditEpisodio from "./components/admin/EditEpisodio";
 
 import OrderScreen from "./components/shopping/OrderScreen";
 import PaymentScreen from "./components/shopping/PaymentScreen";
-import OrderListScreen from "./components/admin/OrderListScreen";
-import Vimeo from "./components/admin/VimeoURL";
-import VimeoForm from "./components/admin/VimeoForm";
 import Backend from "./components/cursos/Backend";
 import Frontend from "./components/cursos/Frontend";
 import Blockchain from "./components/cursos/Blockchain";
@@ -64,9 +61,6 @@ function App() {
         <PrivateRoute path='/cursos/:id/form' component={CursoForm} />
         <PrivateRoute path='/episodio/:id/form' component={EditEpisodio} />
         <PrivateRoute path='/epi/:id' component={Episodios} />
-        <PrivateRoute path='/admin/orders/' component={OrderListScreen} />
-        <PrivateRoute path='/admin/vimeo/' component={Vimeo} />
-        <PrivateRoute path='/URL/:id/form' component={VimeoForm} />
         <PrivateRoute path='/order/:id' component={OrderScreen} />
         <PrivateRoute path='/payment' component={PaymentScreen} />
         <Route path='/terminos' component={Terms} />

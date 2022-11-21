@@ -3,37 +3,20 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Error from '../utils/Error';
 import Loader from '../utils/Loader'
-import { getOrderDetails } from '../../actions/orderActions'
 
 
-function OrderScreen({ match, history }) {
+function OrderScreen() {
 
     useEffect(() => {
         document.title = `Tech con Agust | Felicitaciones`
       }, []);
 
-    const orderId = match.params.id
-    const dispatch = useDispatch()
 
 
-    const orderDetails = useSelector(state => state.orderDetails)
-    const { order, error, loading } = orderDetails
 
     const userLogin = useSelector(state => state.userLogin)
-    const { userInfo } = userLogin
+    const { error, loading, userInfo } = userLogin
 
-
-    useEffect(() => {
-
-        if (!userInfo) {
-            history.push('/login')
-        }
-
-        if (!order || order.id !== Number(orderId)) {
-            dispatch(getOrderDetails(orderId))
-        } else if (!order.is_paid) {
-        }
-    }, [dispatch, order, orderId])
 
 
 

@@ -72,7 +72,7 @@ export default function Login({ location, history }) {
                           type="email"
                           autoComplete="email"
                           required
-                          class=" border-grey-light w-full p-3 rounded mb-2 placeholder-gray-600"
+                          class="block border border-grey-light w-full p-3 rounded mb-2 placeholder-gray-600 "
                           placeholder="Email address"
                         />
                       </div>

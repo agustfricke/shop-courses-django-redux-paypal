@@ -8,7 +8,6 @@ import { CURSO_CREATE_REVIEW_RESET } from '../../constants/cursoConstants'
 import { TbWorld } from "react-icons/tb";
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
-import { listOrders } from "../../actions/orderActions";
 import { FaLocationArrow } from "react-icons/fa";
 
 

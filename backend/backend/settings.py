@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     'users',
     'cursos',
-    'orders',
 ]
 
 

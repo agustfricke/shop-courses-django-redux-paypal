@@ -105,6 +105,7 @@ def createEpisodio(request, pk):
             user=user,
             curso=curso,
             title=data['title'],
+            url=data['url'],
             description=data['description'],
 
         )
@@ -140,6 +141,7 @@ def updateEpisodio(request, pk):
     if episodio.user == request.user:
         episodio.title = data['title']
         episodio.description = data['description']
+        episodio.url = data['url']
         episodio.save()
         serializer = EpisodioSerializer(episodio, many=False)
         return Response(serializer.data)  

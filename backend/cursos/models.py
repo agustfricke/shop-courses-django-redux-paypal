@@ -28,6 +28,7 @@ class Episodio(models.Model):
     curso           = models.ForeignKey(Curso, on_delete=models.SET_NULL, null=True)
     user            = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title           = models.CharField(max_length=250, null=True, blank=True)
+    url             = models.CharField(max_length=250, null=True, blank=True)
     description     = models.TextField(null=True, blank=True)
     file            = models.FileField(null=True, blank=True)
 

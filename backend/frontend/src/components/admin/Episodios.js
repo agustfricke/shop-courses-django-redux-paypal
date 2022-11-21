@@ -16,6 +16,8 @@ export default function Episodios ({ match, history }) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [url, setUrl] = useState('')
+
 
 
     const dispatch = useDispatch()
@@ -31,6 +33,7 @@ export default function Episodios ({ match, history }) {
 
     useEffect(() => {
         if (successEpisodio) {
+            setUrl('')
             setTitle('')
             setDescription('')
             dispatch({ type: CURSO_CREATE_EPISODIO_RESET })
@@ -52,6 +55,7 @@ export default function Episodios ({ match, history }) {
         dispatch(episodioCreate(
             match.params.id, {
             title,
+            url,
             description,
         }
         ))
@@ -170,6 +174,17 @@ export default function Episodios ({ match, history }) {
                         >
                         </Form.Control>
                     </Form.Group>  
+
+                    <Form.Group controlId='description' className='py-2'>
+                        <Form.Label>URL</Form.Label>
+                        <Form.Control
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                            type='description'
+                            placeholder='URL'
+                        >
+                        </Form.Control>
+                    </Form.Group> 
 
                     
                     <div className='text-center py-2'>

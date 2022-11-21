@@ -23,8 +23,6 @@ const noUser = [
 const admin = [
   { name: 'CURSOS', href: '/admin/cursos', current: false },
   { name: 'USUARIOS', href: '/admin/users', current: false },
-  { name: 'ORDENES', href: '/admin/orders/', current: false },
-  { name: 'URL', href: '/admin/vimeo', current: false },
 
 ]
 
@@ -96,9 +94,9 @@ export default function Header(history) {
                     </div>
 
 
-                    <Menu as="div" className="relative ml-3 mt-1.5">
+                    <Menu as="div" className="relative ml-3  mx-8 mt-1.5">
                     <div>
-                      <Menu.Button className="bg-gray-700 mx-8 text-gray-300">
+                      <Menu.Button className="bg-gray-700 text-gray-300">
                         <a >CATEGORIAS</a>
                       </Menu.Button>
                     </div>

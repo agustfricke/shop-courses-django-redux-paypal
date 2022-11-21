@@ -11,8 +11,6 @@ import ReactPlayer from 'react-player'
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { listOrders } from "../../actions/orderActions";
-import { listURL } from '../../actions/orderActions'
 import { BsSearch } from "react-icons/bs";
 import { FaLocationArrow } from "react-icons/fa";
 
@@ -39,11 +37,7 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { curso } = detailsCurso
 
-    const orderList = useSelector(state => state.orderList)
-    const { orders } = orderList
 
-    const urlList = useSelector(state => state.urlList)
-    const { urls } = urlList
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -61,8 +55,6 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
         dispatch(listEpisodioDetails(match.params.epi))
         dispatch(listCursoDetails(match.params.curso))
-        dispatch(listOrders())
-        dispatch(listURL())
 
 
     }, [dispatch, match, successEpisodioComment])
@@ -89,46 +81,31 @@ const SoloEpisodioPagado = ({ match, history }) => {
 {userInfo && userInfo.premium ? (
 
 
-
         <div className='w-full  bg-gray-900 absolute'>
             <div className="grid grid-cols-3  m-8">
                 <div className="col-span-2">
                     <h1 className="text-gray-200 text-center mb-3">{episodio.title} </h1>
-                    {urls && urls.map((url) => (
-                        <>
-                        {url.title == episodio.title ? (
-
-                            <>
 
 
 <div className="player-wrapper">
-    <ReactPlayer url={url.url}
-        width="100%"
-        height="100%"
-        className="react-player"
-    />
-</div>
+<iframe src={episodio.url}
+width="100%"
+height="100%"
+className="react-player"
+  loading="lazy" 
+  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true">
+
+  </iframe>
+  </div>
                            
-                            </>
 
-                        ) : (
-                            <>
-                   
-
-                    </>
-                    )}
-</>
-                    ))}
-
-                    <p className="text-base mt-6 text-gray-200 ">{episodio.description}</p>
+                    <p className="text-base mt-6 text-gray-200 mb-2">{episodio.description}</p>
                     <a href={`http://127.0.0.1:8000${episodio.file}`} className='text-gray-200 my-5'>
                         Ver Recurso
                     </a>
 
-                    <br></br>
-                    <br></br>
 
-<form className="w-full" onSubmit={submitHandler}>
+<form className="w-full mt-6" onSubmit={submitHandler}>
     <label htmlFor="search" className="sr-only">
       Search
     </label>
@@ -151,7 +128,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
                     
-
+<div className="m-8">
+  <div className="scrolling">
 
                     {episodio.comments && episodio.comments.map((comment) => (
                         <>
@@ -173,12 +151,14 @@ const SoloEpisodioPagado = ({ match, history }) => {
                         </>
                     ))}
 
-
+</div>
+</div>
                 </div>
 
 
                 <div className=' mt-6 ml-7'>
                     <h1 className="font-bold text-2xl my-6 text-center text-white">Todos los episodios</h1>
+                    <div className="scroll">
                     {curso.episodios && curso.episodios.map((epi) => (
                         <>
                             <ListGroup key={epi.id}>
@@ -197,6 +177,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
                         </>
                     ))}
                 </div>
+                </div>
+
             </div>
         </div>
 
@@ -213,9 +195,9 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
 
 
-
                         )
                     }
+
 </>
 
     );

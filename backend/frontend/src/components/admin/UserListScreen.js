@@ -58,6 +58,8 @@ function UserListScreen({ history }) {
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Admin</th>
+                                    <th>Premium</th>
+
                                     <th></th>
                                 </tr>
                             </thead>
@@ -76,6 +78,11 @@ function UserListScreen({ history }) {
                                         <td>{user.user_name}</td>
                                         <td>{user.email}</td>
                                         <td>{user.is_admin ? (
+                                            <GrCheckboxSelected />
+                                        ) : (
+                                            <GrCheckbox />
+                                        )}</td>
+                                        <td>{user.premium ? (
                                             <GrCheckboxSelected />
                                         ) : (
                                             <GrCheckbox />

@@ -33,33 +33,13 @@ import { cursoListReducer,
 } from './reducers/cursoReducers';
 
 
-import { orderCreateReducer, 
-        orderDetailsReducer,
-        orderListMyReducer,
-        orderListReducer,
-        urlListReducer,
-        urlDeleteReducer,
-        urlCreateReducer,
-        urlUpdateReducer,
-        urlDetailsReducer,
-
-} from './reducers/orderReducers'
 
 
 
 const reducer = combineReducers({
 
 
-    // Order
-    orderCreate: orderCreateReducer,
-    orderDetails: orderDetailsReducer,
-    orderListMy: orderListMyReducer,
-    orderList: orderListReducer,
-    urlList :urlListReducer,
-    urlDelete:urlDeleteReducer,
-    urlCreate:urlCreateReducer,
-    urlUpdate:urlUpdateReducer,
-    urlDetails:urlDetailsReducer,
+
 
 
     // User
@@ -99,7 +79,6 @@ const userInfoStorage = localStorage.getItem('userInfo') ?
     JSON.parse(localStorage.getItem('userInfo')) : null
 
 const initialState = {
-    // cart: { cartItems: cartItemsStorage},
     userLogin: { userInfo: userInfoStorage }
 }
 

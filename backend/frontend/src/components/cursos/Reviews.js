@@ -8,7 +8,6 @@ import { listCursoDetails, createCursoReview } from '../../actions/cursoActions'
 import { CURSO_CREATE_REVIEW_RESET } from '../../constants/cursoConstants'
 import { TbWorld } from "react-icons/tb";
 import { Form } from 'react-bootstrap'
-import { listMyOrders } from "../../actions/orderActions";
 
 
 
@@ -43,7 +42,6 @@ export default function Reviews({ match }) {
         }
 
         dispatch(listCursoDetails(match.params.id))
-        dispatch(listMyOrders())
 
     }, [dispatch, match, successcursoReview])
 

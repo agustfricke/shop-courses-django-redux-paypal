@@ -5,9 +5,11 @@ import Error from '../utils/Error';
 import Loader from '../utils/Loader';
 import LastCursoCarousel from './LastCursoCarousel';
 import { listCursos } from "../../actions/cursoActions";
-
+import Iframe from 'react-iframe'
 
 function Home(history) {
+
+
 
   useEffect(() => {
     document.title = 'Tech con Agust | Home'
@@ -25,6 +27,7 @@ function Home(history) {
   }, [dispatch, keysearch]);
 
 
+
   return (
     <>
       {!keysearch && <LastCursoCarousel />}
@@ -38,8 +41,10 @@ function Home(history) {
             <br></br> <br></br>
             <br></br> <br></br>
             <br></br> <br></br>
+            
 
-            <div className=" mt-10">
+
+            <div className=" mt-10 ">
               <div className="mx-auto max-w-7xl  sm:px-6 ">
                 <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-none ">
                   <h3 className="text-4xl font-bold tracking-tight sm:text-center sm:text-5xl mb-8">
@@ -47,9 +52,9 @@ function Home(history) {
                     <span className="block xl:inline text-indigo-800">cursos</span>{' '}
                   </h3>
                   <br></br>
-                  <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                  <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6  lg:space-y-12">
                     {cursos && cursos.map((c) => (
-                      <div className='bg-gray-900 shadow-2xl'>
+                      <div className='bg-gray-900 shadow-2xl '>
                         <div className='m-8'>
                           <div key={c.id} className="group relative">
                             <a href={`/curso/${c.id}`}>

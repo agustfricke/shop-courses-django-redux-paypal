@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
+import React  from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 export default function Error ({ children }) {
 
-    toast.error(children, {
-      duration: 15000,
-        style: {
-          padding: '20px',
-          color: '#000000',
-        },
-        
-      });
+  toast.error(children, {
+    toastId: 'error2',
+})
   return (
-    <Toaster
-    position="top-right"
-    reverseOrder={false}
+    <>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
 />
+<ToastContainer />
+</>
   )
 }

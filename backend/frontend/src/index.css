@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrolling {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.scroll {
+  height: 1300px;
+  overflow-y: scroll;
+}
+
+
 .footer {
 
   position: relative;
   right: 0;
   left: 0;
-  margin-top: 100vh;
+  margin-top: 150vh;
   padding: 1rem;
   text-align: center;
 }

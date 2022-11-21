@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
-import Alert from 'react-bootstrap/Alert';
+import React  from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Success ({ children }) {
 
-    toast.success(children, {
-      duration: 15000,
-        style: {
-          border: '2px solid #713200',
-          padding: '20px',
-          color: '#000000',
-        },
-        
-      });
+  toast.success(children, {
+    toastId: 'success1',
+})
+
+
   return (
-    <Toaster
-    position="top-right"
+<>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
 />
+<ToastContainer />
+</>
   )
 }

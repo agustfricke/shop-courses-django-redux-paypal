@@ -17,6 +17,8 @@ function EditEpisodio({ match, history }) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [url, setUrl] = useState('')
+
 
     const [file, setFile] = useState('')
     const [uploadingFile, setUploadingFile] = useState(false)
@@ -40,6 +42,7 @@ function EditEpisodio({ match, history }) {
                 dispatch(listEpisodioDetails(episodioId))
             } else {
                 setTitle(episodio.title)
+                setUrl(episodio.url)
                 setDescription(episodio.description)
                 setFile(episodio.file)
             }
@@ -51,6 +54,7 @@ function EditEpisodio({ match, history }) {
         dispatch(updateEpisodio({
             id: episodioId,
             title,
+            url,
             description,
             file,
         }))
@@ -128,7 +132,16 @@ function EditEpisodio({ match, history }) {
             </Form.Control>
         </Form.Group>
 
-
+        <Form.Group controlId='name'>
+            <Form.Label>URL</Form.Label>
+            <Form.Control
+                type='name'
+                placeholder='Enter URL'
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+            >
+            </Form.Control>
+        </Form.Group>
         
 
         <Form.Group controlId='image' className='py-2'>

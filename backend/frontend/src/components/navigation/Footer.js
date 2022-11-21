@@ -36,7 +36,7 @@ function Footer(){
   
 
     return(
-        <footer className="bg-gray-900/90 dark:bg-dark-bg footer" aria-labelledby="footer-heading">
+    <footer className="bg-gray-900/90 dark:bg-dark-bg footer" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
