@@ -9,7 +9,8 @@ import { TbWorld } from "react-icons/tb";
 import { Table, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import { FaLocationArrow } from "react-icons/fa";
-
+import ContentLoader from "../utils/ContentLoader";
+import Error from "../utils/Error";
 
 
 
@@ -66,6 +67,13 @@ const SoloCurso = ({ match, history }) => {
     }
 
     return (
+
+        <>
+        {error && <Error>{error}</Error>}
+        {loading ?
+          <ContentLoader />
+          : (
+            <>
 
         <div name='support' className='w-full'>
             <div className='w-full h-[300px] bg-gray-900/90 absolute'>
@@ -126,7 +134,7 @@ const SoloCurso = ({ match, history }) => {
                                 />
                                 <div className='p-4'>
                                         <>
-                                            {userInfo && userInfo.premium ? (
+                                            {userInfo && userInfo.premium === 'premium' ? (
 
                                                 <>
 
@@ -150,12 +158,14 @@ const SoloCurso = ({ match, history }) => {
                                         </>
 
 
-                                    <button
-                                        type="submit"
-                                        className="mt-2 flex w-full items-center justify-center  bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    <a
+                                    href={curso.trailer}
+                                    style={{ textDecoration: 'none' }}
+                                    type="submit"
+                                    className="mt-2 flex w-full items-center justify-center  bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
                                         Ver Trailer
-                                    </button>
+                                    </a>
 
                                 </div>
                             </div>
@@ -179,7 +189,7 @@ const SoloCurso = ({ match, history }) => {
                                                     <div>
                                                             <>
 
-                                                                {userInfo && userInfo.premium ? (
+                                                            {userInfo && userInfo.premium === 'premium' ? (
 
                                                                     <a href={`/solo/epi/${epi.id}/${curso.id}`} style={{ textDecoration: 'none' }}>
                                                 <div className="relative">
@@ -216,6 +226,10 @@ const SoloCurso = ({ match, history }) => {
                 </div>
             </div>
         </div>
+
+        </>
+        )}
+    </>
     );
 };
 

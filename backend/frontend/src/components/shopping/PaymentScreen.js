@@ -7,7 +7,9 @@ import {
     PayPalButtons,
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
-import { premiumUser } from '../../actions/userActions'
+import { premiumUser, getUserDetails } from '../../actions/userActions'
+import {USER_PREMIUM_RESET} from '../../constants/userConstants'
+
 
 
 function PaymentScreen({history}) {
@@ -16,19 +18,65 @@ function PaymentScreen({history}) {
     document.title = `Tech con Agust | Pago`
   }, []);
 
-  const userPremum = useSelector(state => state.userPremum)
-  const { order, error, success } = userPremum
 
-  const dispatch = useDispatch()
+  const [premium, setPremium] = useState('Premium')
+
+
+  const dispatch = useDispatch(history)
+
+  const userDetails = useSelector(state => state.userDetails)
+  const { error, loading, user } = userDetails
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
+  const userPremum = useSelector(state => state.userPremum)
+  const { success } = userPremum
+
+
 
   useEffect(() => {
-        }, [dispatch, history, success])
-  
-    const submitHandler = (e) => {
-      e.preventDefault()
-      history.push('/')
-        dispatch(premiumUser(success))
+    if (!userInfo.email === "") {
+      history.push('/login')
+    } else {
+      if (!user || success || userInfo.id !== user.id) {
+        dispatch({ type: USER_PREMIUM_RESET })
+        dispatch(getUserDetails('profile'))
+      } else {
+        setPremium(user.premium)
+      }
     }
+  }, [dispatch, history, userInfo, user, success])
+
+
+
+    const createOrder = (data, actions) => {
+      return actions.order.create({
+        purchase_units: [
+          {
+            amount: {
+              value: "13.99"
+            }
+          }
+        ]
+      });
+    };
+
+    const onApprove = (data, actions) => {
+      return actions.order.capture(handlePay());
+    };
+  
+    function handlePay() {
+    history.push('/')
+
+
+      dispatch(premiumUser({
+        'id': user.id,
+        'premium': premium,
+      }))
+    }
+  
+
 
     return (
         <>
@@ -257,34 +305,15 @@ function PaymentScreen({history}) {
 
               </div>
               <center>
-
-              <PayPalScriptProvider
-                options={{
-                    "client-id": "AagP4ONe8aPmVkKC1TiFz8QxceRQEMlyxFILAR84-Ws9X0NwRtwFOrAfx-dcprZ2Cy3R1txtYErnHpI8",
-                    components: "buttons",
-                    currency: "USD"
-                }}
-            >
-				        <PayPalButtons
-          createOrder={(data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: "13.99",
-                  },
-                },
-              ],
-            });
-          }}
-          onApprove={async (data, actions) => {
-            const details = await actions.order.capture();
-            const name = details.payer.name.given_name;
-            alert("Transaction completed by " + name);
-            submitHandler();
-          }}
+                
+                          
+               
+<PayPalScriptProvider>
+              <PayPalButtons
+          createOrder={(data, actions) => createOrder(data, actions)}
+          onApprove={(data, actions) => onApprove(data, actions)}
         />
-			</PayPalScriptProvider>
+        </PayPalScriptProvider>
               
                                     </center>
             </div>

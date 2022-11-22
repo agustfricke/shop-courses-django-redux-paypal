@@ -8,7 +8,7 @@ import { listCursoDetails, createCursoReview } from '../../actions/cursoActions'
 import { CURSO_CREATE_REVIEW_RESET } from '../../constants/cursoConstants'
 import { TbWorld } from "react-icons/tb";
 import { Form } from 'react-bootstrap'
-
+import { listUsers } from '../../actions/userActions';
 
 
 
@@ -31,6 +31,9 @@ export default function Reviews({ match }) {
     const createReview = useSelector(state => state.createReview)
     const { loading: loadingcursoReview, error: errorcursoReview, success: successcursoReview } = createReview
 
+    const userList = useSelector(state => state.userList);
+    const {users} = userList;
+
     const dispatch = useDispatch()
 
 
@@ -42,6 +45,7 @@ export default function Reviews({ match }) {
         }
 
         dispatch(listCursoDetails(match.params.id))
+        dispatch(listUsers());
 
     }, [dispatch, match, successcursoReview])
 
@@ -115,7 +119,7 @@ export default function Reviews({ match }) {
                             </div>
                         </div>
 
-                       {userInfo && userInfo.premium ? (
+                        {userInfo && userInfo.premium === 'premium' ? (
                             <div className='bg-white shadow-2xl'>
                                 <div className='p-3 mt-6'>
                                     <h2 className='font-bold text-2xl my-6 text-gray-800 text-center'>Deja una Review </h2>
@@ -180,6 +184,11 @@ export default function Reviews({ match }) {
                     <div className="pt-8">
                         {curso.reviews.length && curso.reviews.length === 0 && <Message>No Reviews</Message>}
                         {curso.reviews.map((review) => (
+                            <>
+                                {users && users.map(user => (
+                                    <>
+                                    {user.user_name === review.user &&
+
                             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                                 <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                                     <h1 className="">
@@ -188,10 +197,11 @@ export default function Reviews({ match }) {
                                     </h1>
                                 </div>
                                 <div className="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
-                                    <div className="flex">
+                                    <div className="flex" key={user.id}>
+                                          
                                         <img
                                             className="object-cover w-20 h-20 mr-4 rounded-full shadow"
-                                            src="https://images.pexels.com/photos/3783255/pexels-photo-3783255.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                                            src={`http://127.0.0.1:8000${user.image}`}
                                             alt="Person"
                                         />
                                         <div className="flex flex-col justify-center">
@@ -200,8 +210,14 @@ export default function Reviews({ match }) {
                                             <Rating value={review.rating} color={'#ffa900'} />
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+                        }
+</>
+                                    ))}
+                                    </>
+
                         ))}
                     </div>
                 </div>

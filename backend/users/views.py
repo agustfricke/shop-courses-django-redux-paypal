@@ -98,12 +98,15 @@ def updateUser(request, pk):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def premium(request):
+def userPremium(request):
     user = request.user
-    serializer = UserSerializer(user, many=False)
-    user.premium='premium',
+    serializer = UserSerializerWithToken(user, many=False)
+    data = request.data
+    user.premium='premium'
     user.save()
     return Response(serializer.data)
 

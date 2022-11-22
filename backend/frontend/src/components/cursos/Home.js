@@ -6,6 +6,7 @@ import Loader from '../utils/Loader';
 import LastCursoCarousel from './LastCursoCarousel';
 import { listCursos } from "../../actions/cursoActions";
 import Iframe from 'react-iframe'
+import ContentLoader from "../utils/ContentLoader";
 
 function Home(history) {
 
@@ -33,16 +34,14 @@ function Home(history) {
       {!keysearch && <LastCursoCarousel />}
       {error && <Error>{error}</Error>}
       {loading ?
-        <Loader />
+        <ContentLoader />
         : (
           <>
-
             <br></br> <br></br>
             <br></br> <br></br>
             <br></br> <br></br>
             <br></br> <br></br>
             
-
 
             <div className=" mt-10 ">
               <div className="mx-auto max-w-7xl  sm:px-6 ">

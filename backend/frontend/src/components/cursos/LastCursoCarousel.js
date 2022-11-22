@@ -37,7 +37,7 @@ function LastCursoCarousel() {
       </div>
 
       <>
-        {userInfo && userInfo.premium ? (
+      {userInfo && userInfo.premium === 'premium' ? (
           <>
             <div class="flex justify-center mx-10">
               <Tilt>
@@ -345,14 +345,34 @@ function LastCursoCarousel() {
                       </ul>
                     </div>
                   </div>
-                  <center>
+                  <div className='grid justify-items-center '>
                     <button
                       type="submit"
-                      className="mt-2 items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="mt-2 items-center    border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       COMPRAR
                     </button>
-                  </center>
+
+                    {userInfo && userInfo.email ? (
+
+<></>
+                    ) : (
+
+<>
+
+<a
+style={{ textDecoration: 'none' }}
+                      href='/register'
+                      className="mt-2 items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                      REGISTRATE
+                    </a>
+
+
+</>
+
+                    )}
+                  </div>
                 </div>
                 <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />
                 <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />

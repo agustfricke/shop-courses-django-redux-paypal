@@ -29,6 +29,7 @@ class EpisodioSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     user = serializers.CharField(source='user.user_name', read_only=True)
 
+
     class Meta:
         model = Review
         fields = '__all__'

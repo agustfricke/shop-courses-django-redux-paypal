@@ -54,7 +54,6 @@ import {
 const URL = 'http://127.0.0.1:8000/'
 
 
-
 export const premiumUser = (user) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_PREMIUM_REQUEST })
@@ -86,6 +85,8 @@ export const premiumUser = (user) => async (dispatch, getState) => {
             type: USER_LOGIN_SUCCESS,
             payload: data
         })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
 
 
     } catch (error) {

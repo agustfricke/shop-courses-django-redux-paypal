@@ -16,6 +16,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.updateUser),
     path('delete/<int:pk>/', views.deleteUser),
 
-    path('premium/', views.premium),
+    path('premium/', views.userPremium),
 ]
 

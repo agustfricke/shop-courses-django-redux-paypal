@@ -13,6 +13,10 @@ import Accordion from 'react-bootstrap/Accordion';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { BsSearch } from "react-icons/bs";
 import { FaLocationArrow } from "react-icons/fa";
+import Error from "../utils/Error";
+import ContentLoader from "../utils/ContentLoader";
+import { listUsers } from '../../actions/userActions';
+
 
 
 
@@ -37,6 +41,9 @@ const SoloEpisodioPagado = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { curso } = detailsCurso
 
+    const userList = useSelector(state => state.userList);
+    const {users} = userList;
+
 
 
     const userLogin = useSelector(state => state.userLogin)
@@ -55,6 +62,8 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
         dispatch(listEpisodioDetails(match.params.epi))
         dispatch(listCursoDetails(match.params.curso))
+        dispatch(listUsers());
+
 
 
     }, [dispatch, match, successEpisodioComment])
@@ -74,11 +83,14 @@ const SoloEpisodioPagado = ({ match, history }) => {
 
     return (
 
+        <>
+        {error && <Error>{error}</Error>}
+        {loading ?
+          <ContentLoader />
+          : (
+            <>
 
-
-    <>
-
-{userInfo && userInfo.premium ? (
+{userInfo && userInfo.premium === 'premium' ? (
 
 
         <div className='w-full  bg-gray-900 absolute'>
@@ -99,8 +111,8 @@ className="react-player"
   </div>
                            
 
-                    <p className="text-base mt-6 text-gray-200 mb-2">{episodio.description}</p>
-                    <a href={`http://127.0.0.1:8000${episodio.file}`} className='text-gray-200 my-5'>
+                    <p className="text-base mt-6 text-gray-300  mb-2">{episodio.description}</p>
+                    <a style={{ textDecoration: 'none' }} href={`http://127.0.0.1:8000${episodio.file}`} className='  font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg px-8  py-2  text-sm  focus:outline-none hover:bg-gray-300 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm'>
                         Ver Recurso
                     </a>
 
@@ -133,6 +145,9 @@ className="react-player"
 
                     {episodio.comments && episodio.comments.map((comment) => (
                         <>
+                                {users && users.map(user => (
+                                    <>
+                                    {user.user_name === comment.user &&
                             <div key={comment.id} className="px-4 py-4  md:max-w-full   ">
                                 <div className="grid gap-10 mx-auto sm:row-gap-10 ">
                                     <div className="flex">
@@ -148,8 +163,12 @@ className="react-player"
                                     </div>
                                 </div>
                             </div>
-                        </>
-                    ))}
+                                             }
+                                             </>
+                                                                                 ))}
+                                                                                 </>
+                                             
+                                                                     ))}
 
 </div>
 </div>
@@ -198,7 +217,10 @@ className="react-player"
                         )
                     }
 
+
 </>
+        )}
+    </>
 
     );
 };
