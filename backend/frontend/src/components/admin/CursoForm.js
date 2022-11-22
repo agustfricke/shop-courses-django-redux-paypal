@@ -21,6 +21,9 @@ function CursoForm({ match, history }) {
     const [image, setImage] = useState('')
     const [uploading, setUploading] = useState(false)
 
+    const [file, setFile] = useState('')
+    const [uploadingFile, setUploadingFile] = useState(false)
+
 
     const dispatch = useDispatch()
 
@@ -44,6 +47,7 @@ function CursoForm({ match, history }) {
                 setDescription(curso.description)
                 setImage(curso.image)
                 setCategory(curso.category)
+                setFile(curso.file)
             }
         }
     }, [dispatch, curso, cursoId, history, successUpdate])
@@ -57,10 +61,39 @@ function CursoForm({ match, history }) {
             trailer,
             image,
             category,
+            file,
+
         }))
     }
 
     const uploadFileHandler = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+
+        formData.append('file', file)
+        formData.append('curso_id', cursoId) 
+
+        setUploadingFile(true)
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data' 
+                }
+            }
+
+            const { data } = await axios.post('http://127.0.0.1:8000/cursos/uploadFile/', formData, config)
+            
+            setFile(data)
+            setUploadingFile(false)
+
+        } catch (error) {
+            setUploadingFile(false)
+        }
+    }
+
+
+    const uploadImageHandler = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
 
@@ -151,6 +184,24 @@ function CursoForm({ match, history }) {
                                     placeholder='Image'
                                     value={image}
                                     onChange={(e) => setImage(e.target.value)}
+                                >
+                                </Form.Control>
+                                <Form.Control
+                                    label='Choose file'
+                                    type='file'
+                                    onChange={uploadImageHandler}
+                                >
+                                </Form.Control>
+                                {uploading && <Loader />}
+                            </Form.Group>
+
+                            <Form.Group controlId='image' className='py-2'>
+                                <Form.Label>File</Form.Label>
+                                <Form.Control
+                                    type='text'
+                                    placeholder='File'
+                                    value={file}
+                                    onChange={(e) => setFile(e.target.value)}
                                 >
                                 </Form.Control>
                                 <Form.Control

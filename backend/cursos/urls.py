@@ -9,6 +9,7 @@ urlpatterns = [
     path('image/', views.uploadImageCurso),
     path('update/<int:pk>/', views.updateCurso),
     path('delete/<int:pk>/', views.deleteCurso),
+    path('uploadFile/', views.uploadFileCurso),
 
     # Episodios
     path('createEpisodio/<int:pk>/', views.createEpisodio),

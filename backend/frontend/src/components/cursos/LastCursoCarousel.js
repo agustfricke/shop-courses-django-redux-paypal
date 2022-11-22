@@ -9,10 +9,14 @@ import block from '../../media/blockchain.png';
 
 
 
-function LastCursoCarousel() {
+function LastCursoCarousel(history) {
 
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+
+  const addToCartHandler = () => {
+    history.push('/payment')
+}
 
 
   return (
@@ -347,6 +351,7 @@ function LastCursoCarousel() {
                   </div>
                   <div className='grid justify-items-center '>
                     <button
+                    onClick={addToCartHandler}
                       type="submit"
                       className="mt-2 items-center    border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >

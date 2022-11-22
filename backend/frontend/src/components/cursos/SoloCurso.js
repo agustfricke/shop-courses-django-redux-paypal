@@ -11,13 +11,19 @@ import Accordion from 'react-bootstrap/Accordion';
 import { FaLocationArrow } from "react-icons/fa";
 import ContentLoader from "../utils/ContentLoader";
 import Error from "../utils/Error";
-
+import Modal from 'react-bootstrap/Modal';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 
 
 
 const SoloCurso = ({ match, history }) => {
 
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => {
+        setShow(false);
+    }
 
     const [quantity, setQuantity] = useState(1)
     const [rating, setRating] = useState(0)
@@ -74,9 +80,31 @@ const SoloCurso = ({ match, history }) => {
           <ContentLoader />
           : (
             <>
+            <Modal show={show} onHide={handleClose}>
+
+            <ModalHeader closeButton>
+                <Modal.Title>
+                   {curso.title}
+                </Modal.Title>
+            </ModalHeader>
+
+            <Modal.Body>
+            <div className="player-wrapper">
+                <iframe src={curso.trailer}
+                width="100%"
+                height="100%"
+                className="react-player"
+                loading="lazy" 
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true">
+
+                </iframe>
+                </div>
+            </Modal.Body>
+            </Modal>
+
 
         <div name='support' className='w-full'>
-            <div className='w-full h-[300px] bg-gray-900/90 absolute'>
+            <div className='w-full h-[350px] bg-gray-900/90 absolute'>
                 <div className='max-w-[1240px] mx-auto text-white relative mt-10'>
                     <div className="flex justify-start flex-col items-start space-y-2">
                         <a
@@ -158,14 +186,14 @@ const SoloCurso = ({ match, history }) => {
                                         </>
 
 
-                                    <a
-                                    href={curso.trailer}
+                                    <button
+                                    onClick={() => { setShow(true)}}
                                     style={{ textDecoration: 'none' }}
                                     type="submit"
                                     className="mt-2 flex w-full items-center justify-center  bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
                                         Ver Trailer
-                                    </a>
+                                    </button>
 
                                 </div>
                             </div>

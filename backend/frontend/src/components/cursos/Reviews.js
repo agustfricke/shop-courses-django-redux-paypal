@@ -202,7 +202,7 @@ export default function Reviews({ match }) {
                                         <img
                                             className="object-cover w-20 h-20 mr-4 rounded-full shadow"
                                             src={`http://127.0.0.1:8000${user.image}`}
-                                            alt="Person"
+                                            alt={user.user_name}
                                         />
                                         <div className="flex flex-col justify-center">
                                             <p className="text-lg font-bold text-gray-800">{review.user}</p>

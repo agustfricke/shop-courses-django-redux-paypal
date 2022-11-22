@@ -55,7 +55,7 @@ function PaymentScreen({history}) {
         purchase_units: [
           {
             amount: {
-              value: "13.99"
+              value: "59.99"
             }
           }
         ]

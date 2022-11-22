@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.utils import timezone
 from rest_framework import status
@@ -33,7 +33,7 @@ def getCurso(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def createCurso(request):
     user = request.user
     curso = Curso.objects.create(
@@ -46,8 +46,16 @@ def createCurso(request):
     serializer = CursoSerializer(curso, many=False)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def uploadFileCurso(request):
+    data = request.data
+    curso_id = data['curso_id']
+    curso = Curso.objects.get(id=curso_id)
 
+    curso.file = request.FILES.get('file')
+    curso.save()
 
+    return Response('File was uploaded')
 
 @api_view(['POST'])
 def uploadImageCurso(request):
@@ -63,7 +71,7 @@ def uploadImageCurso(request):
 
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def updateCurso(request, pk):
     data = request.data
     curso = Curso.objects.get(id=pk)
@@ -81,7 +89,7 @@ def updateCurso(request, pk):
     
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def deleteCurso(request, pk):
     curso = Curso.objects.get(id=pk)
     if curso.user == request.user:
@@ -94,7 +102,7 @@ def deleteCurso(request, pk):
 # Epidodio stuff
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def createEpisodio(request, pk):
     curso = Curso.objects.get(id=pk)
     user = request.user

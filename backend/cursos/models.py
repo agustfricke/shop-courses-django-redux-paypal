@@ -13,6 +13,7 @@ class Curso(models.Model):
     price           = models.DecimalField(max_digits=10, decimal_places=10, null=True, blank=True)
     created         = models.DateTimeField(auto_now_add=True)
     trailer         = models.CharField(max_length=250, null=True, blank=True)
+    file            = models.FileField(null=True, blank=True)
 
 
 class Review(models.Model):
