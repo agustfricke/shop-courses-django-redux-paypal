@@ -29,7 +29,7 @@ function UserEditScreen({ match, history }) {
     useEffect(() => {
         if (successUpdate) {
             dispatch({ type: USER_UPDATE_RESET })
-            history.push('/admin/users')
+            history.push('/users/admin')
         } else {
             if (!user.user_name || user.id !== Number(userId)) {
                 dispatch(getUserDetails(userId))
@@ -54,7 +54,7 @@ function UserEditScreen({ match, history }) {
         <div className='mt-10'>
         <a
                             style={{ textDecoration: 'none' }}
-                            href="/admin/users"
+                            href="/users/admin"
                             className="flex flex-row items-center text-gray-900 hover:text-gray-600 space-x-1">
                             <svg className="fill-stroke" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.91681 7H11.0835" stroke="currentColor" strokeWidth="0.666667" strokeLinecap="round" strokeLinejoin="round" />

@@ -55,13 +55,13 @@ function App() {
         <Route path='/password/reset/confirm/:uid/:token/' component={ResetPasswordConfirm} />
         <PrivateRoute path="/profile" component={MiPerfil} />
         <PrivateRoute path="/editprofile" component={EditProfile} />
-        <PrivateRoute path="/admin/users" component={UserListScreen} />
-        <PrivateRoute path='/admin/user/:id/edit' component={UserEditScreen} />
-        <PrivateRoute path='/admin/cursos' component={CursoListScreen} />
+        <PrivateRoute path="/users/admin" component={UserListScreen} />
+        <PrivateRoute path='/user/admin/:id/edit' component={UserEditScreen} />
+        <PrivateRoute path='/cursos/admin' component={CursoListScreen} />
         <PrivateRoute path='/cursos/:id/form' component={CursoForm} />
         <PrivateRoute path='/episodio/:id/form' component={EditEpisodio} />
         <PrivateRoute path='/epi/:id' component={Episodios} />
-        <PrivateRoute path='/order/:id' component={OrderScreen} />
+        <PrivateRoute path='/premium' component={OrderScreen} />
         <PrivateRoute path='/payment' component={PaymentScreen} />
         <Route path='/terminos' component={Terms} />
       </Switch>

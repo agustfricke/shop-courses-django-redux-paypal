@@ -38,7 +38,7 @@ function OrderScreen() {
                         </p>
                         <div class="flex items-center justify-center">
                             <p class="mr-2 text-5xl font-semibold text-gray-200 lg:text-6xl">
-                                FELICITACIONES!
+                                FELICITACIONES {userInfo.user_name} !
                             </p>
                         </div>
                     </div>

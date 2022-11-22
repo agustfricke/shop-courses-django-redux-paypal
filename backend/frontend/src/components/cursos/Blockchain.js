@@ -55,7 +55,7 @@ function Blockchain() {
                                     <a href={`/curso/${c.id}`}>
                                       <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
                                         <img
-                                          src={`http://127.0.0.1:8000${c.image}`}
+                                          src={`https://techconagust.com/${c.image}`}
                                           alt={c.imageAlt}
                                           className="h-full w-full object-cover object-center"
                                         />

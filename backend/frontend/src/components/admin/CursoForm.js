@@ -37,7 +37,7 @@ function CursoForm({ match, history }) {
 
         if (successUpdate) {
             dispatch({ type: CURSO_UPDATE_RESET })
-            history.push('/admin/cursos')
+            history.push('/cursos/admin')
         } else {
             if (!curso.title || curso.id !== Number(cursoId)) {
                 dispatch(listCursoDetails(cursoId))
@@ -82,7 +82,7 @@ function CursoForm({ match, history }) {
                 }
             }
 
-            const { data } = await axios.post('http://127.0.0.1:8000/cursos/uploadFile/', formData, config)
+            const { data } = await axios.post('https://techconagust.com/cursos/uploadFile/', formData, config)
             
             setFile(data)
             setUploadingFile(false)
@@ -109,7 +109,7 @@ function CursoForm({ match, history }) {
                 }
             }
 
-            const { data } = await axios.post('http://127.0.0.1:8000/cursos/image/', formData, config)
+            const { data } = await axios.post('https://techconagust.com/cursos/image/', formData, config)
             
             setImage(data)
             setUploading(false)
@@ -126,7 +126,7 @@ function CursoForm({ match, history }) {
 
         <a
                             style={{ textDecoration: 'none' }}
-                            href="/admin/cursos"
+                            href="cursos/admin/"
                             className="flex flex-row items-center text-gray-900 hover:text-gray-600 space-x-1">
                             <svg className="fill-stroke" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.91681 7H11.0835" stroke="currentColor" strokeWidth="0.666667" strokeLinecap="round" strokeLinejoin="round" />

@@ -54,7 +54,7 @@ import {
 
 } from '../constants/cursoConstants';
 
-const URL = 'http://127.0.0.1:8000/'
+const URL = 'https://techconagust.com/'
 
 
 export const deleteEpisodio = (id) => async (dispatch, getState) => {

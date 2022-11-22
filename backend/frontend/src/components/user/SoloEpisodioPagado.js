@@ -111,11 +111,11 @@ className="react-player"
 
                     <p className="text-base mt-6 text-gray-300   mb-6">{episodio.description}</p>
                     <div className="mb-6">
-                    <a style={{ textDecoration: 'none' }} href={`http://127.0.0.1:8000${episodio.file}`} className='mx-3  font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg px-8  py-2  text-sm  focus:outline-none hover:bg-gray-300 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm'>
+                    <a style={{ textDecoration: 'none' }} href={`https://techconagust.com/${episodio.file}`} className='mx-3  font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg px-8  py-2  text-sm  focus:outline-none hover:bg-gray-300 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm'>
                         Ver Recurso
                     </a>
 
-                    <a style={{ textDecoration: 'none' }} href={`http://127.0.0.1:8000${curso.file}`} className='  font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg px-8  py-2  text-sm  focus:outline-none hover:bg-gray-300 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm'>
+                    <a style={{ textDecoration: 'none' }} href={`https://techconagust.com/${curso.file}`} className='  font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg px-8  py-2  text-sm  focus:outline-none hover:bg-gray-300 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 sm:text-sm'>
                         Codigo Completo 
                     </a>
                     </div>
@@ -157,7 +157,7 @@ className="react-player"
                                     <div className="flex">
                                         <img
                                             className="object-cover w-20 h-20 mr-4 rounded-full shadow"
-                                            src={`http://127.0.0.1:8000${user.image}`}
+                                            src={`https://techconagust.com/${user.image}`}
                                             alt={user.user_name}
                                         />
                                         <div className="flex flex-col justify-center">

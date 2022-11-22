@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-zno9b80g!)s561_1y(o5_34v$q$+duran$jqc$7z#002w#)7zx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['techconagust', 'www.techconagust']
 
 
 # Application definition
@@ -51,8 +51,9 @@ INSTALLED_APPS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    "https://techconagust.com",
+    "http://18.228.44.101",
+
 ]
 
 MIDDLEWARE = [
@@ -93,8 +94,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbtechconagust',
+        'USER': 'agust',
+        'PASSWORD': 'windsurf-05',
+        'HOST': 'db-techconagust.ciwe8sm3sutf.sa-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -154,8 +159,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'agustfricke@gmail.com'
-EMAIL_HOST_PASSWORD = 'gtyzwspydimffadm'
+EMAIL_HOST_USER = 'techconagust@gmail.com'
+EMAIL_HOST_PASSWORD = 'onhkdchpluntfhvl'
 EMAIL_USE_TLS = True
 
 REST_FRAMEWORK = {

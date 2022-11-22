@@ -104,7 +104,7 @@ function CursoListScreen({ history }) {
                                         <td>{curso.id}</td>
                                         <td><img
                                             className="h-8 w-8 rounded-full"
-                                            src={`http://127.0.0.1:8000${curso.image}`}
+                                            src={`https://techconagust.com/${curso.image}`}
                                             alt=""
                                         /></td>
 

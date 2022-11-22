@@ -6,6 +6,19 @@ export default function ContentLoader () {
 
 
     return (
+        <>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 
 <div className='flex justify-center'>
           <BulletList 
@@ -29,7 +42,7 @@ export default function ContentLoader () {
 </div>
 
 
-
+</>
 
     )
 

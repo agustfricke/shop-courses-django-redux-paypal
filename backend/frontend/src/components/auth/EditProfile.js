@@ -90,7 +90,7 @@ export default function EditProfile({ history }) {
         }
       }
 
-      const { data } = await axios.post('http://127.0.0.1:8000/users/image/', formData, config)
+      const { data } = await axios.post('https://techconagust.com/users/image/', formData, config)
 
       setImage(data)
       setUploading(false)

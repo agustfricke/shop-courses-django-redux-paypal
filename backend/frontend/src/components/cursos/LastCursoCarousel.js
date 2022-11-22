@@ -32,9 +32,7 @@ function LastCursoCarousel(history) {
               <span className="block xl:inline text-indigo-300">online</span>{' '}
             </h3>
             <h5 className="mt-6 text-lg leading-10 text-gray-200 sm:text-center">
-              Especialízate en las áreas con mayor demanda laboral y
-              aprende lo que necesitas para desarrollar tu perfil profesional.
-
+            Aprende todo lo que necesita para escribir, implementar y mejorar aplicaciones de software.
             </h5>
           </div>
         </div>
@@ -350,13 +348,14 @@ function LastCursoCarousel(history) {
                     </div>
                   </div>
                   <div className='grid justify-items-center '>
-                    <button
-                    onClick={addToCartHandler}
+                    <a
+                    style={{ textDecoration: 'none' }}
+                    href='/payment'
                       type="submit"
                       className="mt-2 items-center    border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       COMPRAR
-                    </button>
+                    </a>
 
                     {userInfo && userInfo.email ? (
 

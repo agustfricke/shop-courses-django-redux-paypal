@@ -21,8 +21,8 @@ const noUser = [
 ]
 
 const admin = [
-  { name: 'CURSOS', href: '/admin/cursos', current: false },
-  { name: 'USUARIOS', href: '/admin/users', current: false },
+  { name: 'CURSOS', href: '/cursos/admin', current: false },
+  { name: 'USUARIOS', href: '/users/admin', current: false },
 
 ]
 

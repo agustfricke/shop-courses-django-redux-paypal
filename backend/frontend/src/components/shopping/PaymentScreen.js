@@ -67,7 +67,7 @@ function PaymentScreen({history}) {
     };
   
     function handlePay() {
-    history.push('/')
+    history.push('/premium')
 
 
       dispatch(premiumUser({
@@ -80,7 +80,6 @@ function PaymentScreen({history}) {
 
     return (
         <>
-            <CheckoutSteps step1 step2 step3/>
 
 
 
@@ -308,7 +307,12 @@ function PaymentScreen({history}) {
                 
                           
                
-<PayPalScriptProvider>
+<PayPalScriptProvider 
+ options={{
+  "client-id": "AdmICTYO0SDrFdvqtiwXMdpluMaIrTIndNcZL0CLhNQL3Y2nPocMxUZPmSDvavcmkdC3Ha5rGrqP7ahr",
+  components: "buttons",
+  currency: "USD"
+}}>
               <PayPalButtons
           createOrder={(data, actions) => createOrder(data, actions)}
           onApprove={(data, actions) => onApprove(data, actions)}

@@ -36,7 +36,7 @@ function EditEpisodio({ match, history }) {
 
         if (successUpdate) {
             dispatch({ type: EPISODIO_UPDATE_RESET })
-            history.push('/admin/cursos')
+            history.push('/cursos/admin')
         } else {
             if (!episodio.title || episodio.id !== Number(episodioId)) { // Problema!!!!
                 dispatch(listEpisodioDetails(episodioId))
@@ -77,7 +77,7 @@ function EditEpisodio({ match, history }) {
                 }
             }
 
-            const { data } = await axios.post('http://127.0.0.1:8000/cursos/uploadFileEpisodio/', formData, config)
+            const { data } = await axios.post('https://techconagust.com/cursos/uploadFileEpisodio/', formData, config)
             
             setFile(data)
             setUploadingFile(false)

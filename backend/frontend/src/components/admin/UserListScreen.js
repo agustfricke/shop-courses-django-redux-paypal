@@ -71,7 +71,7 @@ function UserListScreen({ history }) {
                                         <td>
                                         <img
                                             className="h-10 w-18 rounded-full"
-                                            src={`http://127.0.0.1:8000${userInfo.image}`}
+                                            src={`https://techconagust.com/${userInfo.image}`}
                                             alt=""
                                         />
                                             </td>
@@ -88,7 +88,7 @@ function UserListScreen({ history }) {
                                             <GrCheckbox />
                                         )}</td>
                                         <td className='text-center'>
-                                        <a href={`/admin/user/${user.id}/edit`}>
+                                        <a href={`/user/admin/${user.id}/edit`}>
 
                                             <button
                                             className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2'

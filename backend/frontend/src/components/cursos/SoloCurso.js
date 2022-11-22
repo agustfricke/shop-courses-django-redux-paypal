@@ -158,7 +158,7 @@ const SoloCurso = ({ match, history }) => {
                             <div className='p-1'>
                                 <img
                                     style={{ maxHeight: "440px" }}
-                                    src={`http://127.0.0.1:8000${curso.image}`}
+                                    src={`https://techconagust.com/${curso.image}`}
                                 />
                                 <div className='p-4'>
                                         <>
