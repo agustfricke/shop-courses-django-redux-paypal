@@ -33,7 +33,7 @@ export default function MiPerfil() {
              
               <div>
                 <center>
-                  <img className="h-40 w-55 rounded-full" src={`http://127.0.0.1:8000${userInfo.image}`} alt="" />
+                  <img className="h-40 w-55 rounded-full" src={`https://techconagust.com/${userInfo.image}`} alt="" />
                   <br></br>
                   <h3 className="text-lg font-medium leading-6 text-gray-900">{userInfo.user_name} &nbsp;&nbsp;&nbsp;&nbsp;
                     <a
