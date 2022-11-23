@@ -309,7 +309,7 @@ function PaymentScreen({history}) {
                
 <PayPalScriptProvider 
  options={{
-  "client-id": "AagP4ONe8aPmVkKC1TiFz8QxceRQEMlyxFILAR84-Ws9X0NwRtwFOrAfx-dcprZ2Cy3R1txtYErnHpI8",
+  "client-id": "AdmICTYO0SDrFdvqtiwXMdpluMaIrTIndNcZL0CLhNQL3Y2nPocMxUZPmSDvavcmkdC3Ha5rGrqP7ahr",
   components: "buttons",
   currency: "USD"
 }}>
