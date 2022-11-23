@@ -135,7 +135,7 @@ export default function EditProfile({ history }) {
                                 type="text"
                                 id="user_name"
                                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                placeholder="Full Name"
+                                placeholder="Nombre de Usuario"
                               />
                             </div>
                             <br></br>
@@ -149,7 +149,7 @@ export default function EditProfile({ history }) {
                                 name="email"
                                 id="email"
                                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                placeholder="E-mail"
+                                placeholder="Correo Electronico"
                               />
                             </div>
 
@@ -161,7 +161,7 @@ export default function EditProfile({ history }) {
 
                         <div>
                           <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                            About
+                            Biografia
                           </label>
                           <div className="mt-1">
                             <textarea
@@ -173,7 +173,7 @@ export default function EditProfile({ history }) {
                               name="bio"
                               rows={3}
                               className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                              placeholder="About You"
+                              placeholder="Escribe algo de ti"
                               defaultValue={''}
                             />
                           </div>
@@ -181,7 +181,7 @@ export default function EditProfile({ history }) {
                         </div>
                         <br></br>
                         <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                          Update Your Password
+                          Cambia tu Contraseña
                         </label>
                         <div className="mt-1 flex rounded-md shadow-sm">
 
@@ -191,7 +191,7 @@ export default function EditProfile({ history }) {
                             type="password"
                             id="password"
                             className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Password"
+                            placeholder="Contraseña"
                           />
                         </div>
 
@@ -203,23 +203,23 @@ export default function EditProfile({ history }) {
                             type="password"
                             id="confirmPassword"
                             className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Confirm Password"
+                            placeholder="Confirmar Contraseña"
                           />
                         </div>
 
 
 
                         <Form.Group controlId='image' className='py-2'>
-                          <Form.Label>Image</Form.Label>
+                          <Form.Label>Imagen</Form.Label>
                           <Form.Control
                             type='text'
-                            placeholder='Image'
+                            placeholder='Imagen'
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                           >
                           </Form.Control>
                           <Form.Control
-                            label='Choose file'
+                            label='Selecciona un archivos'
                             type='file'
                             onChange={uploadFileHandler}
                           >
@@ -229,9 +229,9 @@ export default function EditProfile({ history }) {
                       <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                         <button
                           type="submit"
-                          className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          className=" bg-gray-700 py-1 px-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 "
                         >
-                          Save
+                          GUARDAR
                         </button>
                       </div>
                     </div>

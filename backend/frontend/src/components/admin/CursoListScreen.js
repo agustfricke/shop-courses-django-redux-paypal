@@ -57,7 +57,7 @@ function CursoListScreen({ history }) {
 
     return (
         <Container>
-            <div className='mt-10'>
+            <div className='mt-10 mb-4'>
             <Row>
                 <Col sm={10}>
                     <h1>Cursos</h1>
@@ -66,7 +66,7 @@ function CursoListScreen({ history }) {
                     <button
                     onClick={createCursoHandler}
                     size='sm' 
-                    className='bg-gray-900 text-white px-4 py-3 rounded-md text-sm font-medium ml-2' 
+                    className= 'bg-gray-700 py-3 px-5 mb-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2' 
                     >
                         CREAR CURSO
                     </button>

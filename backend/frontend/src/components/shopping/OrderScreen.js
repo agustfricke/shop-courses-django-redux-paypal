@@ -29,18 +29,17 @@ function OrderScreen() {
             <Loader />
             : (
 
-        <div class=" flex-initial w-85   max-w-screen-md gap-10 sm:mx-auto">
+        <div class=" flex-initial w-85  mt-9 max-w-screen-md gap-10 sm:mx-auto">
             <div>
                 <div class="p-8 bg-gray-900 rounded">
                     <div class="mb-4 text-center">
+                            <p class="mr-2 text-5xl tracking-wide font-medium text-gray-200 lg:text-6xl">
+                                FELICITACIONES !
+                            </p>
                         <p class="text-xl font-medium tracking-wide text-gray-200">
                             YA ERES MIEMBRO PREMIUM
                         </p>
-                        <div class="flex items-center justify-center">
-                            <p class="mr-2 text-5xl font-semibold text-gray-200 lg:text-6xl">
-                                FELICITACIONES {userInfo.user_name} !
-                            </p>
-                        </div>
+                        
                     </div>
                     <div className='flex justify-center mr-9'>
                         <div>
@@ -246,13 +245,15 @@ function OrderScreen() {
                         </div>
                     </div>
                     <div>
+                        <center>
                         <a
                             href='/'
                             style={{ textDecoration: 'none' }}
-                            className="block w-full font-gilroy-light text-gray-200 bg-gray-700 dark:bg-dark-bg border dark:border-dark-bg   py-3  text-sm  focus:outline-none hover:bg-gray-800 focus:text-gray-900  focus:ring-1 focus:ring-gray-500 focus:border-gray-500 "
-                        > Volver a Home
+                            className=" bg-gray-700  py-3 px-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 "
+                        > Volver al Inicio
 
                         </a>
+                        </center>
                     </div>
                 </div>
                 <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />

@@ -189,7 +189,7 @@ export default function Episodios ({ match, history }) {
                     
                     <div className='text-center py-2'>
                         <button type='submit' 
-                        className='bg-gray-900 text-white px-5 py-3 rounded-md text-sm font-medium ml-2'
+                        className= 'bg-gray-700 py-3 px-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2' 
                         >AGREGAR</button>
                     </div>
 

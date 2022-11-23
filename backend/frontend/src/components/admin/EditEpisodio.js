@@ -166,8 +166,9 @@ function EditEpisodio({ match, history }) {
 
 
         <div className='text-center py-2'>
-            <Button type='submit' className='rounded'>Submit</Button>
-        </div>
+                                <button type='submit'
+                                className= 'bg-gray-700 py-3 px-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2' >Submit</button>
+                            </div>
 
     </Form>
     </div>

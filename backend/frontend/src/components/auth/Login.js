@@ -62,7 +62,7 @@ export default function Login({ location, history }) {
                     <div className="">
                       <div>
                         <label htmlFor="email-address" className="sr-only">
-                          Email address
+                          Correo Electronico
                         </label>
                         <input
                           value={email}
@@ -73,13 +73,13 @@ export default function Login({ location, history }) {
                           autoComplete="email"
                           required
                           class="block border border-grey-light w-full p-3 rounded mb-2 placeholder-gray-600 "
-                          placeholder="Email address"
+                          placeholder="Correo Electronico"
                         />
                       </div>
                       <br></br>
                       <div>
                         <label htmlFor="password" className="sr-only">
-                          Password
+                          Contraseña
                         </label>
                         <input
                           value={password}
@@ -90,7 +90,7 @@ export default function Login({ location, history }) {
                           autoComplete="current-password"
                           required
                           class="block border border-grey-light w-full p-3 rounded mb-2 placeholder-gray-600 "
-                          placeholder="Password"
+                          placeholder="Contraseña"
                         />
                       </div>
                     </div>

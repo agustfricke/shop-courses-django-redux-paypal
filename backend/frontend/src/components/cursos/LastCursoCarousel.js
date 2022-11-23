@@ -32,7 +32,7 @@ function LastCursoCarousel(history) {
               <span className="block xl:inline text-indigo-300">online</span>{' '}
             </h3>
             <h5 className="mt-6 text-lg leading-10 text-gray-200 sm:text-center">
-            Aprende todo lo que necesita para escribir, implementar y mejorar aplicaciones de software.
+            Aprende todo lo que necesitas para escribir, implementar y mejorar aplicaciones de software.
             </h5>
           </div>
         </div>
@@ -347,12 +347,12 @@ function LastCursoCarousel(history) {
                       </ul>
                     </div>
                   </div>
-                  <div className='grid justify-items-center '>
+                  <center>
                     <a
                     style={{ textDecoration: 'none' }}
                     href='/payment'
                       type="submit"
-                      className="mt-2 items-center    border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="mt-2 items-center mx-2   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       COMPRAR
                     </a>
@@ -367,7 +367,7 @@ function LastCursoCarousel(history) {
 <a
 style={{ textDecoration: 'none' }}
                       href='/register'
-                      className="mt-2 items-center   border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="mt-2 items-center  mx-2 border border-transparent bg-gray-700 py-3 px-8 text-base font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       REGISTRATE
                     </a>
@@ -376,13 +376,13 @@ style={{ textDecoration: 'none' }}
 </>
 
                     )}
+                    </center>
                   </div>
                 </div>
                 <div class="w-11/12 h-2 mx-auto bg-gray-900 rounded-b opacity-75" />
                 <div class="w-10/12 h-2 mx-auto bg-gray-900 rounded-b opacity-50" />
                 <div class="w-9/12 h-2 mx-auto bg-gray-900 rounded-b opacity-25" />
               </div>
-            </div>
           </>
         )}
       </>

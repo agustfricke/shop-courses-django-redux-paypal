@@ -83,7 +83,7 @@ function PaymentScreen({history}) {
 
 
 
-<div class=" flex-initial w-85   max-w-screen-md gap-10 sm:mx-auto">
+<div class=" flex-initial w-85 mt-10  max-w-screen-md gap-10 sm:mx-auto">
           <div>
             <div class="p-8 bg-gray-900 rounded">
               <div class="mb-4 text-center">
@@ -309,7 +309,7 @@ function PaymentScreen({history}) {
                
 <PayPalScriptProvider 
  options={{
-  "client-id": "AdmICTYO0SDrFdvqtiwXMdpluMaIrTIndNcZL0CLhNQL3Y2nPocMxUZPmSDvavcmkdC3Ha5rGrqP7ahr",
+  "client-id": "AagP4ONe8aPmVkKC1TiFz8QxceRQEMlyxFILAR84-Ws9X0NwRtwFOrAfx-dcprZ2Cy3R1txtYErnHpI8",
   components: "buttons",
   currency: "USD"
 }}>

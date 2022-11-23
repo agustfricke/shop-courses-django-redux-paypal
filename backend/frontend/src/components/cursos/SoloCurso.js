@@ -35,9 +35,7 @@ const SoloCurso = ({ match, history }) => {
     const detailsCurso = useSelector(state => state.detailsCurso)
     const { loading, error, curso } = detailsCurso
 
-    useEffect(() => {
-        document.title = `Tech con Agust | ${curso.title}`
-      }, []);
+
 
 
     const userLogin = useSelector(state => state.userLogin)
@@ -71,6 +69,10 @@ const SoloCurso = ({ match, history }) => {
         }
         ))
     }
+
+    useEffect(() => {
+        document.title = `Tech con Agust | Curso `
+      }, []);
 
     return (
 

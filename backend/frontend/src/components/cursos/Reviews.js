@@ -140,7 +140,7 @@ export default function Reviews({ match }) {
                                                         id="body"
                                                         rows={3}
                                                         className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                                        placeholder="Type Here!"
+                                                        placeholder="Escribe aqui!"
                                                     />
                                                 </div>
                                                 <Form.Control
@@ -148,21 +148,21 @@ export default function Reviews({ match }) {
                                                     value={rating}
                                                     onChange={(e) => setRating(e.target.value)}
                                                 >
-                                                    <option value=''>Select number of stars ...</option>
-                                                    <option value='1'>1 - Poor</option>
-                                                    <option value='2'>2 - Fair</option>
-                                                    <option value='3'>3 - Nice</option>
-                                                    <option value='4'>4 - Good</option>
-                                                    <option value='5'>5 - Excellent</option>
+                                                    <option value=''>Selecciona el numero de estrellas</option>
+                                                    <option value='1'>1 - No me gusto</option>
+                                                    <option value='2'>2 - Regular</option>
+                                                    <option value='3'>3 - Bien</option>
+                                                    <option value='4'>4 - Muy bien</option>
+                                                    <option value='5'>5 - Exelente</option>
                                                 </Form.Control>
                                             </div>
                                         </div>
 
-                                        <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                                        <div className="bg-gray-50 text-center px-4 py-3  sm:px-6">
                                             <button
                                                 disabled={loadingcursoReview}
                                                 type='submit'
-                                                className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                                className='bg-gray-700 py-3 px-5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2'
                                             >
                                                 POST
                                             </button>

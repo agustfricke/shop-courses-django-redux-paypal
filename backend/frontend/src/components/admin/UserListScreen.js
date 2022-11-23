@@ -82,7 +82,7 @@ function UserListScreen({ history }) {
                                         ) : (
                                             <GrCheckbox />
                                         )}</td>
-                                        <td>{user.premium ? (
+                                        <td>{user.premium === 'premium' ? (
                                             <GrCheckboxSelected />
                                         ) : (
                                             <GrCheckbox />
