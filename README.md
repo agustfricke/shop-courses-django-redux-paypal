@@ -7,6 +7,17 @@
 - Tailwind css
 - Paypal
 
+### Features
+- Auth with email verification
+- Password rest 
+- Cool alerts
+- Admin site
+- Comments
+- Video management
+- User profile 
+- Add much more!
+
+
 ### Essential settings
 - Config backend/backend/settings.py -> email and password for email verification
 - Config frontend/src/components/shopping/PaymentScreen.js Paypal config
