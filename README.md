@@ -9,7 +9,7 @@
 
 ### Features
 - Auth with email verification
-- Password rest 
+- Password reset
 - Cool alerts
 - Admin site
 - Comments
