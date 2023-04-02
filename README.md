@@ -1,13 +1,13 @@
 # Platform for online courses :book:
 
-⚡  Stack
+## ⚡  Stack
 - Django Rest Framework
 - Redux
 - React
 - Tailwind css
 - Paypal
 
-### Features
+## ⚡ Features
 - Auth with email verification
 - Password reset
 - Cool alerts
@@ -18,7 +18,7 @@
 - Add much more!
 
 
-### Essential settings
+## ⚡ Essential settings
 - Config backend/backend/settings.py -> email and password for email verification
 - Config frontend/src/components/shopping/PaymentScreen.js Paypal config
 
