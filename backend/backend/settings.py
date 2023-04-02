@@ -51,9 +51,7 @@ INSTALLED_APPS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://techconagust.com",
-    "http://18.228.44.101",
-
+    "http://localhost:3000",
 ]
 
 MIDDLEWARE = [
@@ -156,8 +154,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'techconagust@gmail.com'
-EMAIL_HOST_PASSWORD = 'onhkdchpluntfhvl'
+# Use .env file :D
+EMAIL_HOST_USER = 'email'
+EMAIL_HOST_PASSWORD = 'Password'
 EMAIL_USE_TLS = True
 
 REST_FRAMEWORK = {
